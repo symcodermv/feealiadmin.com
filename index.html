@@ -42,8 +42,8 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 
 /* ─── APP ─── */
 #ap{display:none}
-.topbar{position:fixed;top:0;left:0;right:0;height:var(--hh);background:#fff;border-bottom:1px solid var(--bdr);z-index:200;display:flex;align-items:center;padding:0 20px 0 0;box-shadow:var(--sh1)}
-.tb-logo{width:var(--sw);height:100%;display:flex;align-items:center;gap:10px;padding:0 20px;flex-shrink:0;border-right:1px solid var(--bdr)}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--hh);background:#fff;border-bottom:1px solid var(--bdr);z-index:200;display:flex;align-items:center;padding:0 16px 0 0;box-shadow:var(--sh1)}
+.tb-logo{width:var(--sw);height:100%;display:flex;align-items:center;gap:8px;padding:0 16px;flex-shrink:0;border-right:1px solid var(--bdr)}
 .tb-logo img{height:32px;object-fit:contain;display:none}
 .tb-logo .wm{font-family:var(--dv);font-size:20px;color:var(--g900);direction:rtl;line-height:1}
 .tb-mid{flex:1;padding:0 20px}
@@ -157,24 +157,78 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .fab-l{font-size:12px;color:var(--g400)}
 .fab-r{display:flex;gap:8px}
 
-/* ─── TABLE ─── */
-.tc{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh1)}
-.tc-h{padding:13px 17px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.tc-h h3{font-size:14px;font-weight:700;color:var(--g800)}
+/* ─── ARTICLES LIST ─── */
+.tc{background:transparent}
+.tc-h{padding:0 0 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tc-h h3{font-size:15px;font-weight:700;color:var(--g800)}
 .tc-c{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.tc-s{display:flex;align-items:center;gap:6px;background:var(--g50);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:6px 10px}
-.tc-s input{background:transparent;border:none;outline:none;font-size:13px;color:var(--g700);font-family:'Sora',sans-serif;width:140px}
-.tc-sel{padding:6px 10px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:13px;font-family:'Sora',sans-serif;color:var(--g600);background:var(--g50);cursor:pointer;outline:none}
-table{width:100%;border-collapse:collapse}
-thead{background:var(--g50)}
-th{padding:10px 13px;text-align:left;font-size:10px;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-tbody tr{border-top:1px solid var(--g100);transition:background .12s}
-tbody tr:hover{background:#F9FEFF}
-td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
-.tdi{width:48px;height:32px;border-radius:5px;object-fit:cover;background:var(--g100);display:block}
-.tdi-p{width:48px;height:32px;border-radius:5px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:13px}
-.tdt{font-weight:600;color:var(--g900);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--dv);direction:rtl;font-size:14px}
-.tdd{font-size:11px;color:var(--g400);white-space:nowrap}
+.tc-s{display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 12px;box-shadow:var(--sh1)}
+.tc-s input{background:transparent;border:none;outline:none;font-size:13px;color:var(--g700);font-family:'Sora',sans-serif;width:200px}
+.tc-sel{padding:8px 12px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:13px;font-family:'Sora',sans-serif;color:var(--g600);background:#fff;cursor:pointer;outline:none;box-shadow:var(--sh1)}
+/* Article card list */
+#tbody{display:flex;flex-direction:column;gap:10px}
+.art-card{
+  background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rl);
+  display:flex;align-items:stretch;gap:0;overflow:hidden;
+  transition:border-color .18s,box-shadow .18s;
+  box-shadow:var(--sh1);
+}
+.art-card:hover{border-color:var(--blue);box-shadow:var(--sh2)}
+.art-card-img{
+  width:120px;flex-shrink:0;background:var(--g100);
+  position:relative;overflow:hidden;
+}
+.art-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.art-card-img .no-img{
+  width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:28px;background:var(--g50);
+}
+.art-card-img .status-dot{
+  position:absolute;top:8px;right:8px;
+  width:10px;height:10px;border-radius:50%;
+  border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);
+}
+.art-card-img .status-dot.pub{background:var(--grn)}
+.art-card-img .status-dot.dft{background:var(--g400)}
+.art-card-body{flex:1;padding:14px 16px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.art-card-top{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.art-card-ttl{font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g900);line-height:1.6;direction:rtl;text-align:right;flex:1}
+.art-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.art-card-date{font-size:11px;color:var(--g400);font-family:'Sora',sans-serif;white-space:nowrap}
+.art-card-sum{font-family:var(--dv);font-size:13px;color:var(--g500);line-height:1.6;direction:rtl;text-align:right;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-card-actions{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:6px;padding:12px 14px;flex-shrink:0;
+  border-left:1px solid var(--bdr);background:var(--g50);
+}
+.art-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:var(--rs);
+  font-size:12px;font-weight:600;cursor:pointer;
+  border:1.5px solid;transition:all .15s;
+  font-family:'Sora',sans-serif;white-space:nowrap;
+  min-width:80px;justify-content:center;
+}
+.art-btn-edit{border-color:var(--blue);color:var(--blue);background:#fff}
+.art-btn-edit:hover{background:var(--blue);color:#fff}
+.art-btn-del{border-color:var(--bdr);color:var(--g500);background:#fff}
+.art-btn-del:hover{border-color:var(--red);color:var(--red);background:var(--redl)}
+.art-btn-tog{border-color:var(--bdr);color:var(--g500);background:#fff;font-size:11px;padding:6px 10px;min-width:70px}
+.art-btn-tog.pub{border-color:var(--grn);color:var(--grn)}
+.art-btn-tog:hover{border-color:var(--amb);color:var(--amb);background:var(--ambl)}
+/* Empty state */
+.arts-empty{text-align:center;padding:60px 24px;color:var(--g300);font-family:'Sora',sans-serif}
+.arts-empty .ei{font-size:48px;margin-bottom:12px}
+.arts-empty p{font-size:14px}
+/* Stats bar */
+.arts-stats{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.arts-stat{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;border:1.5px solid var(--bdr);background:#fff;color:var(--g500);transition:.15s}
+.arts-stat:hover{border-color:var(--blue);color:var(--blue)}
+.arts-stat.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.arts-stat.pub-tab.on{background:var(--grn);border-color:var(--grn)}
+.arts-stat.dft-tab.on{background:var(--g600);border-color:var(--g600)}
+
+/* ─── PILLS & BADGES ─── */
 .cpill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
 .cn{background:#EEF2FF;color:#4338CA}.cs{background:#FFF7ED;color:#C2410C}.cw{background:#F0FDF4;color:#15803D}
 .cpo{background:#FDF4FF;color:#7E22CE}.ce{background:#ECFDF5;color:#065F46}.crt{background:#FEF3C7;color:#92400E}.cl{background:#FFF1F2;color:#9F1239}
@@ -223,13 +277,16 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
 
 /* ─── DASHBOARD ─── */
 .dgrid{display:grid;grid-template-columns:1fr 260px;gap:16px}
-.afc{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);overflow:hidden}
-.afh{padding:13px 17px;border-bottom:1px solid var(--bdr);font-size:14px;font-weight:700;color:var(--g800)}
+.afc{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);overflow:hidden;display:flex;flex-direction:column}
+.afh{padding:13px 17px;border-bottom:1px solid var(--bdr);font-size:14px;font-weight:700;color:var(--g800);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.aff{overflow-y:auto;max-height:520px}
+.aff::-webkit-scrollbar{width:3px}
+.aff::-webkit-scrollbar-thumb{background:var(--g200);border-radius:2px}
 .afr{display:flex;align-items:center;gap:10px;padding:11px 17px;border-bottom:1px solid var(--g50);cursor:pointer;transition:background .12s}
 .afr:last-child{border-bottom:none}
 .afr:hover{background:var(--g50)}
-.afim{width:40px;height:28px;border-radius:5px;object-fit:cover;background:var(--g100);flex-shrink:0}
-.afimp{width:40px;height:28px;border-radius:5px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.afim{width:44px;height:30px;border-radius:5px;object-fit:cover;background:var(--g100);flex-shrink:0}
+.afimp{width:44px;height:30px;border-radius:5px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
 .afttl{font-size:13px;font-weight:500;color:var(--g800);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--dv);direction:rtl}
 .afmet{font-size:11px;color:var(--g400);margin-top:2px}
 .qp{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);padding:17px}
@@ -263,11 +320,77 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
 .spin{width:15px;height:15px;border:2px solid rgba(26,86,219,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .65s linear infinite;display:inline-block;vertical-align:middle}
 @keyframes sp{to{transform:rotate(360deg)}}
 .tip{padding:12px;background:var(--ambl);border-radius:var(--rs);font-size:12px;color:var(--amb);border:1px solid #FDE68A;margin-top:10px}
+
+/* ─── PARAGRAPH EDITOR ─── */
+.para-item{display:flex;gap:8px;align-items:flex-start;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px;transition:border-color .15s}
+.para-item:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,86,219,.07)}
+.para-item textarea{flex:1;border:none;outline:none;resize:vertical;font-family:var(--dv);direction:rtl;font-size:15px;line-height:1.9;min-height:80px;color:var(--g900);background:transparent;padding:4px}
+.para-item textarea::placeholder{font-family:'Sora',sans-serif;font-size:12px;direction:ltr;color:var(--g300)}
+.para-item .para-del{width:26px;height:26px;border-radius:5px;border:1.5px solid var(--bdr);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g400);flex-shrink:0;transition:.15s;margin-top:1px}
+.para-item .para-del:hover{border-color:var(--red);background:var(--redl);color:var(--red)}
+.para-empty{text-align:center;padding:20px;color:var(--g300);font-size:13px;border:1.5px dashed var(--bdr);border-radius:var(--rs)}
 .sg{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
 
-@media(max-width:1100px){.srow{grid-template-columns:repeat(3,1fr)}.dgrid{grid-template-columns:1fr}.sg{grid-template-columns:1fr}.cgrid{grid-template-columns:1fr 1fr}.gag{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){.sidebar{display:none}.content{margin-left:0}.g2{grid-template-columns:1fr}}
-@media(max-width:600px){.srow{grid-template-columns:repeat(2,1fr)}.ph{flex-direction:column}.cgrid{grid-template-columns:1fr}.gag{grid-template-columns:repeat(2,1fr)}}
+/* ─── MOBILE TOPBAR HAMBURGER ─── */
+.tb-hbg{display:none;width:38px;height:38px;border-radius:var(--rs);border:1.5px solid var(--bdr);background:transparent;color:var(--g600);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;padding:9px}
+.tb-hbg span{display:block;width:18px;height:1.8px;background:currentColor;border-radius:2px;transition:.22s}
+.sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:149;backdrop-filter:blur(3px)}
+.sb-overlay.on{display:block}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .srow{grid-template-columns:repeat(3,1fr)}
+  .dgrid{grid-template-columns:1fr}
+  .sg{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr 1fr}
+  .gag{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  :root{--sw:260px}
+  .sidebar{
+    position:fixed;top:0;left:-280px;bottom:0;
+    z-index:150;transition:left .28s cubic-bezier(.4,0,.2,1);
+    box-shadow:none;padding-top:calc(var(--hh) + 8px);
+  }
+  .sidebar.open{left:0;box-shadow:4px 0 24px rgba(0,0,0,.12)}
+  .content{margin-left:0}
+  .tb-hbg{display:inline-flex}
+  .tb-logo{border-right:none;width:auto}
+  .tb-mid{display:none}
+  .srow{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:1fr}
+  .art-card-img{width:90px}
+  .art-card-actions{padding:10px 10px;gap:5px}
+  .art-btn{padding:7px 10px;font-size:11px;min-width:70px}
+}
+@media(max-width:640px){
+  :root{--hh:54px}
+  .srow{grid-template-columns:repeat(2,1fr)}
+  .ph{flex-direction:column;gap:10px}
+  .ph-r{width:100%}
+  .cgrid{grid-template-columns:1fr}
+  .gag{grid-template-columns:repeat(2,1fr)}
+  .tb-r .uc,.tb-r .t-g{display:none}
+  .content{padding:14px}
+  .card{padding:16px}
+  .art-card{flex-direction:column}
+  .art-card-img{width:100%;height:160px}
+  .art-card-img .status-dot{top:10px;right:10px;width:12px;height:12px}
+  .art-card-actions{flex-direction:row;border-left:none;border-top:1px solid var(--bdr);padding:10px 12px;flex-wrap:wrap;justify-content:flex-end}
+  .art-btn{flex:1;min-width:0}
+  .arts-stats{gap:6px}
+  .arts-stat{padding:5px 10px;font-size:11px}
+  .g3{grid-template-columns:1fr}
+  .flg{display:none}
+  .sg{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr}
+  .fab-r{flex-direction:column}
+  .fab-r button{width:100%}
+}
+@media(max-width:400px){
+  .srow{grid-template-columns:1fr 1fr}
+  .tb-r .tbtn:not(.t-b){display:none}
+}
 </style>
 </head>
 <body>
@@ -281,13 +404,15 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
       <div class="sub">Admin Portal</div>
     </div>
     <h2>Sign in</h2>
-    <p>Enter admin password to continue</p>
+    <p>Enter your username and password</p>
     <div class="fi">
+      <label>Username</label>
+      <input type="text" id="loginUser" placeholder="username" autocomplete="off" autocapitalize="off">
       <label>Password</label>
-      <input type="password" id="pw" placeholder="Enter password…" autocomplete="off">
+      <input type="password" id="pw" placeholder="Password…" autocomplete="off">
     </div>
     <button class="btnl" onclick="doLogin()">Continue →</button>
-    <div class="ae" id="ae">⚠️ Incorrect password. Try again.</div>
+    <div class="ae" id="ae">⚠️ Incorrect username or password.</div>
   </div>
 </div>
 
@@ -296,21 +421,23 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="tb-logo">
+      <button class="tb-hbg" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
       <img id="tbLogo" src="" alt="">
-      <div class="wm" id="tbLogoText">ފީއަލި</div>
+      <div class="wm" id="tbLogoText">ފීއަލި</div>
     </div>
     <div class="tb-mid"><div class="tb-sr">🔍 <input type="text" placeholder="Search articles…" id="gs" oninput="gSearch()"></div></div>
     <div class="tb-r">
       <a href="feeali.html" target="_blank" class="tbtn t-g">👁 View Site</a>
-      <button class="tbtn t-b" onclick="goAdd()">+ New Article</button>
+      <button class="tbtn t-b" onclick="goAdd()">+ New</button>
       <div class="uc"><div class="uav">A</div><span style="font-size:12px;color:var(--g500)">Admin</span></div>
       <button class="tbtn t-r" onclick="doLogout()">Sign out</button>
     </div>
   </div>
 
   <!-- LAYOUT -->
+  <div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
   <div class="layout">
-    <div class="sidebar">
+    <div class="sidebar" id="adminSidebar">
       <span class="sb-lbl">Overview</span>
       <button class="sbi on" id="n-dash" onclick="showPg('dash',this)"><div class="ico">📊</div>Dashboard</button>
       <span class="sb-lbl">Content</span>
@@ -327,12 +454,15 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
       <button class="sbi" onclick="fNav('report',this)"><div class="ico">📋</div>ރިޕޯޓް</button>
       <button class="sbi" onclick="fNav('lifestyle',this)"><div class="ico">🌿</div>ވައްޓަފާޅި</button>
       <div class="sb-div"></div>
-      <span class="sb-lbl">Settings</span>
-      <button class="sbi" id="n-cats" onclick="showPg('cats',this)"><div class="ico">🗂️</div>Categories</button>
-      <button class="sbi" id="n-soc" onclick="showPg('soc',this)"><div class="ico">📱</div>Social Media</button>
-      <button class="sbi" id="n-intro" onclick="showPg('intro',this)"><div class="ico">🎥</div>Intro Video</button>
-      <button class="sbi" id="n-logo" onclick="showPg('logo',this)"><div class="ico">🎨</div>Logo & Name</button>
-      <button class="sbi" id="n-font" onclick="showPg('font',this)"><div class="ico">🔤</div>Dhivehi Font</button>
+      <span class="sb-lbl admin-only">Settings</span>
+      <button class="sbi admin-only" id="n-cats" onclick="showPg('cats',this)"><div class="ico">🗂️</div>Categories</button>
+      <button class="sbi admin-only" id="n-soc" onclick="showPg('soc',this)"><div class="ico">📱</div>Social Media</button>
+      <button class="sbi admin-only" id="n-intro" onclick="showPg('intro',this)"><div class="ico">🎥</div>Intro Video</button>
+      <button class="sbi admin-only" id="n-logo" onclick="showPg('logo',this)"><div class="ico">🎨</div>Logo & Name</button>
+      <button class="sbi admin-only" id="n-font" onclick="showPg('font',this)"><div class="ico">🔤</div>Dhivehi Font</button>
+      <button class="sbi admin-only" id="n-staff" onclick="showPg('staff',this)"><div class="ico">👥</div>Staff Access</button>
+      <span class="sb-lbl">Account</span>
+      <button class="sbi" id="n-account" onclick="showPg('account',this)"><div class="ico">👤</div><span id="sbUserName">My Account</span></button>
       <div class="sb-stat"><div class="sn" id="sbtot">—</div><div class="sl">Total Articles</div></div>
     </div>
 
@@ -349,23 +479,31 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
           <div class="sc cp"><div class="sc-ico ip">📱</div><div class="sc-n" id="d-soc">—</div><div class="sc-l">Social</div></div>
         </div>
         <div class="dgrid">
-          <div class="afc"><div class="afh">Recent Articles</div><div id="dfeed"><div style="padding:28px;text-align:center;color:var(--g300)">Loading…</div></div></div>
+          <div class="afc"><div class="afh">All Articles <span id="dashArtCount" style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blu);padding:2px 8px;border-radius:10px">0</span></div><div class="aff" id="dfeed"><div style="padding:28px;text-align:center;color:var(--g300)">Loading…</div></div></div>
           <div class="qp"><div class="qph">By Category</div><div id="dcat"></div></div>
         </div>
       </div>
 
       <!-- ALL ARTICLES -->
       <div class="pg" id="pg-arts">
-        <div class="ph"><div><h1 id="at">All Articles</h1><p id="as">Manage all content</p></div><div class="ph-r"><button class="tbtn t-b" onclick="goAdd()">+ New Article</button></div></div>
+        <div class="ph">
+          <div><h1 id="at">All Articles</h1><p id="as">Manage all published and draft articles</p></div>
+          <div class="ph-r"><button class="tbtn t-b" onclick="goAdd()">+ New Article</button></div>
+        </div>
+        <!-- Filter stats bar -->
+        <div class="arts-stats">
+          <span class="arts-stat on" id="fAll" onclick="setArtFilter('',this)">ހުރިހާ <span id="cntAll">0</span></span>
+          <span class="arts-stat pub-tab" id="fPub" onclick="setArtFilter('pub',this)">✅ Published <span id="cntPub">0</span></span>
+          <span class="arts-stat dft-tab" id="fDft" onclick="setArtFilter('dft',this)">📝 Draft <span id="cntDft">0</span></span>
+        </div>
         <div class="tc">
-          <div class="tc-h"><h3 id="tth">All Articles</h3>
+          <div class="tc-h">
+            <h3 id="tth">ހުރިހާ ހަބަރު</h3>
             <div class="tc-c">
-              <div class="tc-s">🔍 <input type="text" placeholder="Search…" id="tsrch" oninput="rTable()"></div>
-              <select class="tc-sel" id="tsel" onchange="rTable()"><option value="">All</option><option value="pub">Published</option><option value="dft">Draft</option></select>
+              <div class="tc-s">🔍 <input type="text" placeholder="ހޯދާ…" id="tsrch" oninput="rTable()"></div>
             </div>
           </div>
-          <table><thead><tr><th></th><th>Title</th><th>Cat</th><th>Status</th><th>Date</th><th></th></tr></thead>
-          <tbody id="tbody"><tr><td colspan="6" style="text-align:center;padding:34px;color:var(--g300)"><span class="spin"></span> Loading…</td></tr></tbody></table>
+          <div id="tbody"></div>
         </div>
       </div>
 
@@ -385,7 +523,16 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
           </div>
           <div class="ch"><span class="n">2</span> Content</div>
           <div class="fld" style="margin-bottom:12px"><label>Summary <span class="rq">*</span></label><textarea class="dv" id="fsum" rows="3" placeholder="ހަބަރުގެ ކުރު ތަފްސީލު..."></textarea></div>
-          <div class="fld"><label>Full Body</label><textarea class="dv" id="fbod" rows="7" placeholder="ހަބަރުގެ ފުރިހަމަ ތަފްސީލު..."></textarea></div>
+
+          <!-- PARAGRAPH EDITOR -->
+          <div class="fld">
+            <label style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <span>Full Body — Paragraphs</span>
+              <button type="button" class="bsm bp" style="padding:5px 12px;font-size:12px" onclick="addParagraph()">+ Add Paragraph</button>
+            </label>
+            <div id="paraList" style="display:flex;flex-direction:column;gap:8px"></div>
+            <input type="hidden" id="fbod">
+          </div>
 
           <div class="ch" style="margin-top:16px"><span class="n">3</span> Cover Image</div>
           <div class="tab-row" id="imgTabs">
@@ -505,7 +652,7 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
           <div class="ch"><span class="n">+</span> Add Gallery Photo</div>
           <div class="g2" style="margin-bottom:12px">
             <div class="fld"><label>Caption (Dhivehi)</label><input class="dv" type="text" id="gfc" placeholder="ފޮޓޯ ތަފްސީލު..."></div>
-            <div></div>
+            <div class="fld"><label>Category (optional)</label><input class="dv" type="text" id="gfcat" placeholder="ދަތުރު · ހަފްލާ · ކުޅިވަރު..."></div>
           </div>
           <label style="font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:8px">Photo Source <span style="color:var(--red)">*</span></label>
           <div class="tab-row" id="galTabs">
@@ -618,7 +765,7 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
         <div class="ph"><div><h1>Logo & Site Name</h1><p>Customize your logo, site name, color and font</p></div></div>
 
         <!-- ROW 1: Logo + Site Name -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:18px">
 
           <!-- LOGO -->
           <div class="card">
@@ -764,6 +911,68 @@ td{padding:11px 13px;font-size:13px;color:var(--g700);vertical-align:middle}
         </div>
       </div>
 
+
+      <!-- STAFF ACCESS -->
+      <div class="pg" id="pg-staff">
+        <div class="ph"><div><h1>Staff Access</h1><p>Manage who can log in to the admin panel</p></div></div>
+        <div class="sg">
+          <div class="card">
+            <div class="ch">+ Add Staff Member</div>
+            <div class="g3" style="margin-bottom:12px">
+              <div class="fld"><label>Username <span class="rq">*</span></label><input type="text" id="stUser" placeholder="e.g. ahmed" autocapitalize="off" style="direction:ltr"></div>
+              <div class="fld"><label>Display Name <span class="rq">*</span></label><input class="dv" type="text" id="stName" placeholder="Ahmed Mohamed"></div>
+              <div class="fld"><label>Role <span class="rq">*</span></label>
+                <select id="stRole">
+                  <option value="editor">Editor — Full content access</option>
+                  <option value="reporter">Reporter — Add articles only</option>
+                </select>
+              </div>
+            </div>
+            <div class="fld" style="margin-bottom:14px"><label>Initial Password <span class="rq">*</span></label><input type="text" id="stPass" placeholder="Set a temporary password" style="direction:ltr" autocomplete="off"></div>
+            <button class="bsm bp" onclick="addStaff()">+ Add Staff Member</button>
+            <div class="tip" style="margin-top:10px">💡 Staff can change their own password after logging in. You can also reset it here anytime.</div>
+          </div>
+          <div class="card">
+            <div class="ch">Current Staff</div>
+            <div id="staffList"><div style="text-align:center;padding:28px;color:var(--g300)"><span class="spin"></span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MY ACCOUNT -->
+      <div class="pg" id="pg-account">
+        <div class="ph"><div><h1>My Account</h1><p id="acSubtitle">Manage your login details</p></div></div>
+        <div class="sg">
+          <div class="card">
+            <div class="ch">Account Info</div>
+            <div id="acInfo" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--pur));display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;flex-shrink:0" id="acAvatar">A</div>
+                <div>
+                  <div style="font-size:16px;font-weight:700;color:var(--g900)" id="acDisplayName">—</div>
+                  <div style="font-size:12px;color:var(--g400);margin-top:2px"><span id="acUsername">—</span> · <span id="acRole" style="font-weight:600;color:var(--blue)">—</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="ch" style="margin-top:4px">Change Password</div>
+            <div style="display:flex;flex-direction:column;gap:10px;max-width:400px">
+              <div class="fld" id="curPassWrap">
+                <label>Current Password</label>
+                <input type="password" id="acCurPass" placeholder="Your current password" style="direction:ltr">
+              </div>
+              <div class="fld">
+                <label>New Password <span class="rq">*</span></label>
+                <input type="password" id="acNewPass" placeholder="New password (min 6 chars)" style="direction:ltr">
+              </div>
+              <div class="fld">
+                <label>Confirm New Password <span class="rq">*</span></label>
+                <input type="password" id="acConPass" placeholder="Repeat new password" style="direction:ltr">
+              </div>
+              <button class="bsm bp" onclick="changePassword()" style="width:fit-content">💾 Save New Password</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div><!-- /content -->
   </div><!-- /layout -->
 </div><!-- /ap -->
@@ -784,7 +993,6 @@ import{getDatabase,ref,push,set,get,remove,onValue}from'https://www.gstatic.com/
 const FB={apiKey:'AIzaSyAp_zZ1ZwhkukFzDN0iN2cuCBhUrtIVv3s',authDomain:'faafupolicerunning.firebaseapp.com',databaseURL:'https://faafupolicerunning-default-rtdb.firebaseio.com',projectId:'faafupolicerunning',storageBucket:'faafupolicerunning.firebasestorage.app',messagingSenderId:'394041042032',appId:'1:394041042032:web:a9705b19dad5f3aa6b40b5'};
 const app=initializeApp(FB),db=getDatabase(app);
 
-const PASS='feeali123';
 let arts=[],vids=[],gals=[],socs=[],ccats={},fontFile=null,delPath=null,activeF=null;
 let logoData=null; // stores base64 or URL for logo
 const BASE={news:'ހަބަރު',sports:'ކުޅިވަރު',world:'ބޭރު ދުނިޔެ',politics:'ސިޔާސީ',economy:'އިޤްތިޞާދު',report:'ރިޕޯޓް',lifestyle:'ވައްޓަފާޅި'};
@@ -793,20 +1001,119 @@ let CAT={...BASE};
 const SICONS={facebook:'🇫',twitter:'𝕏',instagram:'📷',youtube:'▶',tiktok:'♪',telegram:'✈'};
 const SLBL={facebook:'Facebook',twitter:'X (Twitter)',instagram:'Instagram',youtube:'YouTube',tiktok:'TikTok',telegram:'Telegram'};
 
-// ── AUTH ──
-if(sessionStorage.getItem('fa')==='1')showApp();
-window.doLogin=function(){const v=document.getElementById('pw').value;if(v===PASS){sessionStorage.setItem('fa','1');showApp();}else{document.getElementById('ae').classList.add('show');document.getElementById('pw').value='';}};
+// ── AUTH & ACCESS CONTROL ──
+const ADMIN_USER='admin';
+const ADMIN_PASS='feeali123';
+let currentUser=null; // {username, name, role:'admin'|'editor'|'reporter', key}
+
+let _inited=false;
+let _unsubs=[];
+
+// Restore session
+(function(){
+  const s=sessionStorage.getItem('fa_user');
+  if(s){try{currentUser=JSON.parse(s);showApp();}catch(e){sessionStorage.removeItem('fa_user');}}
+})();
+
+window.doLogin=async function(){
+  const username=(document.getElementById('loginUser').value||'').trim().toLowerCase();
+  const pass=document.getElementById('pw').value;
+  const errEl=document.getElementById('ae');
+  errEl.classList.remove('show');
+  if(!username||!pass){errEl.classList.add('show');return;}
+
+  // Check admin first (hardcoded)
+  if(username===ADMIN_USER&&pass===ADMIN_PASS){
+    currentUser={username:'admin',name:'Admin',role:'admin',key:'admin'};
+    sessionStorage.setItem('fa_user',JSON.stringify(currentUser));
+    showApp();return;
+  }
+
+  // Check staff in Firebase
+  try{
+    const snap=await get(ref(db,'settings/staff'));
+    if(snap.exists()){
+      let found=null;
+      snap.forEach(c=>{
+        const v=c.val();
+        if(v.username===username&&v.password===pass&&v.active!==false){
+          found={username:v.username,name:v.name||v.username,role:v.role||'editor',key:c.key};
+        }
+      });
+      if(found){
+        currentUser=found;
+        sessionStorage.setItem('fa_user',JSON.stringify(currentUser));
+        showApp();return;
+      }
+    }
+  }catch(ex){console.error(ex);}
+  errEl.classList.add('show');
+};
 document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')window.doLogin();});
-window.doLogout=function(){sessionStorage.removeItem('fa');document.getElementById('aw').style.display='flex';document.getElementById('ap').style.display='none';};
-function showApp(){document.getElementById('aw').style.display='none';document.getElementById('ap').style.display='block';init();}
+document.getElementById('loginUser').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('pw').focus();});
+
+window.doLogout=function(){
+  currentUser=null;
+  sessionStorage.removeItem('fa_user');
+  document.getElementById('aw').style.display='flex';
+  document.getElementById('ap').style.display='none';
+  document.getElementById('loginUser').value='';
+  document.getElementById('pw').value='';
+  _inited=false;
+};
+
+function applyRoleUI(){
+  const isAdmin=currentUser?.role==='admin';
+  // Show/hide admin-only elements
+  document.querySelectorAll('.admin-only').forEach(el=>{
+    el.style.display=isAdmin?'':'none';
+  });
+  // Update user badge in topbar
+  const uav=document.querySelector('.uav');
+  if(uav)uav.textContent=(currentUser?.name||'?')[0].toUpperCase();
+  const sbName=document.getElementById('sbUserName');
+  if(sbName)sbName.textContent=currentUser?.name||'My Account';
+  // Update account page subtitle
+  const sub=document.getElementById('acSubtitle');
+  if(sub)sub.textContent=currentUser?.role==='admin'?'Admin account':'Staff account — '+currentUser?.role;
+  // Fill account info
+  const av=document.getElementById('acAvatar');
+  if(av)av.textContent=(currentUser?.name||'?')[0].toUpperCase();
+  const dn=document.getElementById('acDisplayName');
+  if(dn)dn.textContent=currentUser?.name||'—';
+  const un=document.getElementById('acUsername');
+  if(un)un.textContent='@'+(currentUser?.username||'—');
+  const rl=document.getElementById('acRole');
+  if(rl){rl.textContent=currentUser?.role==='admin'?'Administrator':currentUser?.role==='editor'?'Editor':'Reporter';}
+  // Admin cannot change password via this form (hardcoded) — hide current pass for admin
+  const curWrap=document.getElementById('curPassWrap');
+  if(curWrap)curWrap.style.display=isAdmin?'none':'block';
+}
+
+function showApp(){
+  document.getElementById('aw').style.display='none';
+  document.getElementById('ap').style.display='block';
+  applyRoleUI();
+  if(!_inited){_inited=true;init();}
+}
 
 function init(){
   loadFont();loadLogo();loadIV();loadSiteName();loadNameFont();
-  onValue(ref(db,'articles'),s=>{arts=[];if(s.exists())s.forEach(c=>arts.push({id:c.key,...c.val()}));arts.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));refresh();});
-  onValue(ref(db,'videos'),s=>{vids=[];if(s.exists())s.forEach(c=>vids.push({id:c.key,...c.val()}));rVids();updStats();});
-  onValue(ref(db,'gallery'),s=>{gals=[];if(s.exists())s.forEach(c=>gals.push({id:c.key,...c.val()}));rGal();updStats();});
-  onValue(ref(db,'settings/social'),s=>{socs=[];if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.url)socs.push({id:c.key,...v});});rSoc();updStats();});
-  onValue(ref(db,'settings/categories'),s=>{ccats={};if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.name&&v.slug)ccats[c.key]={...v};});CAT={...BASE,...Object.fromEntries(Object.values(ccats).map(c=>[c.slug,c.name]))};rCats();updCatSel();});
+  // Unsubscribe any previous listeners before attaching new ones
+  _unsubs.forEach(u=>{try{u();}catch(e){}});
+  _unsubs=[];
+  _unsubs.push(onValue(ref(db,'articles'),s=>{
+    arts=[];
+    if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.title)arts.push({id:c.key,...v});});
+    arts.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    refresh();
+  }));
+  _unsubs.push(onValue(ref(db,'videos'),s=>{vids=[];if(s.exists())s.forEach(c=>vids.push({id:c.key,...c.val()}));rVids();updStats();}));
+  _unsubs.push(onValue(ref(db,'gallery'),s=>{gals=[];if(s.exists())s.forEach(c=>gals.push({id:c.key,...c.val()}));rGal();updStats();}));
+  _unsubs.push(onValue(ref(db,'settings/social'),s=>{socs=[];if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.url)socs.push({id:c.key,...v});});rSoc();updStats();}));
+  _unsubs.push(onValue(ref(db,'settings/categories'),s=>{ccats={};if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.name&&v.slug)ccats[c.key]={...v};});CAT={...BASE,...Object.fromEntries(Object.values(ccats).map(c=>[c.slug,c.name]))};rCats();updCatSel();}));
+  // Load staff list (admin only)
+  if(currentUser?.role==='admin')rStaff();
 }
 
 function refresh(){updStats();rDash();rTable();}
@@ -819,35 +1126,98 @@ function updStats(){
 
 function rDash(){
   const f=document.getElementById('dfeed');
-  f.innerHTML=arts.slice(0,10).map(a=>`
+  const cntBadge=document.getElementById('dashArtCount');
+  if(cntBadge)cntBadge.textContent=arts.length;
+  const allArts=[...arts]; // show ALL articles
+  f.innerHTML=allArts.length
+    ? allArts.map(a=>`
     <div class="afr" onclick="editArt('${a.id}')">
       ${a.imageUrl?`<img class="afim" src="${e(a.imageUrl)}" onerror="this.style.opacity=.3">`:`<div class="afimp">📰</div>`}
-      <div style="flex:1;min-width:0"><div class="afttl">${e(a.title)}</div><div class="afmet">${cpill(a.category)} · ${fd(a.createdAt)}</div></div>
+      <div style="flex:1;min-width:0">
+        <div class="afttl">${e(a.title)}</div>
+        <div class="afmet">${cpill(a.category)} · ${fd(a.createdAt)}</div>
+      </div>
       <span class="spill ${a.published?'pub':'dft'}"><span class="sdt"></span>${a.published?'Live':'Draft'}</span>
-    </div>`).join('')||'<div style="padding:28px;text-align:center;color:var(--g300)">No articles yet</div>';
+    </div>`).join('')
+    : '<div style="padding:28px;text-align:center;color:var(--g300)">No articles yet</div>';
   const cnt={};arts.forEach(a=>cnt[a.category]=(cnt[a.category]||0)+1);
-  document.getElementById('dcat').innerHTML=Object.entries(CAT).slice(0,7).map(([k,v])=>`<div class="qpr"><span class="qpl">${v}</span><span class="qpn">${cnt[k]||0}</span></div>`).join('');
+  document.getElementById('dcat').innerHTML=Object.entries(CAT).map(([k,v])=>`<div class="qpr"><span class="qpl">${v}</span><span class="qpn">${cnt[k]||0}</span></div>`).join('');
 }
 
+let _artFilter='';
+window.setArtFilter=function(f,el){
+  _artFilter=f;
+  document.querySelectorAll('.arts-stat').forEach(s=>s.classList.remove('on'));
+  if(el)el.classList.add('on');
+  rTable();
+};
 window.rTable=function(){
-  const srch=(document.getElementById('tsrch')?.value||'').toLowerCase();
-  const st=document.getElementById('tsel')?.value||'';
+  const srch=(document.getElementById('tsrch')?.value||'').toLowerCase().trim();
   let list=[...arts];
   if(activeF)list=list.filter(a=>a.category===activeF);
-  if(srch)list=list.filter(a=>a.title?.toLowerCase().includes(srch));
-  if(st==='pub')list=list.filter(a=>a.published);
-  if(st==='dft')list=list.filter(a=>!a.published);
+  if(srch)list=list.filter(a=>
+    (a.title||'').toLowerCase().includes(srch)||
+    (a.summary||'').toLowerCase().includes(srch)||
+    (a.author||'').toLowerCase().includes(srch)
+  );
+  // Update count badges
+  const pub=list.filter(a=>a.published).length;
+  const dft=list.filter(a=>!a.published).length;
+  const el_all=document.getElementById('cntAll');
+  const el_pub=document.getElementById('cntPub');
+  const el_dft=document.getElementById('cntDft');
+  if(el_all)el_all.textContent=list.length;
+  if(el_pub)el_pub.textContent=pub;
+  if(el_dft)el_dft.textContent=dft;
+  // Apply published/draft filter
+  if(_artFilter==='pub')list=list.filter(a=>a.published);
+  if(_artFilter==='dft')list=list.filter(a=>!a.published);
+  // Update header
+  const tth=document.getElementById('tth');
+  if(tth)tth.textContent=list.length+' '+(_artFilter==='pub'?'Published':_artFilter==='dft'?'Draft':'Articles')+(activeF?' · '+(CAT[activeF]||activeF):'');
   const tb=document.getElementById('tbody');
-  if(!list.length){tb.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:34px;color:var(--g300)">📭 No articles found</td></tr>`;return;}
-  tb.innerHTML=list.map(a=>`
-    <tr>
-      <td>${a.imageUrl?`<img class="tdi" src="${e(a.imageUrl)}" onerror="this.style.background='var(--g100)'">`:`<div class="tdi-p">📰</div>`}</td>
-      <td><div class="tdt" title="${e(a.title)}">${e(a.title)}</div></td>
-      <td>${cpill(a.category)}</td>
-      <td><span class="spill ${a.published?'pub':'dft'}"><span class="sdt"></span>${a.published?'Published':'Draft'}</span></td>
-      <td class="tdd">${fd(a.createdAt)}</td>
-      <td><div class="ra"><button class="bico" onclick="editArt('${a.id}')">✏️</button><button class="bico dl" onclick="cdel('articles/${a.id}','${e(a.title).replace(/'/g,"\\'")}')">🗑️</button></div></td>
-    </tr>`).join('');
+  if(!list.length){
+    tb.innerHTML=`<div class="arts-empty"><div class="ei">📭</div><p>No articles found</p></div>`;
+    return;
+  }
+  tb.innerHTML=list.map((a,i)=>`
+    <div class="art-card">
+      <div class="art-card-img">
+        ${a.imageUrl
+          ?`<img src="${e(a.imageUrl)}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=no-img>📰</div>'">`
+          :`<div class="no-img">📰</div>`}
+        <span class="status-dot ${a.published?'pub':'dft'}"></span>
+      </div>
+      <div class="art-card-body">
+        <div>
+          <div class="art-card-top">
+            ${cpill(a.category)}
+            <span class="spill ${a.published?'pub':'dft'}" style="font-size:10px">
+              <span class="sdt"></span>${a.published?'Published':'Draft'}
+            </span>
+          </div>
+          <div class="art-card-ttl" style="margin-top:6px">${e(a.title)}</div>
+          ${a.summary?`<div class="art-card-sum" style="margin-top:4px">${e(a.summary)}</div>`:''}
+        </div>
+        <div class="art-card-meta" style="margin-top:8px">
+          <span class="art-card-date">🕐 ${fd(a.createdAt)}</span>
+          ${a.author?`<span class="art-card-date">✍️ ${e(a.author)}</span>`:''}
+        </div>
+      </div>
+      <div class="art-card-actions">
+        <button class="art-btn art-btn-edit" onclick="editArt('${a.id}')">✏️ Edit</button>
+        <button class="art-btn art-btn-tog ${a.published?'pub':''}" onclick="togglePub('${a.id}',${!a.published})" title="${a.published?'Unpublish':'Publish'}">
+          ${a.published?'⬇ Unpublish':'⬆ Publish'}
+        </button>
+        <button class="art-btn art-btn-del" onclick="cdel('articles/${a.id}','${e(a.title).replace(/'/g,"\\'")}')">🗑️ Delete</button>
+      </div>
+    </div>`).join('');
+};
+window.togglePub=async function(id,state){
+  try{
+    await set(ref(db,'articles/'+id+'/published'),state);
+    toast(state?'Published ✅':'Moved to Draft','s');
+  }catch(ex){toast('Error: '+ex.message,'e');}
 };
 
 // ── ARTICLE CRUD ──
@@ -870,10 +1240,12 @@ window.editArt=function(id){
   const a=arts.find(z=>z.id===id);if(!a)return;
   document.getElementById('eid').value=id;
   document.getElementById('ft').value=a.title||'';document.getElementById('fc').value=a.category||'';
-  document.getElementById('fsum').value=a.summary||'';document.getElementById('fbod').value=a.body||'';
+  document.getElementById('fsum').value=a.summary||'';
   document.getElementById('fimg').value=a.imageUrl||'';document.getElementById('fvid').value=a.videoUrl||'';
   document.getElementById('fau').value=a.author||'';
   document.getElementById('fpub').checked=!!a.published;document.getElementById('ffeat').checked=!!a.featured;
+  // Load body into paragraph editor
+  loadParas(a.body||'');
   // restore previews
   if(a.imageUrl){const b=document.getElementById('imgPrev'),i=document.getElementById('imgPrevImg');i.src=a.imageUrl;b.classList.add('has');}
   document.getElementById('etitle').textContent='Edit Article';showPg('add',null);
@@ -884,6 +1256,41 @@ window.resetForm=function(){
   document.getElementById('fpub').checked=true;document.getElementById('ffeat').checked=false;
   document.getElementById('etitle').textContent='Add New Article';
   clearMedia('fimg','imgPrev','imgPrevImg');clearMedia('fvid','vidPrev','vidPrevVid');
+  clearParas();
+};
+
+// ── PARAGRAPH EDITOR ──
+function loadParas(body){
+  clearParas();
+  if(!body){addParagraph();return;}
+  // Body stored as paragraphs separated by \n\n
+  const parts=body.split('\n\n').filter(p=>p.trim());
+  if(!parts.length){addParagraph();return;}
+  parts.forEach(p=>addParagraph(p.trim()));
+}
+function clearParas(){
+  document.getElementById('paraList').innerHTML='';
+  document.getElementById('fbod').value='';
+}
+function syncBody(){
+  const texts=Array.from(document.querySelectorAll('.para-ta')).map(t=>t.value.trim()).filter(Boolean);
+  document.getElementById('fbod').value=texts.join('\n\n');
+}
+window.addParagraph=function(text){
+  const list=document.getElementById('paraList');
+  const div=document.createElement('div');
+  div.className='para-item';
+  div.innerHTML=`
+    <textarea class="para-ta" rows="3" placeholder="ހަބަރުގެ ތަފްސީލު...">${e(text||'')}</textarea>
+    <button type="button" class="para-del" onclick="removePara(this)" title="Remove">✕</button>`;
+  div.querySelector('textarea').addEventListener('input',syncBody);
+  list.appendChild(div);
+  div.querySelector('textarea').focus();
+  syncBody();
+};
+window.removePara=function(btn){
+  btn.closest('.para-item').remove();
+  syncBody();
 };
 
 // ── FILE UPLOAD HELPERS ──
@@ -995,13 +1402,13 @@ function rVids(){
 }
 
 // ── GALLERY ──
-window.openGF=function(){document.getElementById('gfcard').style.display='block';['gfc','gfu','gfid'].forEach(id=>document.getElementById(id).value='');clearMedia('gfu','galPrev','galPrevImg');};
+window.openGF=function(){document.getElementById('gfcard').style.display='block';['gfc','gfcat','gfu','gfid'].forEach(id=>document.getElementById(id).value='');clearMedia('gfu','galPrev','galPrevImg');};
 window.closeGF=function(){document.getElementById('gfcard').style.display='none';};
 window.saveGal=async function(){
   const u=document.getElementById('gfu').value.trim();
   if(!u){toast('Photo source required','e');return;}
   const id=document.getElementById('gfid').value;
-  const d={imageUrl:u,caption:document.getElementById('gfc').value.trim(),createdAt:Date.now()};
+  const d={imageUrl:u,caption:document.getElementById('gfc').value.trim(),category:document.getElementById('gfcat').value.trim(),createdAt:Date.now()};
   try{if(id)await set(ref(db,'gallery/'+id),d);else await push(ref(db,'gallery'),d);toast('Photo added ✅','s');closeGF();}
   catch(ex){toast('Error: '+ex.message,'e');}
 };
@@ -1033,7 +1440,7 @@ function rGal(){
     <div class="gai">
       <img src="${e(img.imageUrl)}" loading="lazy">
       <div class="gai-ov"><button class="bico dl" onclick="cdel('gallery/${img.id}','photo')" style="background:rgba(255,255,255,.9)">🗑️</button></div>
-      ${img.caption?`<div class="gai-cap">${e(img.caption)}</div>`:''}
+      ${img.category?`<div class="gai-cap" style="background:var(--grn)">${e(img.category)}</div>`:img.caption?`<div class="gai-cap">${e(img.caption)}</div>`:''}
     </div>`).join('');
 }
 
@@ -1292,14 +1699,131 @@ function rCats(){
 function updCatSel(){const sel=document.getElementById('fc');const ex=Array.from(sel.options).map(o=>o.value);Object.values(ccats).forEach(c=>{if(!ex.includes(c.slug)){const o=document.createElement('option');o.value=c.slug;o.textContent=c.name;sel.appendChild(o);}});}
 
 // ── NAV ──
-window.showPg=function(name,btn){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.getElementById('pg-'+name)?.classList.add('on');if(btn){document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));btn.classList.add('on');}if(name!=='arts')activeF=null;rTable();};
-window.goAdd=function(){resetForm();showPg('add',document.getElementById('n-add'));};
-window.fNav=function(cat,btn){activeF=cat;document.getElementById('at').textContent=CAT[cat]||cat;document.getElementById('as').textContent='Filter: '+(CAT[cat]||cat);document.getElementById('tth').textContent=CAT[cat]||cat;showPg('arts',btn);};
+window.showPg=function(name,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pg-'+name)?.classList.add('on');
+  if(btn){document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));btn.classList.add('on');}
+  if(name!=='arts'){activeF=null;}
+  // Reset all filters when going to articles page
+  if(name==='arts'){
+    _artFilter='';
+    document.querySelectorAll('.arts-stat').forEach(s=>s.classList.remove('on'));
+    const fAll=document.getElementById('fAll');if(fAll)fAll.classList.add('on');
+  }
+  rTable();
+  // Auto-close sidebar on mobile
+  closeSidebar();
+};
+// Sidebar toggle for mobile
+window.toggleSidebar=function(){
+  const sb=document.getElementById('adminSidebar');
+  const ov=document.getElementById('sbOverlay');
+  const open=sb.classList.contains('open');
+  if(open){sb.classList.remove('open');ov.classList.remove('on');}
+  else{sb.classList.add('open');ov.classList.add('on');}
+};
+window.closeSidebar=function(){
+  const sb=document.getElementById('adminSidebar');
+  const ov=document.getElementById('sbOverlay');
+  if(sb)sb.classList.remove('open');
+  if(ov)ov.classList.remove('on');
+};
+window.goAdd=function(){
+  resetForm();addParagraph();
+  // Pre-fill author with logged-in user's name
+  if(currentUser?.name){document.getElementById('fau').value=currentUser.name;}
+  showPg('add',document.getElementById('n-add'));closeSidebar();
+};
+window.fNav=function(cat,btn){activeF=cat;document.getElementById('at').textContent=CAT[cat]||cat;document.getElementById('as').textContent='Filter: '+(CAT[cat]||cat);document.getElementById('tth').textContent=CAT[cat]||cat;showPg('arts',btn);closeSidebar();};
 window.gSearch=function(){const q=document.getElementById('gs').value.toLowerCase();if(!q)return;document.getElementById('tsrch').value=q;showPg('arts',document.getElementById('n-arts'));rTable();};
 
 // ── DELETE ──
 window.cdel=function(path,name){delPath=path;document.getElementById('dmsg').textContent='Delete "'+name+'"? Cannot be undone.';document.getElementById('dmod').classList.add('on');};
 document.getElementById('dbtn').onclick=async function(){if(!delPath)return;try{await remove(ref(db,delPath));toast('Deleted','s');}catch(ex){toast('Error: '+ex.message,'e');}finally{document.getElementById('dmod').classList.remove('on');delPath=null;}};
+
+// ── STAFF MANAGEMENT (Admin only) ──
+window.addStaff=async function(){
+  const username=(document.getElementById('stUser').value||'').trim().toLowerCase().replace(/\s+/g,'');
+  const name=(document.getElementById('stName').value||'').trim();
+  const role=document.getElementById('stRole').value;
+  const pass=(document.getElementById('stPass').value||'').trim();
+  if(!username||!name||!pass){toast('Fill all fields','e');return;}
+  if(username==='admin'){toast('Cannot use "admin" as username','e');return;}
+  if(pass.length<4){toast('Password too short (min 4 chars)','e');return;}
+  try{
+    // Check duplicate username
+    const snap=await get(ref(db,'settings/staff'));
+    if(snap.exists()){
+      let dup=false;
+      snap.forEach(c=>{if(c.val().username===username)dup=true;});
+      if(dup){toast('Username already exists','e');return;}
+    }
+    await push(ref(db,'settings/staff'),{username,name,role,password:pass,active:true,createdAt:Date.now()});
+    toast('Staff member added ✅','s');
+    ['stUser','stName','stPass'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('stRole').value='editor';
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
+window.removeStaff=async function(key,name){
+  if(!confirm('Remove '+name+'? They will no longer be able to log in.'))return;
+  try{await remove(ref(db,'settings/staff/'+key));toast('Removed','s');}
+  catch(ex){toast('Error: '+ex.message,'e');}
+};
+window.resetStaffPass=async function(key){
+  const np=prompt('Set new password for this staff member:');
+  if(!np||np.length<4){if(np!==null)toast('Min 4 characters','e');return;}
+  try{await set(ref(db,'settings/staff/'+key+'/password'),np);toast('Password reset ✅','s');}
+  catch(ex){toast('Error: '+ex.message,'e');}
+};
+window.toggleStaffActive=async function(key,state){
+  try{await set(ref(db,'settings/staff/'+key+'/active'),state);toast(state?'Activated':'Deactivated','s');}
+  catch(ex){toast('Error: '+ex.message,'e');}
+};
+function rStaff(){
+  _unsubs.push(onValue(ref(db,'settings/staff'),s=>{
+    const el=document.getElementById('staffList');if(!el)return;
+    if(!s.exists()){el.innerHTML='<div style="padding:24px;text-align:center;color:var(--g300)">No staff added yet.</div>';return;}
+    const members=[];
+    s.forEach(c=>members.push({key:c.key,...c.val()}));
+    el.innerHTML=members.map(m=>`
+      <div class="ir" style="align-items:flex-start">
+        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,${m.role==='editor'?'var(--blue),var(--pur)':'var(--grn),#0E9F6E'});display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0">${(m.name||'?')[0].toUpperCase()}</div>
+        <div class="ri">
+          <div class="rttl">${e(m.name)} <span style="font-size:10px;font-weight:600;color:${m.role==='editor'?'var(--blue)':'var(--grn)'}">· ${m.role==='editor'?'Editor':'Reporter'}</span></div>
+          <div class="rsub" style="direction:ltr">@${e(m.username)} ${m.active===false?'<span style="color:var(--red);font-size:10px">· Deactivated</span>':''}</div>
+        </div>
+        <div class="ra2">
+          <button class="bsm bg" style="font-size:11px;padding:5px 9px" onclick="resetStaffPass('${m.key}')">🔑 Reset</button>
+          <button class="bsm bg" style="font-size:11px;padding:5px 9px" onclick="toggleStaffActive('${m.key}',${m.active===false})">${m.active===false?'✅ Activate':'⏸ Pause'}</button>
+          <button class="bsm bd" style="font-size:11px;padding:5px 9px" onclick="removeStaff('${m.key}','${e(m.name)}')">🗑️</button>
+        </div>
+      </div>`).join('');
+  }));
+}
+
+// ── CHANGE PASSWORD ──
+window.changePassword=async function(){
+  const newPass=(document.getElementById('acNewPass').value||'').trim();
+  const conPass=(document.getElementById('acConPass').value||'').trim();
+  if(!newPass||newPass.length<4){toast('Min 4 characters required','e');return;}
+  if(newPass!==conPass){toast('Passwords do not match','e');return;}
+  if(currentUser?.role==='admin'){
+    toast('Admin password is hardcoded — update it in the code directly','e');return;
+  }
+  // Verify current password
+  const curPass=(document.getElementById('acCurPass').value||'').trim();
+  try{
+    const snap=await get(ref(db,'settings/staff/'+currentUser.key));
+    if(!snap.exists()||snap.val().password!==curPass){
+      toast('Current password is incorrect','e');return;
+    }
+    await set(ref(db,'settings/staff/'+currentUser.key+'/password'),newPass);
+    // Update session
+    sessionStorage.setItem('fa_user',JSON.stringify(currentUser));
+    toast('Password changed ✅','s');
+    ['acCurPass','acNewPass','acConPass'].forEach(id=>document.getElementById(id).value='');
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
 
 // ── UTILS ──
 function cpill(cat){const lbl=CAT[cat]||cat||'--',cl=CPFX[cat]||'cn';return'<span class="cpill '+cl+'">'+lbl+'</span>';}

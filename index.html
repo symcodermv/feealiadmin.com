@@ -1268,7 +1268,24 @@ function init(){
     refresh();
   }));
   _unsubs.push(onValue(ref(db,'videos'),s=>{vids=[];if(s.exists())s.forEach(c=>vids.push({id:c.key,...c.val()}));rVids();updStats();}));
-  _unsubs.push(onValue(ref(db,'gallery'),s=>{gals=[];if(s.exists())s.forEach(c=>gals.push({id:c.key,...c.val()}));rGal();updStats();}));
+  // Gallery: load each image individually (base64 images are large)
+  _unsubs.push(onValue(ref(db,'gallery'),function(s){
+    if(!s.exists()){gals=[];rGal();updStats();return;}
+    const keys=[];
+    s.forEach(function(c){keys.push(c.key);});
+    gals=new Array(keys.length);
+    let loaded=0;
+    keys.forEach(function(key,idx){
+      get(ref(db,'gallery/'+key)).then(function(snap){
+        if(snap.exists()) gals[idx]={id:key,...snap.val()};
+        loaded++;
+        if(loaded===keys.length){gals=gals.filter(Boolean);rGal();updStats();}
+      }).catch(function(){
+        loaded++;
+        if(loaded===keys.length){gals=gals.filter(Boolean);rGal();updStats();}
+      });
+    });
+  }));
   _unsubs.push(onValue(ref(db,'settings/albums'),s=>{albums={};if(s.exists())s.forEach(c=>{albums[c.key]={id:c.key,...c.val()};});rAlbums();populateAlbumSelects();}));
   _unsubs.push(onValue(ref(db,'settings/social'),s=>{socs=[];if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.url)socs.push({id:c.key,...v});});rSoc();updStats();}));
   _unsubs.push(onValue(ref(db,'settings/categories'),s=>{ccats={};if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.name&&v.slug)ccats[c.key]={...v};});CAT={...BASE,...Object.fromEntries(Object.values(ccats).map(c=>[c.slug,c.name]))};rCats();updCatSel();}));
@@ -1340,28 +1357,27 @@ window.rTable=function(){
     tb.innerHTML=`<div class="arts-empty"><div class="ei">📭</div><p>No articles found</p></div>`;
     return;
   }
-  tb.innerHTML=list.map((a,i)=>`
-    <div class="art-card">
+  tb.innerHTML='';
+  list.forEach(function(a){
+    const card=document.createElement('div');
+    card.className='art-card';
+    card.innerHTML=`
       <div class="art-card-img">
-        ${a.imageUrl
-          ?`<img src="${e(a.imageUrl)}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=no-img>📰</div>'">`
-          :`<div class="no-img">📰</div>`}
+        ${a.imageUrl?'<img alt="">':'<div class="no-img">📰</div>'}
         <span class="status-dot ${a.published?'pub':'dft'}"></span>
       </div>
       <div class="art-card-body">
         <div>
-          <div class="art-card-top">
-            ${cpill(a.category)}
+          <div class="art-card-top">${cpill(a.category)}
             <span class="spill ${a.published?'pub':'dft'}" style="font-size:10px">
               <span class="sdt"></span>${a.published?'Published':'Draft'}
-            </span>
-          </div>
+            </span></div>
           <div class="art-card-ttl" style="margin-top:6px">${e(a.title)}</div>
-          ${a.summary?`<div class="art-card-sum" style="margin-top:4px">${e(a.summary)}</div>`:''}
+          ${a.summary?'<div class="art-card-sum" style="margin-top:4px">'+e(a.summary)+'</div>':''}
         </div>
         <div class="art-card-meta" style="margin-top:8px">
           <span class="art-card-date">🕐 ${fd(a.createdAt)}</span>
-          ${a.author?`<span class="art-card-date">✍️ ${e(a.author)}</span>`:''}
+          ${a.author?'<span class="art-card-date">✍️ '+e(a.author)+'</span>':''}
         </div>
       </div>
       <div class="art-card-actions">
@@ -1369,9 +1385,16 @@ window.rTable=function(){
         <button class="art-btn art-btn-tog ${a.published?'pub':''}" onclick="togglePub('${a.id}',${!a.published})" title="${a.published?'Unpublish':'Publish'}">
           ${a.published?'⬇ Unpublish':'⬆ Publish'}
         </button>
-        <button class="art-btn art-btn-del" onclick="cdel('articles/${a.id}','${e(a.title).replace(/'/g,"\\'")}')">🗑️ Delete</button>
+        <button class="art-btn art-btn-del" onclick="cdel('articles/${a.id}','${e(a.title)}')">🗑️ Delete</button>
       </div>
-    </div>`).join('');
+    `;
+    // Set image src separately — works for both URL and base64
+    if(a.imageUrl){
+      const imgEl=card.querySelector('.art-card-img img');
+      if(imgEl) imgEl.src=a.imageUrl;
+    }
+    tb.appendChild(card);
+  });
 };
 window.togglePub=async function(id,state){
   try{
@@ -1767,33 +1790,44 @@ function rGal(){
   if(!g)return;
   const filter=document.getElementById('filterAlbum');
   const filterVal=filter?filter.value:'';
-  let list=gals;
-  if(filterVal) list=gals.filter(img=>img.album===filterVal);
+  const list=filterVal?gals.filter(function(img){return img.album===filterVal;}):gals;
   if(!list.length){
-    g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)">🖼️ No photos${filterVal?' in this album':''} yet.</div>`;
+    g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)">🖼️ No photos'+(filterVal?' in this album':'')+' yet.</div>';
     return;
   }
   // Group by album
   const grouped={};
-  list.forEach(img=>{
+  list.forEach(function(img){
     const key=img.album||'__none__';
     if(!grouped[key])grouped[key]=[];
     grouped[key].push(img);
   });
-  let html='';
-  Object.entries(grouped).forEach(([albumId,photos])=>{
-    const albumName=albums[albumId]?albums[albumId].name:img&&img.category?img.category:'No Album';
-    html+=`<div style="grid-column:1/-1;display:flex;align-items:center;gap:8px;margin:10px 0 4px"><span style="font-size:16px">📁</span><span style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g800)">${e(albumName)}</span><span style="font-size:11px;color:var(--g400)">(${photos.length} photos)</span></div>`;
-    html+=photos.map(img=>`
-      <div class="gai">
-        <img src="${e(img.imageUrl)}" loading="lazy">
-        <div class="gai-ov">
-          <button class="bico dl" onclick="cdel('gallery/${img.id}','photo')" style="background:rgba(255,255,255,.9)">🗑️</button>
-        </div>
-        <div class="gai-cap">${e(img.caption||albumName||'')}</div>
-      </div>`).join('');
+  g.innerHTML='';
+  Object.keys(grouped).forEach(function(albumId){
+    const photos=grouped[albumId];
+    const albumName=albums[albumId]?albums[albumId].name:(photos[0]&&photos[0].category?photos[0].category:'No Album');
+    // Album header
+    const hdr=document.createElement('div');
+    hdr.style.cssText='grid-column:1/-1;display:flex;align-items:center;gap:8px;margin:10px 0 4px;padding:8px 0;border-bottom:1px solid var(--bdr)';
+    hdr.innerHTML='<span style="font-size:18px">📁</span>'
+      +'<span style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g900)">'+e(albumName)+'</span>'
+      +'<span style="font-size:11px;color:var(--g400);background:var(--g100);padding:2px 8px;border-radius:10px">'+photos.length+' photos</span>';
+    g.appendChild(hdr);
+    // Each photo as its own card
+    photos.forEach(function(img){
+      const card=document.createElement('div');
+      card.className='gai';
+      card.innerHTML='<img alt="">'
+        +'<div class="gai-ov">'
+          +'<button class="bico dl" onclick="cdel(\'gallery/'+img.id+'\',\'photo\')" style="background:rgba(255,255,255,.9)">🗑️</button>'
+        +'</div>'
+        +'<div class="gai-cap">'+e(img.caption||albumName||'')+'</div>';
+      // Set src separately — critical for base64 images
+      const imgEl=card.querySelector('img');
+      if(imgEl) imgEl.src=img.imageUrl||'';
+      g.appendChild(card);
+    });
   });
-  g.innerHTML=html;
 }
 
 

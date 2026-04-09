@@ -458,6 +458,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
       <button class="sbi admin-only" id="n-cats" onclick="showPg('cats',this)"><div class="ico">🗂️</div>Categories</button>
       <button class="sbi admin-only" id="n-soc" onclick="showPg('soc',this)"><div class="ico">📱</div>Social Media</button>
       <button class="sbi admin-only" id="n-intro" onclick="showPg('intro',this)"><div class="ico">🎥</div>Intro Video</button>
+      <button class="sbi admin-only" id="n-ftvid" onclick="showPg('ftvid',this)"><div class="ico">📺</div>Footer Video</button>
       <button class="sbi admin-only" id="n-logo" onclick="showPg('logo',this)"><div class="ico">🎨</div>Logo & Name</button>
       <button class="sbi admin-only" id="n-font" onclick="showPg('font',this)"><div class="ico">🔤</div>Dhivehi Font</button>
       <button class="sbi admin-only" id="n-staff" onclick="showPg('staff',this)"><div class="ico">👥</div>Staff Access</button>
@@ -518,7 +519,13 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
             <div>
               <div class="fld" style="margin-bottom:12px"><label>Category <span class="rq">*</span></label>
                 <select id="fc"><option value="">— Select —</option><option value="news">ހަބަރު</option><option value="sports">ކުޅިވަރު</option><option value="world">ބޭރު ދުނިޔެ</option><option value="politics">ސިޔާސީ</option><option value="economy">އިޤްތިޞާދު</option><option value="report">ރިޕޯޓް</option><option value="lifestyle">ވައްޓަފާޅި</option></select></div>
-              <div class="fld"><label>Author</label><input type="text" id="fau" placeholder="Journalist name"></div>
+              <div class="fld"><label>Author <span class="rq">*</span></label>
+                <div style="position:relative">
+                  <input type="text" id="fau" style="font-family:var(--dv)!important;direction:rtl;font-size:16px;line-height:1.9;width:100%" placeholder="ހަބަރުގެ ...">
+                  <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none">✍️</span>
+                </div>
+                <div style="font-size:11px;color:var(--g400);margin-top:4px">Manually enter the author's name — pre-filled from your account but editable</div>
+              </div>
             </div>
           </div>
           <div class="ch"><span class="n">2</span> Content</div>
@@ -640,50 +647,132 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
             <div class="prev-box" id="vthPrev"><img id="vthPrevImg" alt=""><div class="ph2">Thumbnail preview</div><button class="clear-btn" onclick="clearMedia('vfth','vthPrev','vthPrevImg')">✕</button></div>
           </div>
           <input type="hidden" id="vfid">
-          <div style="display:flex;gap:8px"><button class="bsm bp" onclick="saveVid()">💾 Save Video</button><button class="bsm bg" onclick="closeVF()">Cancel</button></div>
+          <div class="g2" style="margin-top:12px">
+            <div class="tor"><div class="ti"><div class="tl">Active (Show on site)</div><div class="ts">Video visible to visitors</div></div><label class="tog"><input type="checkbox" id="vfactive" checked><div class="tsl"></div></label></div>
+            <div class="fld"><label>Opacity (20–100%)</label><div style="display:flex;align-items:center;gap:10px"><input type="range" id="vfopacity" min="20" max="100" value="100" oninput="document.getElementById('vfopacityLbl').textContent=this.value+'%';prevOpacity()" style="flex:1;cursor:pointer"><span id="vfopacityLbl" style="font-size:12px;color:var(--g500);min-width:38px">100%</span></div></div>
+          </div>
+          <!-- Opacity preview -->
+          <div id="vfopPrev" style="display:none;margin-top:10px;padding:12px;background:var(--g50);border-radius:var(--rs);border:1px solid var(--bdr)">
+            <div style="font-size:11px;color:var(--g400);margin-bottom:6px">Opacity preview:</div>
+            <div id="vfopBox" style="width:100%;height:80px;background:linear-gradient(135deg,#111827,#1A56DB);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:24px;transition:opacity .2s">🎬</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px"><button class="bsm bp" onclick="saveVid()">💾 Save Video</button><button class="bsm bg" onclick="closeVF()">Cancel</button></div>
         </div>
         <div class="il" id="vidlist"><div style="text-align:center;padding:36px;color:var(--g300)"><span class="spin"></span></div></div>
       </div>
 
       <!-- GALLERY -->
       <div class="pg" id="pg-gal">
-        <div class="ph"><div><h1>Gallery — ލެންސް</h1><p>Photos shown in gallery section</p></div><div class="ph-r"><button class="tbtn t-b" onclick="openGF()">+ Add Photo</button></div></div>
-        <div class="card" id="gfcard" style="display:none">
-          <div class="ch"><span class="n">+</span> Add Gallery Photo</div>
-          <div class="g2" style="margin-bottom:12px">
-            <div class="fld"><label>Caption (Dhivehi)</label><input class="dv" type="text" id="gfc" placeholder="ފޮޓޯ ތަފްސީލު..."></div>
-            <div class="fld"><label>Category (optional)</label><input class="dv" type="text" id="gfcat" placeholder="ދަތުރު · ހަފްލާ · ކުޅިވަރު..."></div>
+        <div class="ph">
+          <div><h1>Gallery — ލެންސް</h1><p>Create albums and upload photos</p></div>
+          <div class="ph-r">
+            <button class="tbtn" onclick="showGalTab('albums')" id="gtab-albums" style="background:var(--blue);color:#fff">📁 Albums</button>
+            <button class="tbtn t-b" onclick="showGalTab('photos')" id="gtab-photos">🖼️ All Photos</button>
           </div>
-          <label style="font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:8px">Photo Source <span style="color:var(--red)">*</span></label>
-          <div class="tab-row" id="galTabs">
-            <button class="tab-btn on" onclick="switchTab('gal','url')">🔗 URL</button>
-            <button class="tab-btn" onclick="switchTab('gal','upload')">📁 Upload File</button>
-          </div>
-          <div class="tab-pane on" id="gal-url">
-            <div class="fld"><input type="url" id="gfu" placeholder="https://… image URL" oninput="prevImg('gfu','galPrev')"></div>
-          </div>
-          <div class="tab-pane" id="gal-upload">
-            <div class="upload-zone"><input type="file" accept="image/*" onchange="handleImgUpload(event,'galPrev','gfu','galProg','galStatus')">
-              <div class="uz-icon">📷</div><div class="uz-title">Click to upload photo</div><div class="uz-sub">JPG, PNG, WebP • Max 4MB</div></div>
-            <div class="up-progress" id="galProg"><div class="up-bar" id="galProgBar"></div></div>
-            <div class="up-status" id="galStatus"></div>
-          </div>
-          <div class="prev-box" id="galPrev" style="aspect-ratio:4/3;max-width:320px"><img id="galPrevImg" alt=""><div class="ph2">Photo preview</div><button class="clear-btn" onclick="clearMedia('gfu','galPrev','galPrevImg')">✕</button></div>
-          <input type="hidden" id="gfid">
-          <div style="display:flex;gap:8px;margin-top:14px"><button class="bsm bp" onclick="saveGal()">💾 Save Photo</button><button class="bsm bg" onclick="closeGF()">Cancel</button></div>
         </div>
-        <!-- Bulk upload -->
-        <div class="card" style="margin-bottom:18px">
-          <div class="ch">📁 Bulk Upload Photos</div>
-          <div class="upload-zone" id="bulkZone">
-            <input type="file" accept="image/*" multiple onchange="handleBulkUpload(event)">
-            <div class="uz-icon">📸</div>
-            <div class="uz-title">Select multiple photos at once</div>
-            <div class="uz-sub">Hold Ctrl/Cmd to select multiple · JPG, PNG, WebP</div>
+
+        <!-- ALBUMS TAB -->
+        <div id="gal-tab-albums">
+          <!-- Create album -->
+          <div class="card" style="margin-bottom:18px">
+            <div class="ch"><span class="n">+</span> Create New Album / Folder</div>
+            <div class="g2" style="margin-bottom:12px">
+              <div class="fld">
+                <label>Album Name (Dhivehi) <span class="rq">*</span></label>
+                <input class="dv" type="text" id="albn" style="font-family:var(--dv)!important;direction:rtl;font-size:17px;line-height:1.9;width:100%" placeholder="ހަފްލާ 2026 · ދަތުރު · ކުޅިވަރު...">
+                <div style="font-size:11px;color:var(--g400);margin-top:4px">Album name shown on public gallery as event name under each photo</div>
+              </div>
+              <div class="fld">
+                <label>Album Slug (auto-generated if empty)</label>
+                <input type="text" id="albs" placeholder="event-2026 (optional)" style="direction:ltr">
+              </div>
+            </div>
+            <button class="bsm bp" onclick="saveAlbum()">+ Create Album</button>
           </div>
-          <div id="bulkProgress" style="margin-top:10px"></div>
+          <!-- Albums list -->
+          <div class="card">
+            <div class="ch">Your Albums</div>
+            <div id="albumlist" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px">
+              <div style="color:var(--g300);font-size:13px;padding:16px 0">Loading…</div>
+            </div>
+          </div>
         </div>
-        <div class="gag" id="galadmin"><div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)"><span class="spin"></span></div></div>
+
+        <!-- PHOTOS TAB -->
+        <div id="gal-tab-photos" style="display:none">
+          <!-- Add single photo -->
+          <div class="card" id="gfcard" style="margin-bottom:18px">
+            <div class="ch"><span class="n">+</span> Add Photo to Album</div>
+            <div class="g2" style="margin-bottom:12px">
+              <div class="fld">
+                <label>Album <span class="rq">*</span></label>
+                <select id="gfalbum" class="dv" style="direction:rtl">
+                  <option value="">— Select Album —</option>
+                </select>
+              </div>
+              <div class="fld">
+                <label>Caption (Dhivehi)</label>
+                <input class="dv" type="text" id="gfc" placeholder="ފÑÑÑÑ ÑÑÑÑÑ...">
+              </div>
+            </div>
+            <label style="font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:8px">Photo Source <span style="color:var(--red)">*</span></label>
+            <div class="tab-row" id="galTabs">
+              <button class="tab-btn on" onclick="switchTab('gal','url')">🔗 URL</button>
+              <button class="tab-btn" onclick="switchTab('gal','upload')">📁 Upload</button>
+            </div>
+            <div class="tab-pane on" id="gal-url">
+              <div class="fld"><input type="url" id="gfu" placeholder="https://… image URL" oninput="prevImg('gfu','galPrev')"></div>
+            </div>
+            <div class="tab-pane" id="gal-upload">
+              <div class="upload-zone">
+                <input type="file" accept="image/*" onchange="handleGalImgUpload(event)">
+                <div class="uz-icon">📷</div>
+                <div class="uz-title">Click to upload photo</div>
+                <div class="uz-sub">JPG, PNG, WebP · Max 15MB</div>
+              </div>
+              <div class="up-progress" id="galProg"><div class="up-bar" id="galProgBar"></div></div>
+              <div class="up-status" id="galStatus"></div>
+            </div>
+            <div class="prev-box" id="galPrev" style="aspect-ratio:4/3;max-width:320px">
+              <img id="galPrevImg" alt="">
+              <div class="ph2">Photo preview</div>
+              <button class="clear-btn" onclick="clearMedia('gfu','galPrev','galPrevImg')">✕</button>
+            </div>
+            <input type="hidden" id="gfid">
+            <div style="display:flex;gap:8px;margin-top:14px">
+              <button class="bsm bp" onclick="saveGal()">💾 Save Photo</button>
+              <button class="bsm bg" onclick="clearGalForm()">Clear</button>
+            </div>
+          </div>
+
+          <!-- Bulk upload -->
+          <div class="card" style="margin-bottom:18px">
+            <div class="ch">📁 Bulk Upload to Album</div>
+            <div class="fld" style="margin-bottom:12px">
+              <label>Select Album for Bulk Upload <span class="rq">*</span></label>
+              <select id="bulkAlbum" class="dv" style="direction:rtl">
+                <option value="">— Select Album —</option>
+              </select>
+            </div>
+            <div class="upload-zone">
+              <input type="file" accept="image/*" multiple onchange="handleBulkUpload(event)">
+              <div class="uz-icon">📸</div>
+              <div class="uz-title">Select multiple photos</div>
+              <div class="uz-sub">Hold Ctrl/Cmd to select multiple · Max 15MB each</div>
+            </div>
+            <div id="bulkProgress" style="margin-top:10px"></div>
+          </div>
+
+          <!-- Photo grid -->
+          <div class="card">
+            <div class="ch" style="margin-bottom:12px">All Photos
+              <select id="filterAlbum" onchange="rGal()" style="margin-right:auto;font-size:12px;padding:4px 10px;border:1px solid var(--bdr);border-radius:6px;background:var(--g50);color:var(--g700)">
+                <option value="">All Albums</option>
+              </select>
+            </div>
+            <div class="gag" id="galadmin"><div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)"><span class="spin"></span></div></div>
+          </div>
+        </div>
       </div>
 
       <!-- CATEGORIES -->
@@ -760,9 +849,78 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
         </div>
       </div>
 
+
+      <!-- FOOTER VIDEO -->
+      <div class="pg" id="pg-ftvid">
+        <div class="ph"><div><h1>Footer Video</h1><p>A video shown in the footer of the public site</p></div></div>
+        <div class="sg">
+          <div class="card">
+            <div class="ch">Current Footer Video</div>
+            <div id="ftvBox" style="padding:11px 13px;background:var(--g50);border:1px solid var(--bdr);border-radius:var(--rs);font-size:13px;color:var(--g500);margin-bottom:14px">No footer video set</div>
+
+            <div class="fld" style="margin-bottom:12px">
+              <label>Video Title (Dhivehi)</label>
+              <input class="dv" type="text" id="ftvTitle" placeholder="ވީޑިއޯ ތަފްސީލު...">
+            </div>
+
+            <div class="tab-row" id="ftvTabs">
+              <button class="tab-btn on" onclick="switchTab('ftv','url')">🔗 URL</button>
+              <button class="tab-btn" onclick="switchTab('ftv','upload')">📁 Upload File</button>
+            </div>
+            <div class="tab-pane on" id="ftv-url">
+              <div class="fld"><input type="url" id="ftvu" placeholder="https://example.com/video.mp4" style="direction:ltr"></div>
+            </div>
+            <div class="tab-pane" id="ftv-upload">
+              <div class="upload-zone"><input type="file" accept="video/*" onchange="handleVidUpload(event,'ftvPrev','ftvu','ftvProg','ftvStatus')">
+                <div class="uz-icon">🎬</div><div class="uz-title">Upload footer video</div><div class="uz-sub">MP4 recommended · Max 50MB</div></div>
+              <div class="up-progress" id="ftvProg"><div class="up-bar" id="ftvProgBar"></div></div>
+              <div class="up-status" id="ftvStatus"></div>
+            </div>
+            <div class="prev-box" id="ftvPrev" style="margin-top:10px;margin-bottom:14px">
+              <video id="ftvPrevVid" controls style="max-height:220px"></video>
+              <div class="ph2">Video preview</div>
+              <button class="clear-btn" onclick="clearMedia('ftvu','ftvPrev','ftvPrevVid')">✕</button>
+            </div>
+
+            <div class="fld" style="margin-bottom:14px">
+              <label>Opacity (20–100%)</label>
+              <div style="display:flex;align-items:center;gap:10px">
+                <input type="range" id="ftvOpacity" min="20" max="100" value="100" oninput="document.getElementById('ftvOpLbl').textContent=this.value+'%'" style="flex:1;cursor:pointer">
+                <span id="ftvOpLbl" style="font-size:12px;color:var(--g500);min-width:38px">100%</span>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button class="bsm bp" onclick="saveFtv()">💾 Save Footer Video</button>
+              <button class="bsm bd" onclick="removeFtv()">Remove</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch">How It Works</div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">1</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Upload or paste URL</div><div style="font-size:12px;color:var(--g400)">Upload an MP4 file or paste a video URL</div></div></div>
+              <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">2</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Set opacity</div><div style="font-size:12px;color:var(--g400)">Control how transparent the video appears (20–100%)</div></div></div>
+              <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">3</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Shows in footer</div><div style="font-size:12px;color:var(--g400)">Video appears above the footer on the public site with optional title</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- LOGO & BRANDING -->
       <div class="pg" id="pg-logo">
         <div class="ph"><div><h1>Logo & Site Name</h1><p>Customize your logo, site name, color and font</p></div></div>
+
+        <!-- Site URL for sharing -->
+        <div class="card" style="margin-bottom:18px">
+          <div class="ch">🌐 Site URL (for social sharing)</div>
+          <p style="font-size:12px;color:var(--g400);margin-bottom:12px">Enter your real domain so Facebook, WhatsApp etc. share the correct link. Example: <code style="background:var(--g100);padding:1px 6px;border-radius:4px;direction:ltr">https://feeali.com</code></p>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="url" id="siteUrlInput" placeholder="https://feeali.com" style="flex:1;padding:9px 13px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:14px;font-family:'Sora',sans-serif;direction:ltr;outline:none" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--bdr)'">
+            <button class="bsm bp" onclick="saveSiteUrl()">💾 Save</button>
+            <span id="siteUrlStatus" style="font-size:12px;color:var(--grn);display:none">✅ Saved</span>
+          </div>
+          <div id="siteUrlCurrent" style="font-size:11px;color:var(--g400);margin-top:8px"></div>
+        </div>
 
         <!-- ROW 1: Logo + Site Name -->
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:18px">
@@ -878,7 +1036,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 
       <!-- FONT -->
       <div class="pg" id="pg-font">
-        <div class="ph"><div><h1>Dhivehi Font</h1><p>Upload MV Mag Round HBold — applies everywhere instantly</p></div></div>
+        <div class="ph"><div><h1>Dhivehi Font</h1><p>Upload MV Mag Round or any Dhivehi font — applies to all Dhivehi text: article titles, album names, captions, and author names everywhere instantly</p></div></div>
         <div class="sg">
           <div class="card">
             <div class="ch">Upload Font File</div>
@@ -897,6 +1055,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
             <div id="fsamp" style="display:none;margin-top:12px;padding:16px;background:var(--blu);border-radius:var(--rs);text-align:right;border:1px solid #C7D2FE">
               <p style="font-size:22px;line-height:1.9;margin-bottom:5px;direction:rtl;color:var(--blue);font-family:var(--dv)" id="fs1">ދިވެހި ހަބަރު ވެބްސައިޓް</p>
               <p style="font-size:16px;line-height:1.85;direction:rtl;color:var(--blue);font-family:var(--dv)" id="fs2">ފީއަލި — ފަހުގެ ހަބަރު</p>
+              <p style="font-size:13px;line-height:1.75;direction:rtl;color:var(--blue);opacity:.65;font-family:var(--dv);margin-top:6px">📁 ހަފްލާ 2026 · ދަތުރު · ކުޅިވަރު...</p>
             </div>
           </div>
           <div class="card">
@@ -1098,7 +1257,7 @@ function showApp(){
 }
 
 function init(){
-  loadFont();loadLogo();loadIV();loadSiteName();loadNameFont();
+  loadFont();loadLogo();loadIV();loadFtv();loadSiteUrl();loadSiteName();loadNameFont();
   // Unsubscribe any previous listeners before attaching new ones
   _unsubs.forEach(u=>{try{u();}catch(e){}});
   _unsubs=[];
@@ -1110,6 +1269,7 @@ function init(){
   }));
   _unsubs.push(onValue(ref(db,'videos'),s=>{vids=[];if(s.exists())s.forEach(c=>vids.push({id:c.key,...c.val()}));rVids();updStats();}));
   _unsubs.push(onValue(ref(db,'gallery'),s=>{gals=[];if(s.exists())s.forEach(c=>gals.push({id:c.key,...c.val()}));rGal();updStats();}));
+  _unsubs.push(onValue(ref(db,'settings/albums'),s=>{albums={};if(s.exists())s.forEach(c=>{albums[c.key]={id:c.key,...c.val()};});rAlbums();populateAlbumSelects();}));
   _unsubs.push(onValue(ref(db,'settings/social'),s=>{socs=[];if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.url)socs.push({id:c.key,...v});});rSoc();updStats();}));
   _unsubs.push(onValue(ref(db,'settings/categories'),s=>{ccats={};if(s.exists())s.forEach(c=>{const v=c.val();if(v&&v.name&&v.slug)ccats[c.key]={...v};});CAT={...BASE,...Object.fromEntries(Object.values(ccats).map(c=>[c.slug,c.name]))};rCats();updCatSel();}));
   // Load staff list (admin only)
@@ -1228,7 +1388,7 @@ window.saveArt=async function(){
   const sum=document.getElementById('fsum').value.trim();
   if(!title||!cat||!sum){toast('Fill Title, Category and Summary','e');return;}
   const btn=document.getElementById('savebtn');btn.innerHTML='<span class="spin"></span>';btn.disabled=true;
-  const data={title,category:cat,summary:sum,body:document.getElementById('fbod').value.trim(),imageUrl:document.getElementById('fimg').value.trim(),videoUrl:document.getElementById('fvid').value.trim(),author:document.getElementById('fau').value.trim()||'ފީއަލި',published:document.getElementById('fpub').checked,featured:document.getElementById('ffeat').checked,updatedAt:Date.now()};
+  const data={title,category:cat,summary:sum,body:document.getElementById('fbod').value.trim(),imageUrl:document.getElementById('fimg').value.trim(),videoUrl:document.getElementById('fvid').value.trim(),author:document.getElementById('fau').value.trim(),published:document.getElementById('fpub').checked,featured:document.getElementById('ffeat').checked,updatedAt:Date.now()};
   try{
     if(id){const orig=arts.find(a=>a.id===id);await set(ref(db,'articles/'+id),{...data,createdAt:orig?.createdAt||Date.now()});toast('Updated ✅','s');}
     else{data.createdAt=Date.now();await push(ref(db,'articles'),data);toast('Published ✅','s');}
@@ -1380,69 +1540,262 @@ window.switchTab=function(group,tab){
 };
 
 // ── VIDEOS ──
-window.openVF=function(){document.getElementById('vfcard').style.display='block';['vft','vfu','vfd','vfth','vfid'].forEach(id=>document.getElementById(id).value='');clearMedia('vfu','vvPrev','vvPrevVid');clearMedia('vfth','vthPrev','vthPrevImg');};
+window.prevOpacity=function(){
+  const val=document.getElementById('vfopacity').value;
+  const box=document.getElementById('vfopBox');
+  const prev=document.getElementById('vfopPrev');
+  if(box)box.style.opacity=val/100;
+  if(prev)prev.style.display='block';
+};
+window.openVF=function(){
+  document.getElementById('vfcard').style.display='block';
+  ['vft','vfu','vfd','vfth','vfid'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('vfactive').checked=true;
+  document.getElementById('vfopacity').value=100;
+  document.getElementById('vfopacityLbl').textContent='100%';
+  document.getElementById('vfopPrev').style.display='none';
+  clearMedia('vfu','vvPrev','vvPrevVid');
+  clearMedia('vfth','vthPrev','vthPrevImg');
+};
 window.closeVF=function(){document.getElementById('vfcard').style.display='none';};
 window.saveVid=async function(){
   const t=document.getElementById('vft').value.trim(),u=document.getElementById('vfu').value.trim();
   if(!t||!u){toast('Title and video source required','e');return;}
   const id=document.getElementById('vfid').value;
-  const d={title:t,url:u,thumbnail:document.getElementById('vfth').value.trim(),description:document.getElementById('vfd').value.trim(),createdAt:Date.now()};
+  const opacity=parseInt(document.getElementById('vfopacity').value)||100;
+  const active=document.getElementById('vfactive').checked;
+  const d={title:t,url:u,thumbnail:document.getElementById('vfth').value.trim(),description:document.getElementById('vfd').value.trim(),opacity,active,createdAt:id?(vids.find(v=>v.id===id)?.createdAt||Date.now()):Date.now()};
   try{if(id)await set(ref(db,'videos/'+id),d);else await push(ref(db,'videos'),d);toast('Video saved ✅','s');closeVF();}
   catch(ex){toast('Error: '+ex.message,'e');}
 };
 function rVids(){
   const el=document.getElementById('vidlist');
   if(!vids.length){el.innerHTML=`<div style="text-align:center;padding:36px;color:var(--g300)">🎬 No videos yet. Click "+ Add Video"</div>`;return;}
-  el.innerHTML=vids.map(v=>`
-    <div class="ir">
-      ${v.thumbnail?`<img class="rimg" src="${e(v.thumbnail)}" onerror="this.style.opacity=.3">`:`<div class="rimgp">🎬</div>`}
-      <div class="ri"><div class="rttl">${e(v.title)}</div><div class="rsub" style="direction:ltr;font-size:11px">${v.url?.startsWith('data:')?'📁 Uploaded file':(v.url||'').substring(0,45)+'…'}</div></div>
-      <div class="ra2"><button class="bico dl" onclick="cdel('videos/${v.id}','${e(v.title).replace(/'/g,"\\'")}')">🗑️</button></div>
-    </div>`).join('');
+  el.innerHTML=vids.map(v=>{
+    const active=v.active!==false;
+    const opacity=v.opacity||100;
+    return`<div class="ir" style="${!active?'opacity:.5':''}">
+      <div style="position:relative;flex-shrink:0">
+        ${v.thumbnail?`<img class="rimg" src="${e(v.thumbnail)}" style="opacity:${opacity/100}" onerror="this.style.opacity=.3">`:`<div class="rimgp">🎬</div>`}
+        ${!active?`<div style="position:absolute;inset:0;background:rgba(0,0,0,.5);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">HIDDEN</div>`:''}
+      </div>
+      <div class="ri">
+        <div class="rttl">${e(v.title)}</div>
+        <div class="rsub" style="direction:ltr;font-size:11px">${v.url?.startsWith('data:')?'📁 Uploaded file':(v.url||'').substring(0,45)+'…'}</div>
+        <div style="display:flex;gap:6px;margin-top:5px">
+          <span style="font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;background:${active?'var(--grnl)':'var(--g100)'};color:${active?'var(--grn)':'var(--g500)'}">${active?'✅ Active':'⏸ Hidden'}</span>
+          <span style="font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;background:var(--blu);color:var(--blue)">Opacity: ${opacity}%</span>
+        </div>
+      </div>
+      <div class="ra2">
+        <button class="bico" onclick="editVid('${v.id}')" title="Edit">✏️</button>
+        <button class="bico dl" onclick="cdel('videos/${v.id}','${e(v.title).replace(/'/g,"\\'")}')">🗑️</button>
+      </div>
+    </div>`;
+  }).join('');
 }
+window.editVid=function(id){
+  const v=vids.find(z=>z.id===id);if(!v)return;
+  document.getElementById('vfcard').style.display='block';
+  document.getElementById('vfid').value=id;
+  document.getElementById('vft').value=v.title||'';
+  document.getElementById('vfd').value=v.description||'';
+  document.getElementById('vfu').value=v.url||'';
+  document.getElementById('vfth').value=v.thumbnail||'';
+  document.getElementById('vfactive').checked=v.active!==false;
+  const op=v.opacity||100;
+  document.getElementById('vfopacity').value=op;
+  document.getElementById('vfopacityLbl').textContent=op+'%';
+  if(v.thumbnail){const b=document.getElementById('vthPrev');const i=document.getElementById('vthPrevImg');if(i)i.src=v.thumbnail;if(b)b.classList.add('has');}
+  prevOpacity();
+  document.getElementById('vfcard').scrollIntoView({behavior:'smooth'});
+};
 
 // ── GALLERY ──
 window.openGF=function(){document.getElementById('gfcard').style.display='block';['gfc','gfcat','gfu','gfid'].forEach(id=>document.getElementById(id).value='');clearMedia('gfu','galPrev','galPrevImg');};
 window.closeGF=function(){document.getElementById('gfcard').style.display='none';};
+
+// ── GALLERY ALBUMS ──
+let albums = {}; // {id: {name, slug}}
+
+// Load albums from Firebase
+function loadAlbums(){
+  onValue(ref(db,'settings/albums'), s=>{
+    albums={};
+    if(s.exists()) s.forEach(c=>{albums[c.key]={id:c.key,...c.val()};});
+    rAlbums();
+    populateAlbumSelects();
+  });
+}
+
+function rAlbums(){
+  const el=document.getElementById('albumlist');
+  if(!el)return;
+  const list=Object.values(albums);
+  if(!list.length){el.innerHTML='<div style="color:var(--g300);font-size:13px;padding:16px 0">No albums yet. Create one above ↑</div>';return;}
+  el.innerHTML=list.map(a=>{
+    const count=gals.filter(g=>g.album===a.id||g.category===a.name).length;
+    return`<div style="background:var(--g50);border:1px solid var(--bdr);border-radius:10px;padding:14px;cursor:pointer;transition:.18s;position:relative" onclick="openAlbumFilter('${a.id}')">
+      <div style="font-size:22px;margin-bottom:6px">📁</div>
+      <div style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g900);margin-bottom:4px">${e(a.name)}</div>
+      <div style="font-size:11px;color:var(--g400)">${count} photos</div>
+      <button onclick="event.stopPropagation();delAlbum('${a.id}')" style="position:absolute;top:8px;left:8px;background:var(--red);color:#fff;border:none;border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer">🗑️</button>
+    </div>`;
+  }).join('');
+}
+
+function populateAlbumSelects(){
+  const list=Object.values(albums);
+  const opts='<option value="">— Select Album —</option>'+list.map(a=>`<option value="${a.id}">${e(a.name)}</option>`).join('');
+  ['gfalbum','bulkAlbum'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.innerHTML=opts;
+  });
+  // filter dropdown
+  const fd=document.getElementById('filterAlbum');
+  if(fd)fd.innerHTML='<option value="">All Albums</option>'+list.map(a=>`<option value="${a.id}">${e(a.name)}</option>`).join('');
+}
+
+window.saveAlbum=async function(){
+  const name=document.getElementById('albn').value.trim();
+  let slug=document.getElementById('albs').value.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  if(!name){toast('Album name required','e');return;}
+  if(!slug) slug=name.replace(/\s+/g,'-').replace(/[^a-z0-9\u0600-\u06FF\u0780-\u07BF-]/g,'').slice(0,30)||'album-'+Date.now();
+  try{
+    await push(ref(db,'settings/albums'),{name,slug,createdAt:Date.now()});
+    toast('Album created ✅','s');
+    document.getElementById('albn').value='';
+    document.getElementById('albs').value='';
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
+
+window.delAlbum=async function(id){
+  if(!confirm('Delete this album? Photos inside will stay but lose their album.'))return;
+  try{await set(ref(db,'settings/albums/'+id),null);toast('Album deleted','s');}
+  catch(ex){toast('Error: '+ex.message,'e');}
+};
+
+window.openAlbumFilter=function(albumId){
+  showGalTab('photos');
+  const fd=document.getElementById('filterAlbum');
+  if(fd){fd.value=albumId;rGal();}
+};
+
+window.showGalTab=function(tab){
+  document.getElementById('gal-tab-albums').style.display=tab==='albums'?'':'none';
+  document.getElementById('gal-tab-photos').style.display=tab==='photos'?'':'none';
+  document.getElementById('gtab-albums').style.cssText=tab==='albums'?'background:var(--blue);color:#fff':'';
+  document.getElementById('gtab-photos').style.cssText=tab==='photos'?'background:var(--blue);color:#fff':'';
+};
+
+// Gallery image upload — 15MB limit
+window.handleGalImgUpload=async function(event){
+  const file=event.target.files[0];if(!file)return;
+  if(file.size>15*1024*1024){toast('Image too large (max 15MB)','e');return;}
+  showProg('galProg','galStatus','Reading image…',20);
+  try{
+    const b64=await fileToB64(file);
+    showProg('galProg','galStatus','Processing…',70);
+    document.getElementById('gfu').value=b64;
+    const box=document.getElementById('galPrev');
+    const img=box.querySelector('img');
+    if(img){img.src=b64;box.classList.add('has');}
+    showProg('galProg','galStatus','✅ '+file.name+' ('+fbytes(file.size)+')',100);
+    setTimeout(()=>hideProg('galProg','galStatus'),2500);
+  }catch(ex){toast('Failed to read image','e');hideProg('galProg','galStatus');}
+};
+
 window.saveGal=async function(){
   const u=document.getElementById('gfu').value.trim();
   if(!u){toast('Photo source required','e');return;}
+  const albumId=document.getElementById('gfalbum').value;
+  if(!albumId){toast('Please select an album','e');return;}
+  const albumName=albums[albumId]?albums[albumId].name:'';
   const id=document.getElementById('gfid').value;
-  const d={imageUrl:u,caption:document.getElementById('gfc').value.trim(),category:document.getElementById('gfcat').value.trim(),createdAt:Date.now()};
-  try{if(id)await set(ref(db,'gallery/'+id),d);else await push(ref(db,'gallery'),d);toast('Photo added ✅','s');closeGF();}
-  catch(ex){toast('Error: '+ex.message,'e');}
+  const d={
+    imageUrl:u,
+    caption:document.getElementById('gfc').value.trim(),
+    album:albumId,
+    category:albumName, // keep category = album name for public site filter
+    createdAt:Date.now()
+  };
+  try{
+    if(id) await set(ref(db,'gallery/'+id),d);
+    else await push(ref(db,'gallery'),d);
+    toast('Photo saved ✅','s');
+    clearGalForm();
+  }catch(ex){toast('Error: '+ex.message,'e');}
 };
+
+window.clearGalForm=function(){
+  document.getElementById('gfu').value='';
+  document.getElementById('gfc').value='';
+  document.getElementById('gfid').value='';
+  document.getElementById('gfalbum').value='';
+  const box=document.getElementById('galPrev');
+  if(box){box.classList.remove('has');const img=box.querySelector('img');if(img)img.src='';}
+};
+
 // Bulk upload
 window.handleBulkUpload=async function(event){
+  const albumId=document.getElementById('bulkAlbum').value;
+  if(!albumId){toast('Please select an album first','e');return;}
+  const albumName=albums[albumId]?albums[albumId].name:'';
   const files=Array.from(event.target.files);
   if(!files.length)return;
   const prog=document.getElementById('bulkProgress');
   let done=0;
   prog.innerHTML=`<div style="font-size:13px;color:var(--g500)">Uploading 0 / ${files.length}…</div><div style="background:var(--g100);border-radius:6px;height:6px;margin-top:6px"><div id="bulkBar" style="height:100%;background:var(--blue);transition:width .3s;width:0%;border-radius:6px"></div></div>`;
   for(const file of files){
-    if(file.size>4*1024*1024){toast(`${file.name} too large, skipped`,'e');done++;continue;}
+    if(file.size>15*1024*1024){toast(`${file.name} too large (max 15MB), skipped`,'e');done++;continue;}
     try{
       const b64=await fileToB64(file);
-      await push(ref(db,'gallery'),{imageUrl:b64,caption:'',createdAt:Date.now()});
+      await push(ref(db,'gallery'),{imageUrl:b64,caption:'',album:albumId,category:albumName,createdAt:Date.now()});
       done++;
       const pct=Math.round((done/files.length)*100);
       prog.querySelector('div').textContent=`Uploading ${done} / ${files.length}…`;
-      document.getElementById('bulkBar').style.width=pct+'%';
+      const bar=document.getElementById('bulkBar');
+      if(bar)bar.style.width=pct+'%';
     }catch(ex){done++;}
   }
-  prog.innerHTML=`<div style="font-size:13px;color:var(--grn);margin-top:8px">✅ ${done} photos uploaded!</div>`;
+  prog.innerHTML=`<div style="font-size:13px;color:var(--grn);margin-top:8px">✅ ${done} photos uploaded to "${albumName}"!</div>`;
   setTimeout(()=>prog.innerHTML='',3000);
 };
+
 function rGal(){
   const g=document.getElementById('galadmin');
-  if(!gals.length){g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)">🖼️ No photos yet.</div>`;return;}
-  g.innerHTML=gals.map(img=>`
-    <div class="gai">
-      <img src="${e(img.imageUrl)}" loading="lazy">
-      <div class="gai-ov"><button class="bico dl" onclick="cdel('gallery/${img.id}','photo')" style="background:rgba(255,255,255,.9)">🗑️</button></div>
-      ${img.category?`<div class="gai-cap" style="background:var(--grn)">${e(img.category)}</div>`:img.caption?`<div class="gai-cap">${e(img.caption)}</div>`:''}
-    </div>`).join('');
+  if(!g)return;
+  const filter=document.getElementById('filterAlbum');
+  const filterVal=filter?filter.value:'';
+  let list=gals;
+  if(filterVal) list=gals.filter(img=>img.album===filterVal);
+  if(!list.length){
+    g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)">🖼️ No photos${filterVal?' in this album':''} yet.</div>`;
+    return;
+  }
+  // Group by album
+  const grouped={};
+  list.forEach(img=>{
+    const key=img.album||'__none__';
+    if(!grouped[key])grouped[key]=[];
+    grouped[key].push(img);
+  });
+  let html='';
+  Object.entries(grouped).forEach(([albumId,photos])=>{
+    const albumName=albums[albumId]?albums[albumId].name:img&&img.category?img.category:'No Album';
+    html+=`<div style="grid-column:1/-1;display:flex;align-items:center;gap:8px;margin:10px 0 4px"><span style="font-size:16px">📁</span><span style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g800)">${e(albumName)}</span><span style="font-size:11px;color:var(--g400)">(${photos.length} photos)</span></div>`;
+    html+=photos.map(img=>`
+      <div class="gai">
+        <img src="${e(img.imageUrl)}" loading="lazy">
+        <div class="gai-ov">
+          <button class="bico dl" onclick="cdel('gallery/${img.id}','photo')" style="background:rgba(255,255,255,.9)">🗑️</button>
+        </div>
+        <div class="gai-cap">${e(img.caption||albumName||'')}</div>
+      </div>`).join('');
+  });
+  g.innerHTML=html;
 }
+
 
 // ── CATEGORIES ──
 window.saveCat=async function(){
@@ -1496,6 +1849,43 @@ window.removeIV=async function(){
   catch(ex){toast('Error: '+ex.message,'e');}
 };
 
+// ── FOOTER VIDEO ──
+function loadFtv(){
+  get(ref(db,'settings/footerVideo')).then(s=>{
+    if(!s.exists()){document.getElementById('ftvBox').textContent='No footer video set';return;}
+    const v=s.val();
+    const u=v.url||'';
+    const box=document.getElementById('ftvBox');
+    box.innerHTML=u.startsWith('data:')?`<span style="color:var(--grn)">✅</span> Uploaded video file`:`<span style="color:var(--grn)">✅</span> <a href="${e(u)}" target="_blank" style="color:var(--blue);direction:ltr">${e(u.substring(0,55))}…</a>`;
+    if(v.title)document.getElementById('ftvTitle').value=v.title;
+    if(v.opacity){document.getElementById('ftvOpacity').value=v.opacity;document.getElementById('ftvOpLbl').textContent=v.opacity+'%';}
+    if(u.startsWith('data:')){const pv=document.getElementById('ftvPrev');const vid=document.getElementById('ftvPrevVid');if(vid)vid.src=u;if(pv)pv.classList.add('has');}
+    else if(u){document.getElementById('ftvu').value=u;}
+  }).catch(()=>{});
+}
+window.saveFtv=async function(){
+  const u=document.getElementById('ftvu').value.trim();
+  if(!u){toast('Enter or upload a video','e');return;}
+  const title=document.getElementById('ftvTitle').value.trim();
+  const opacity=parseInt(document.getElementById('ftvOpacity').value)||100;
+  try{
+    await set(ref(db,'settings/footerVideo'),{url:u,title,opacity,updatedAt:Date.now()});
+    toast('Footer video saved ✅','s');loadFtv();
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
+window.removeFtv=async function(){
+  try{
+    await remove(ref(db,'settings/footerVideo'));
+    toast('Removed','s');
+    document.getElementById('ftvu').value='';
+    document.getElementById('ftvTitle').value='';
+    document.getElementById('ftvOpacity').value=100;
+    document.getElementById('ftvOpLbl').textContent='100%';
+    clearMedia('ftvu','ftvPrev','ftvPrevVid');
+    document.getElementById('ftvBox').textContent='No footer video set';
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
+
 // ── LOGO ──
 function loadLogo(){
   get(ref(db,'settings/logo')).then(s=>{
@@ -1542,6 +1932,30 @@ window.removeLogo=async function(){
     const prev=document.getElementById('logoPreview');const prevImg=document.getElementById('logoPrevImg');
     if(prev)prev.classList.remove('has');if(prevImg)prevImg.src='';
     document.getElementById('logu').value='';toast('Logo removed','s');
+  }catch(ex){toast('Error: '+ex.message,'e');}
+};
+
+// ── SITE URL ──
+function loadSiteUrl(){
+  get(ref(db,'settings/siteUrl')).then(s=>{
+    if(!s.exists())return;
+    const url=s.val();
+    if(url){
+      document.getElementById('siteUrlInput').value=url;
+      document.getElementById('siteUrlCurrent').textContent='Current: '+url;
+    }
+  }).catch(()=>{});
+}
+window.saveSiteUrl=async function(){
+  const url=document.getElementById('siteUrlInput').value.trim().replace(/\/+$/,'');
+  if(!url||!url.startsWith('http')){toast('Enter a valid URL starting with https://','e');return;}
+  try{
+    await set(ref(db,'settings/siteUrl'),url);
+    document.getElementById('siteUrlCurrent').textContent='Current: '+url;
+    const st=document.getElementById('siteUrlStatus');
+    st.style.display='inline';
+    setTimeout(()=>st.style.display='none',2500);
+    toast('Site URL saved ✅','s');
   }catch(ex){toast('Error: '+ex.message,'e');}
 };
 

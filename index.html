@@ -21,7 +21,7 @@
   --dv:'MVMagRound','Faruma',serif;
 }
 body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-height:100vh;font-size:14px}
-#aw{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#EEF3FF 0%,#F3FAF7 55%,#FFF8F1 100%);padding:20px}
+#aw{position:fixed;inset:0;z-index:9999;background:linear-gradient(145deg,#EEF3FF 0%,#F3FAF7 55%,#FFF8F1 100%);display:flex;align-items:center;justify-content:center;padding:20px}
 .acard{background:#fff;border-radius:24px;padding:48px 44px;width:100%;max-width:400px;box-shadow:var(--sh3);border:1px solid var(--bdr);text-align:center}
 .a-logo{margin-bottom:24px}
 .a-logo img{height:52px;margin:0 auto 8px;display:block;object-fit:contain}
@@ -79,7 +79,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .sc::after{content:'';position:absolute;top:0;right:0;width:3px;height:100%;border-radius:0 var(--r) var(--r) 0}
 .sc.cb::after{background:var(--blue)}.sc.cg::after{background:var(--grn)}.sc.ca::after{background:var(--amb)}.sc.cr::after{background:var(--red)}.sc.cp::after{background:var(--pur)}
 .sc-ico{width:36px;height:36px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
-.ib{background:var(--blu)}.ig{background:var(--grnl)}.ia{background:var(--ambl)}.ir{background:var(--redl)}.ip{background:var(--purl)}
+.ib{background:var(--blu)}.ig{background:var(--grnl)}.ia{background:var(--ambl)}.ir2{background:var(--redl)}.ip{background:var(--purl)}
 .sc-n{font-size:26px;font-weight:800;line-height:1}
 .sc-l{font-size:11px;color:var(--g400);margin-top:3px}
 .card{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);padding:22px;box-shadow:var(--sh1);margin-bottom:18px}
@@ -193,8 +193,6 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .logo-preview .lph{font-size:12px;color:var(--g300)}
 .logo-preview.has img{display:block}
 .logo-preview.has .lph{display:none}
-
-/* ═══ CATEGORIES — enhanced ═══ */
 .cat-card{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rl);overflow:hidden;margin-bottom:16px;transition:border-color .18s;box-shadow:var(--sh1)}
 .cat-card:hover{border-color:var(--blue)}
 .cat-card-hd{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--bdr)}
@@ -205,8 +203,6 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .cat-card-desc{font-size:12px;color:var(--g500);margin-top:3px;font-family:var(--dv);direction:rtl}
 .cat-card-actions{display:flex;gap:6px;flex-shrink:0}
 .cat-card-body{padding:16px 18px}
-
-/* ── Subcategory preview tags (shown under category) ── */
 .subcat-preview{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .subcat-preview-tag{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:30px;font-size:13px;font-weight:600;font-family:var(--dv);direction:rtl;border:1.5px solid var(--bdr);background:var(--g50);color:var(--g700);transition:.15s}
 .subcat-preview-tag .tag-ico{font-size:14px}
@@ -224,8 +220,6 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .subcat-preview-tag .tag-del{width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;color:inherit;flex-shrink:0;transition:.15s;margin-right:-4px;margin-left:4px}
 .subcat-preview-tag .tag-del:hover{background:var(--red);color:#fff}
 .no-subcats-hint{font-size:12px;color:var(--g300);font-style:italic;padding:6px 2px}
-
-/* Add subcat form */
 .add-subcat-wrap{background:var(--blu);border:1.5px dashed #C7D2FE;border-radius:var(--rs);padding:12px}
 .add-subcat-lbl{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:block}
 .add-subcat-row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
@@ -233,7 +227,6 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .add-subcat-row .fld-sm label{font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:5px}
 .add-subcat-row .fld-sm input,.add-subcat-row .fld-sm select{width:100%;padding:8px 10px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:13px;font-family:'Sora',sans-serif;color:var(--g900);outline:none;background:#fff;transition:.18s}
 .add-subcat-row .fld-sm input:focus,.add-subcat-row .fld-sm select:focus{border-color:var(--blue)}
-
 .dgrid{display:grid;grid-template-columns:1fr 260px;gap:16px}
 .afc{background:#fff;border:1px solid var(--bdr);border-radius:var(--rl);overflow:hidden;display:flex;flex-direction:column}
 .afh{padding:13px 17px;border-bottom:1px solid var(--bdr);font-size:14px;font-weight:700;color:var(--g800);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
@@ -271,17 +264,48 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 .spin{width:15px;height:15px;border:2px solid rgba(26,86,219,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .65s linear infinite;display:inline-block;vertical-align:middle}
 @keyframes sp{to{transform:rotate(360deg)}}
 .tip{padding:12px;background:var(--ambl);border-radius:var(--rs);font-size:12px;color:var(--amb);border:1px solid #FDE68A;margin-top:10px}
-.para-item{display:flex;gap:8px;align-items:flex-start;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px;transition:border-color .15s}
-.para-item:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,86,219,.07)}
-.para-item textarea{flex:1;border:none;outline:none;resize:vertical;font-family:var(--dv);direction:rtl;font-size:15px;line-height:1.9;min-height:80px;color:var(--g900);background:transparent;padding:4px}
-.para-item textarea::placeholder{font-family:'Sora',sans-serif;font-size:12px;direction:ltr;color:var(--g300)}
-.para-item .para-del{width:26px;height:26px;border-radius:5px;border:1.5px solid var(--bdr);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g400);flex-shrink:0;transition:.15s;margin-top:1px}
-.para-item .para-del:hover{border-color:var(--red);background:var(--redl);color:var(--red)}
 .sg{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
 .tb-hbg{display:none;width:38px;height:38px;border-radius:var(--rs);border:1.5px solid var(--bdr);background:transparent;color:var(--g600);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;padding:9px}
 .tb-hbg span{display:block;width:18px;height:1.8px;background:currentColor;border-radius:2px}
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:149;backdrop-filter:blur(3px)}
 .sb-overlay.on{display:block}
+
+/* ── PARAGRAPH BUILDER ── */
+.para-item{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.para-item:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,86,219,.07)}
+.para-item-header{display:flex;align-items:center;gap:8px;padding:8px 10px 0 10px;background:var(--g50);border-bottom:1px solid var(--bdr)}
+.para-item-header .para-num{font-size:10px;font-weight:700;color:var(--g400);padding:3px 8px;background:var(--g100);border-radius:10px;flex-shrink:0}
+.para-item-header .para-actions{display:flex;gap:5px;margin-left:auto}
+.para-item-body{padding:10px}
+.para-item textarea.para-ta{width:100%;border:none;outline:none;resize:vertical;font-family:var(--dv);direction:rtl;font-size:15px;line-height:1.9;min-height:80px;color:var(--g900);background:transparent;padding:4px;font-size:16px}
+.para-item textarea.para-ta::placeholder{font-family:'Sora',sans-serif;font-size:12px;direction:ltr;color:var(--g300)}
+.para-img-toggle{display:flex;align-items:center;gap:7px;padding:6px 10px;background:var(--g50);border:1.5px dashed var(--bdr);border-radius:var(--rs);cursor:pointer;font-size:12px;font-weight:600;color:var(--g500);transition:.15s;margin-top:8px;width:fit-content}
+.para-img-toggle:hover{border-color:var(--blue);color:var(--blue);background:var(--blu)}
+.para-img-toggle.has-img{border-color:var(--grn);color:var(--grn);background:var(--grnl)}
+.para-img-section{display:none;margin-top:10px;padding:12px;background:var(--g50);border-radius:var(--rs);border:1px solid var(--bdr)}
+.para-img-section.open{display:block}
+.para-img-prev{width:100%;max-height:200px;object-fit:cover;border-radius:var(--rs);display:none;margin-top:8px}
+.para-img-prev.has{display:block}
+.para-img-caption{width:100%;margin-top:6px;padding:6px 10px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-family:var(--dv);direction:rtl;font-size:14px;outline:none;line-height:1.7;resize:none}
+.para-img-caption:focus{border-color:var(--blue)}
+.para-del{background:transparent;border:1.5px solid var(--bdr);border-radius:var(--rs);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g400);transition:.15s;padding:4px 8px}
+.para-del:hover{border-color:var(--red);background:var(--redl);color:var(--red)}
+.para-move{background:transparent;border:1.5px solid var(--bdr);border-radius:var(--rs);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g400);transition:.15s;padding:4px 7px}
+.para-move:hover{border-color:var(--blue);background:var(--blu);color:var(--blue)}
+
+/* ── ARTICLE IMAGES GALLERY ── */
+.art-images-section{margin-top:4px}
+.art-img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:10px}
+.art-img-item{position:relative;border-radius:var(--rs);overflow:hidden;border:1.5px solid var(--bdr);background:var(--g50);aspect-ratio:4/3}
+.art-img-item img{width:100%;height:100%;object-fit:cover;display:block}
+.art-img-item .aii-ov{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.art-img-item:hover .aii-ov{opacity:1}
+.art-img-item .aii-del{background:var(--red);color:#fff;border:none;border-radius:5px;padding:5px 10px;font-size:11px;cursor:pointer;font-weight:600}
+.art-img-item .aii-num{position:absolute;top:5px;left:5px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+.art-imgs-add{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:10px;padding:12px;background:var(--g50);border:1.5px dashed var(--bdr);border-radius:var(--rs)}
+.art-imgs-add.drag{border-color:var(--blue);background:var(--blu)}
+.art-imgs-count{font-size:11px;color:var(--g400);background:var(--g100);padding:3px 10px;border-radius:20px;font-weight:600;display:inline-block}
+
 @media(max-width:1100px){.srow{grid-template-columns:repeat(3,1fr)}.dgrid{grid-template-columns:1fr}.sg{grid-template-columns:1fr}.gag{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){:root{--sw:260px}.sidebar{position:fixed;top:0;left:-280px;bottom:0;z-index:150;transition:left .28s;box-shadow:none;padding-top:calc(var(--hh) + 8px)}.sidebar.open{left:0;box-shadow:4px 0 24px rgba(0,0,0,.12)}.content{margin-left:0}.tb-hbg{display:inline-flex}.tb-logo{border-right:none;width:auto}.tb-mid{display:none}.g2{grid-template-columns:1fr}}
 @media(max-width:640px){:root{--hh:54px}.srow{grid-template-columns:repeat(2,1fr)}.ph{flex-direction:column;gap:10px}.gag{grid-template-columns:repeat(2,1fr)}.tb-r .uc,.tb-r .t-g{display:none}.content{padding:14px}.card{padding:16px}.art-card{flex-direction:column}.art-card-img{width:100%;height:160px}.art-card-actions{flex-direction:row;border-left:none;border-top:1px solid var(--bdr);padding:10px 12px;flex-wrap:wrap;justify-content:flex-end}.art-btn{flex:1;min-width:0}.g3{grid-template-columns:1fr}.sg{grid-template-columns:1fr}}
@@ -289,6 +313,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 </head>
 <body>
 
+<!-- ═══ AUTH ═══ -->
 <div id="aw">
   <div class="acard">
     <div class="a-logo">
@@ -309,6 +334,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
   </div>
 </div>
 
+<!-- ═══ ADMIN PANEL ═══ -->
 <div id="ap">
   <div class="topbar">
     <div class="tb-logo">
@@ -365,7 +391,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           <div class="sc cb"><div class="sc-ico ib">📰</div><div class="sc-n" id="d-tot">—</div><div class="sc-l">Articles</div></div>
           <div class="sc cg"><div class="sc-ico ig">✅</div><div class="sc-n" id="d-pub">—</div><div class="sc-l">Published</div></div>
           <div class="sc ca"><div class="sc-ico ia">🎬</div><div class="sc-n" id="d-vid">—</div><div class="sc-l">Videos</div></div>
-          <div class="sc cr"><div class="sc-ico ir">🖼️</div><div class="sc-n" id="d-gal">—</div><div class="sc-l">Gallery</div></div>
+          <div class="sc cr"><div class="sc-ico ir2">🖼️</div><div class="sc-n" id="d-gal">—</div><div class="sc-l">Gallery</div></div>
           <div class="sc cp"><div class="sc-ico ip">📱</div><div class="sc-n" id="d-soc">—</div><div class="sc-l">Social</div></div>
         </div>
         <div class="dgrid">
@@ -374,7 +400,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
         </div>
       </div>
 
-      <!-- ARTICLES -->
+      <!-- ARTICLES LIST -->
       <div class="pg" id="pg-arts">
         <div class="ph"><div><h1 id="at">All Articles</h1><p id="as">Manage all articles</p></div><div class="ph-r"><button class="tbtn t-b" onclick="goAdd()">+ New Article</button></div></div>
         <div class="arts-stats">
@@ -388,11 +414,13 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
         </div>
       </div>
 
-      <!-- ADD/EDIT ARTICLE -->
+      <!-- ADD / EDIT ARTICLE -->
       <div class="pg" id="pg-add">
         <div class="ph"><div><h1 id="etitle">Add New Article</h1><p>Fill in the details below</p></div><div class="ph-r"><button class="tbtn t-g" onclick="showPg('arts',document.getElementById('n-arts'))">← Back</button></div></div>
         <div class="card">
           <input type="hidden" id="eid">
+
+          <!-- Step 1 – Basic Info -->
           <div class="ch"><span class="n">1</span> Basic Info</div>
           <div class="g2" style="margin-bottom:14px">
             <div class="fld"><label>Title (Dhivehi) <span class="rq">*</span></label><textarea class="dv" id="ft" rows="2" placeholder="ހަބަރުގެ ސުރުހި..."></textarea></div>
@@ -401,26 +429,74 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
               <div class="fld"><label>Author <span class="rq">*</span></label><input type="text" id="fau" style="font-family:var(--dv)!important;direction:rtl;font-size:16px;line-height:1.9;width:100%" placeholder="ހަބަރުގެ ލިޔުންތެރިޔާ..."></div>
             </div>
           </div>
-          <div class="ch"><span class="n">2</span> Content</div>
-          <div class="fld" style="margin-bottom:12px"><label>Summary <span class="rq">*</span></label><textarea class="dv" id="fsum" rows="3" placeholder="ހަބަރުގެ ކުރު ތަފްސީލު..."></textarea></div>
-          <div class="fld">
-            <label style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span>Full Body — Paragraphs</span><button type="button" class="bsm bp" style="padding:5px 12px;font-size:12px" onclick="addParagraph()">+ Add Paragraph</button></label>
-            <div id="paraList" style="display:flex;flex-direction:column;gap:8px"></div>
-            <input type="hidden" id="fbod">
-          </div>
-          <div class="ch" style="margin-top:16px"><span class="n">3</span> Cover Image</div>
+
+          <!-- Step 2 – Content -->
+          <div class="ch"><span class="n">2</span> Summary</div>
+          <div class="fld" style="margin-bottom:18px"><label>Summary <span class="rq">*</span></label><textarea class="dv" id="fsum" rows="3" placeholder="ހަބަރުގެ ކުރު ތަފްސީލު..."></textarea></div>
+
+          <!-- Step 3 – Cover Image -->
+          <div class="ch"><span class="n">3</span> Cover Image</div>
           <div class="tab-row" id="imgTabs"><button class="tab-btn on" onclick="switchTab('img','url')">🔗 URL</button><button class="tab-btn" onclick="switchTab('img','upload')">📁 Upload</button></div>
           <div class="tab-pane on" id="img-url"><div class="fld"><input type="url" id="fimg" placeholder="https://… image URL" oninput="prevImg('fimg','imgPrev')"></div></div>
-          <div class="tab-pane" id="img-upload"><div class="upload-zone"><input type="file" accept="image/*" onchange="handleImgUpload(event,'imgPrev','fimg','imgProg','imgStatus')"><div class="uz-icon">🖼️</div><div class="uz-title">Click to select image</div><div class="uz-sub">JPG, PNG, WebP • Max 4MB</div></div><div class="up-progress" id="imgProg"><div class="up-bar" id="imgProgBar"></div></div><div class="up-status" id="imgStatus"></div></div>
-          <div class="prev-box" id="imgPrev"><img id="imgPrevImg" alt=""><div class="ph2">Image preview</div><button class="clear-btn" onclick="clearMedia('fimg','imgPrev','imgPrevImg')">✕</button></div>
-          <div class="ch" style="margin-top:16px"><span class="n">4</span> Video (optional)</div>
+          <div class="tab-pane" id="img-upload"><div class="upload-zone"><input type="file" accept="image/*" onchange="handleImgUpload(event,'imgPrev','fimg','imgProg','imgStatus')"><div class="uz-icon">🖼️</div><div class="uz-title">Click to select cover image</div><div class="uz-sub">JPG, PNG, WebP • Max 4MB</div></div><div class="up-progress" id="imgProg"><div class="up-bar" id="imgProgBar"></div></div><div class="up-status" id="imgStatus"></div></div>
+          <div class="prev-box" id="imgPrev"><img id="imgPrevImg" alt=""><div class="ph2">Cover image preview</div><button class="clear-btn" onclick="clearMedia('fimg','imgPrev','imgPrevImg')">✕</button></div>
+
+          <!-- Step 4 – Paragraphs with inline images -->
+          <div class="ch" style="margin-top:20px">
+            <span class="n">4</span> Article Body — Paragraphs &amp; Inline Images
+            <button type="button" class="bsm bp bsm-sm" style="margin-left:auto" onclick="addParagraph()">+ Add Paragraph</button>
+          </div>
+          <div class="tip" style="margin-bottom:12px">💡 Each paragraph can have its own inline image. Click <strong>"Add Image"</strong> under any paragraph to attach a photo with caption.</div>
+          <div id="paraList"></div>
+          <input type="hidden" id="fbod">
+          <input type="hidden" id="fparaData"><!-- stores JSON of paragraphs with images -->
+          <div style="margin-top:10px">
+            <button type="button" class="bsm bg" style="width:100%;justify-content:center;border-style:dashed" onclick="addParagraph()">+ Add Another Paragraph</button>
+          </div>
+
+          <!-- Step 5 – Article Images Gallery -->
+          <div class="ch" style="margin-top:20px">
+            <span class="n">5</span> Article Image Gallery
+            <span class="art-imgs-count" id="artImgCount" style="margin-left:auto">0 images</span>
+          </div>
+          <div class="tip" style="margin-bottom:12px">📷 Add extra images that appear in the article's gallery section. No limit — upload as many as needed.</div>
+          <div class="art-img-grid" id="artImgGrid"></div>
+          <div class="art-imgs-add" id="artImgsAdd">
+            <div style="flex:1">
+              <div class="tab-row" id="artImgTabs" style="margin-bottom:10px"><button class="tab-btn on" onclick="switchTab('artImg','url')">🔗 URL</button><button class="tab-btn" onclick="switchTab('artImg','upload')">📁 Upload</button></div>
+              <div class="tab-pane on" id="artImg-url">
+                <div style="display:flex;gap:8px">
+                  <input type="url" id="artImgUrl" placeholder="https://… image URL" style="flex:1;padding:9px 12px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:13px;outline:none;direction:ltr" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--bdr)'">
+                  <button class="bsm bp" onclick="addArtImgFromUrl()">+ Add</button>
+                </div>
+              </div>
+              <div class="tab-pane" id="artImg-upload">
+                <div class="upload-zone" style="padding:14px">
+                  <input type="file" accept="image/*" multiple onchange="handleArtImgsUpload(event)">
+                  <div class="uz-icon" style="font-size:22px;margin-bottom:4px">📸</div>
+                  <div class="uz-title" style="font-size:12px">Click or drag photos here (multiple allowed)</div>
+                  <div class="uz-sub">JPG, PNG, WebP • Max 8MB each</div>
+                </div>
+                <div class="up-progress" id="artImgProg" style="margin-top:6px"><div class="up-bar" id="artImgProgBar"></div></div>
+                <div class="up-status" id="artImgStatus"></div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="fartImages"><!-- JSON array of {url, caption} -->
+
+          <!-- Step 6 – Video -->
+          <div class="ch" style="margin-top:20px"><span class="n">6</span> Video (optional)</div>
           <div class="tab-row" id="vidTabs"><button class="tab-btn on" onclick="switchTab('vid','url')">🔗 URL</button><button class="tab-btn" onclick="switchTab('vid','upload')">📁 Upload</button></div>
           <div class="tab-pane on" id="vid-url"><div class="fld"><input type="url" id="fvid" placeholder="https://youtube.com/… or .mp4 URL"></div></div>
           <div class="tab-pane" id="vid-upload"><div class="upload-zone"><input type="file" accept="video/*" onchange="handleVidUpload(event,'vidPrev','fvid','vidProg','vidStatus')"><div class="uz-icon">🎬</div><div class="uz-title">Click to select video</div><div class="uz-sub">MP4, WebM • Max 50MB</div></div><div class="up-progress" id="vidProg"><div class="up-bar" id="vidProgBar"></div></div><div class="up-status" id="vidStatus"></div></div>
           <div class="prev-box" id="vidPrev"><video id="vidPrevVid" controls></video><div class="ph2">Video preview</div><button class="clear-btn" onclick="clearMedia('fvid','vidPrev','vidPrevVid')">✕</button></div>
-          <div class="ch" style="margin-top:16px"><span class="n">5</span> Source</div>
+
+          <!-- Step 7 – Source -->
+          <div class="ch" style="margin-top:20px"><span class="n">7</span> Source</div>
           <div class="fld" style="margin-bottom:16px"><label>Source Link (optional)</label><input type="url" id="fref" placeholder="https://…" style="direction:ltr"></div>
-          <div class="ch" style="margin-top:16px"><span class="n">6</span> Publishing</div>
+
+          <!-- Step 8 – Publishing -->
+          <div class="ch" style="margin-top:16px"><span class="n">8</span> Publishing</div>
           <div class="g2">
             <div class="tor"><div class="ti"><div class="tl">Published</div><div class="ts">Visible on site</div></div><label class="tog"><input type="checkbox" id="fpub" checked><div class="tsl"></div></label></div>
             <div class="tor"><div class="ti"><div class="tl">Featured Hero</div><div class="ts">Main headline</div></div><label class="tog"><input type="checkbox" id="ffeat"><div class="tsl"></div></label></div>
@@ -475,10 +551,10 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           <div class="card" style="margin-bottom:18px">
             <div class="ch"><span class="n">+</span> Create New Album</div>
             <div class="g2" style="margin-bottom:12px">
-              <div class="fld"><label>Album Name (Dhivehi) <span class="rq">*</span></label><input class="dv" type="text" id="albn" placeholder="ހަފްލާ 2026 · ދަތުރު..."></div>
+              <div class="fld"><label>Album Name (Dhivehi) <span class="rq">*</span></label><input class="dv" type="text" id="albn" placeholder="ހަފްލާ 2026..."></div>
               <div class="fld"><label>Slug (auto if empty)</label><input type="text" id="albs" placeholder="event-2026" style="direction:ltr"></div>
             </div>
-            <div class="fld" style="margin-bottom:12px"><label>Description (Dhivehi)</label><input class="dv" type="text" id="albdesc" placeholder="ތަފްސީލު ބަޔާން..."></div>
+            <div class="fld" style="margin-bottom:12px"><label>Description (Dhivehi)</label><input class="dv" type="text" id="albdesc" placeholder="ތަފްސީލު..."></div>
             <div class="g2" style="margin-bottom:12px">
               <div class="fld"><label>Link to Custom Category</label><select id="albCatKey" onchange="updateAlbSubSel(this.value)"><option value="">— No category —</option></select></div>
               <div class="fld"><label>Link to Subcategory</label><select id="albSubKey"><option value="">— Select category first —</option></select></div>
@@ -495,7 +571,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
             <div class="ch"><span class="n">+</span> Add Photo</div>
             <div class="g2" style="margin-bottom:12px">
               <div class="fld"><label>Album <span class="rq">*</span></label><select id="gfalbum" class="dv" style="direction:rtl"><option value="">— Select Album —</option></select></div>
-              <div class="fld"><label>Caption (Dhivehi)</label><input class="dv" type="text" id="gfc" placeholder="ފÑÑÑÑÑÑ..."></div>
+              <div class="fld"><label>Caption (Dhivehi)</label><input class="dv" type="text" id="gfc" placeholder="ތަފްސީލު..."></div>
             </div>
             <label style="font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:8px">Photo Source <span style="color:var(--red)">*</span></label>
             <div class="tab-row" id="galTabs"><button class="tab-btn on" onclick="switchTab('gal','url')">🔗 URL</button><button class="tab-btn" onclick="switchTab('gal','upload')">📁 Upload</button></div>
@@ -518,13 +594,13 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
         </div>
       </div>
 
-      <!-- ═══ CATEGORIES PAGE ═══ -->
+      <!-- CATEGORIES -->
       <div class="pg" id="pg-cats">
-        <div class="ph"><div><h1>Categories — ދާއިރާ</h1><p>Custom categories with subcategories (Gallery, Iulaan, Others…)</p></div></div>
+        <div class="ph"><div><h1>Categories — ދާއިރާ</h1><p>Custom categories with subcategories</p></div></div>
         <div class="card">
           <div class="ch"><span class="n">+</span> Add Custom Category</div>
           <div class="g2" style="margin-bottom:14px">
-            <div class="fld"><label>Category Name (Dhivehi) <span class="rq">*</span></label><input class="dv" type="text" id="cfn" placeholder="ހެލްތް · ތިމާވެށި · ދީން..."></div>
+            <div class="fld"><label>Category Name (Dhivehi) <span class="rq">*</span></label><input class="dv" type="text" id="cfn" placeholder="ހެލްތް · ތިމާވެށި..."></div>
             <div class="fld"><label>Slug (English, no spaces) <span class="rq">*</span></label><input type="text" id="cfs" placeholder="health" style="direction:ltr"></div>
           </div>
           <div class="g2" style="margin-bottom:14px">
@@ -533,9 +609,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           </div>
           <button class="bsm bp" onclick="saveCat()">+ Add Category</button>
         </div>
-        <div id="custcats">
-          <div style="color:var(--g300);font-size:13px;padding:24px;text-align:center">No custom categories yet. Add one above ↑</div>
-        </div>
+        <div id="custcats"><div style="color:var(--g300);font-size:13px;padding:24px;text-align:center">No custom categories yet.</div></div>
       </div>
 
       <!-- SOCIAL -->
@@ -545,7 +619,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           <div class="ch"><span class="n">+</span> Add Platform</div>
           <div class="g3" style="margin-bottom:12px">
             <div class="fld"><label>Platform <span class="rq">*</span></label><select id="sfp"><option value="">— Select —</option><option value="facebook">Facebook</option><option value="twitter">X (Twitter)</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="telegram">Telegram</option></select></div>
-            <div class="fld"><label>Display Name</label><input type="text" id="sfn" placeholder="ފÑÑÑÑÑ Facebook"></div>
+            <div class="fld"><label>Display Name</label><input type="text" id="sfn" placeholder="ފީއަލި Facebook"></div>
             <div class="fld"><label>Handle</label><input type="text" id="sfh" placeholder="@feeali_mv" style="direction:ltr"></div>
           </div>
           <div class="fld" style="margin-bottom:13px"><label>URL <span class="rq">*</span></label><input type="url" id="sfu" placeholder="https://facebook.com/feeali" style="direction:ltr"></div>
@@ -596,14 +670,14 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           </div>
           <div class="card">
             <div class="ch">✏️ Site Name</div>
-            <div class="fld" style="margin-bottom:14px"><label>Name <span class="rq">*</span></label><input class="dv" type="text" id="snName" placeholder="ފÑÑÑÑÑÑÑ" oninput="prevSiteName()"></div>
+            <div class="fld" style="margin-bottom:14px"><label>Name <span class="rq">*</span></label><input class="dv" type="text" id="snName" placeholder="ފީއަލި" oninput="prevSiteName()"></div>
             <div class="g2" style="margin-bottom:14px">
               <div class="fld"><label>Color</label><div style="display:flex;align-items:center;gap:8px"><input type="color" id="snColor" value="#111827" oninput="prevSiteName()" style="width:44px;height:36px;padding:2px;border:1.5px solid var(--bdr);border-radius:var(--rs);cursor:pointer;background:#fff"><input type="text" id="snColorHex" value="#111827" oninput="syncColorHex()" placeholder="#111827" style="flex:1;direction:ltr"></div></div>
               <div class="fld"><label>Font Size</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="snSize" min="14" max="48" value="22" oninput="prevSiteName()" style="flex:1;cursor:pointer"><span id="snSizeLbl" style="font-size:12px;color:var(--g500);min-width:36px;text-align:right">22px</span></div></div>
             </div>
             <div style="background:var(--g50);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
               <div style="width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
-              <div id="snPreview" style="font-family:var(--dv);font-size:22px;color:#111827;line-height:1">ފÑÑÑÑÑÑÑ</div>
+              <div id="snPreview" style="font-family:var(--dv);font-size:22px;color:#111827;line-height:1">ފީއަލި</div>
             </div>
             <div style="display:flex;gap:8px"><button class="bsm bp" onclick="saveSiteName()">💾 Save</button><button class="bsm bg" onclick="resetSiteName()">Reset</button></div>
           </div>
@@ -623,20 +697,19 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
                 <div style="display:flex;align-items:center;gap:9px"><div style="width:32px;height:32px;background:var(--blu);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:14px">🔡</div><div><div style="font-size:13px;font-weight:600" id="snFontRName">—</div><div style="font-size:11px;color:var(--g400)" id="snFontRMeta">—</div></div></div>
                 <div style="display:flex;gap:7px"><button class="bsm bp" id="snFontUpBtn" onclick="uploadSNFont()">Upload & Apply</button><button class="bsm bg" onclick="cancelSNFont()">Cancel</button></div>
               </div>
-              <!-- Font sample using actual Dhivehi from the uploaded font -->
               <div id="snFontSamp" style="display:none;margin-top:10px;padding:14px 18px;background:var(--blu);border-radius:var(--rs);border:1px solid #C7D2FE;text-align:right">
                 <div style="font-size:11px;color:var(--g400);margin-bottom:6px;text-align:left;font-family:'Sora',sans-serif">Preview with your font:</div>
-                <div id="snFontSampTxt" style="font-family:var(--dv);font-size:28px;color:var(--blue);direction:rtl;line-height:1.4">ފÑÑÑÑÑÑÑ</div>
+                <div id="snFontSampTxt" style="font-family:var(--dv);font-size:28px;color:var(--blue);direction:rtl;line-height:1.4">ފީއަލި</div>
               </div>
             </div>
-            <div><p style="font-size:12px;color:var(--g400);line-height:1.8">Upload any display font for the site name. Stored separately from the Dhivehi body font.</p><div class="tip" style="margin-top:14px">💡 Try bold display fonts for a distinctive look.</div></div>
+            <div><p style="font-size:12px;color:var(--g400);line-height:1.8">Upload any display font for the site name.</p><div class="tip" style="margin-top:14px">💡 Try bold display fonts for a distinctive look.</div></div>
           </div>
         </div>
       </div>
 
       <!-- DHIVEHI FONT -->
       <div class="pg" id="pg-font">
-        <div class="ph"><div><h1>Dhivehi Font</h1><p>Upload MV Mag Round or any Dhivehi font — applies to all Dhivehi text sitewide</p></div></div>
+        <div class="ph"><div><h1>Dhivehi Font</h1><p>Upload MV Mag Round or any Dhivehi font — applies sitewide</p></div></div>
         <div class="sg">
           <div class="card">
             <div class="ch">Upload Font File</div>
@@ -651,7 +724,6 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
               <div style="display:flex;align-items:center;gap:9px"><div style="width:32px;height:32px;background:var(--blu);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:14px">🔤</div><div><div style="font-size:13px;font-weight:600" id="fpn">—</div><div style="font-size:11px;color:var(--g400)" id="fpm">—</div></div></div>
               <div style="display:flex;gap:7px"><button class="bsm bp" id="ufbtn" onclick="uploadFont()">Upload & Apply</button><button class="bsm bg" onclick="cancelFont()">Cancel</button></div>
             </div>
-            <!-- ── FONT SAMPLE: only shows after upload, uses the uploaded font ── -->
             <div id="fsamp" style="display:none;margin-top:12px;padding:16px;background:var(--blu);border-radius:var(--rs);text-align:right;border:1px solid #C7D2FE">
               <div style="font-size:11px;color:var(--g400);margin-bottom:10px;text-align:left;font-family:'Sora',sans-serif">Preview — your uploaded Dhivehi font:</div>
               <p style="font-size:24px;line-height:1.9;direction:rtl;color:var(--blue);font-family:var(--dv);margin-bottom:6px" id="fs1">ދިވެހި ހަބަރު ވެބްސައިޓް</p>
@@ -662,7 +734,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
           <div class="card">
             <div class="ch">How It Works</div>
             <div style="display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">1</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Upload font file</div><div style="font-size:12px;color:var(--g400)">Select MV Mag Round HBold .ttf or .otf from your computer</div></div></div>
+              <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">1</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Upload font file</div><div style="font-size:12px;color:var(--g400)">Select .ttf or .otf from your computer</div></div></div>
               <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">2</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Saved in Firebase</div><div style="font-size:12px;color:var(--g400)">Stored as base64 — no separate hosting needed</div></div></div>
               <div style="display:flex;gap:10px"><div style="width:26px;height:26px;background:var(--blu);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:11px;flex-shrink:0">3</div><div><div style="font-weight:600;font-size:13px;margin-bottom:2px">Auto-applies everywhere</div><div style="font-size:12px;color:var(--g400)">Article titles, headings, captions all use the uploaded font</div></div></div>
             </div>
@@ -715,6 +787,7 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
   </div>
 </div>
 
+<!-- DELETE MODAL -->
 <div class="mov" id="dmod">
   <div class="mb"><h3>Confirm Delete</h3><p id="dmsg">Delete this item?</p>
     <div class="ma"><button class="bsm bg" onclick="document.getElementById('dmod').classList.remove('on')">Cancel</button><button class="bsm bd" id="dbtn">Delete</button></div>
@@ -722,6 +795,9 @@ body{font-family:'Sora',sans-serif;background:var(--g50);color:var(--g900);min-h
 </div>
 <div id="tw"></div>
 
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
 <script type="module">
 import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import{getDatabase,ref,push,set,get,remove,onValue}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
@@ -731,6 +807,8 @@ const app=initializeApp(FB),db=getDatabase(app);
 
 let arts=[],vids=[],gals=[],socs=[],ccats={},albums={},fontFile=null,snFontFile=null,delPath=null,activeF=null;
 let currentUser=null,_inited=false,_unsubs=[];
+// Article images accumulator
+let _artImages=[];// [{url,caption}]
 
 const ADMIN_USER='admin',ADMIN_PASS='feeali123';
 const BASE={news:'ހަބަރު',sports:'ކުޅިވަރު',world:'ބޭރު ދުނިޔެ',politics:'ސިޔާސީ',economy:'އިޤްތިޞާދު',report:'ރިޕޯޓް',lifestyle:'ވައްޓަފާޅި'};
@@ -738,8 +816,6 @@ const CPFX={news:'cn',sports:'cs',world:'cw',politics:'cpo',economy:'ce',report:
 let CAT={...BASE};
 const SLBL={facebook:'Facebook',twitter:'X (Twitter)',instagram:'Instagram',youtube:'YouTube',tiktok:'TikTok',telegram:'Telegram'};
 const SICONS_EM={facebook:'🇫',twitter:'𝕏',instagram:'📷',youtube:'▶',tiktok:'🎵',telegram:'📨'};
-
-// Subcat type config
 const SUBCAT_ICONS={gallery:'📷',photos:'🖼️',iulaan:'📢',announcements:'📢',articles:'📰',news:'📰',others:'📋',other:'📋',videos:'🎬'};
 
 // ── AUTH ──
@@ -756,7 +832,7 @@ window.doLogin=async function(){
 };
 document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')window.doLogin();});
 document.getElementById('loginUser').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('pw').focus();});
-window.doLogout=function(){currentUser=null;sessionStorage.removeItem('fa_user');document.getElementById('aw').style.display='flex';document.getElementById('ap').style.display='none';document.getElementById('loginUser').value='';document.getElementById('pw').value='';_inited=false;_unsubs.forEach(u=>{try{u();}catch(e){}});_unsubs=[];};
+window.doLogout=function(){currentUser=null;sessionStorage.removeItem('fa_user');document.getElementById('aw').style.cssText='display:flex';document.getElementById('ap').style.display='none';document.getElementById('loginUser').value='';document.getElementById('pw').value='';_inited=false;_unsubs.forEach(u=>{try{u();}catch(e){}});_unsubs=[];};
 
 function showApp(){document.getElementById('aw').style.display='none';document.getElementById('ap').style.display='block';applyRoleUI();if(!_inited){_inited=true;init();}}
 function applyRoleUI(){
@@ -815,30 +891,240 @@ window.rTable=function(){
   tb.innerHTML='';
   list.forEach(a=>{
     const card=document.createElement('div');card.className='art-card';
-    card.innerHTML=`<div class="art-card-img">${a.imageUrl?'<img alt="">':'<div class="no-img">📰</div>'}<span class="status-dot ${a.published?'pub':'dft'}"></span></div><div class="art-card-body"><div><div class="art-card-top">${cpill(a.category)}<span class="spill ${a.published?'pub':'dft'}" style="font-size:10px"><span class="sdt"></span>${a.published?'Published':'Draft'}</span></div><div class="art-card-ttl" style="margin-top:6px">${e(a.title)}</div>${a.summary?'<div class="art-card-sum" style="margin-top:4px">'+e(a.summary)+'</div>':''}</div><div class="art-card-meta" style="margin-top:8px"><span class="art-card-date">🕐 ${fd(a.createdAt)}</span>${a.author?'<span class="art-card-date">✍️ '+e(a.author)+'</span>':''}</div></div><div class="art-card-actions"><button class="art-btn art-btn-edit" onclick="editArt('${a.id}')">✏️ Edit</button><button class="art-btn art-btn-tog ${a.published?'pub':''}" onclick="togglePub('${a.id}',${!a.published})">${a.published?'⬇ Unpublish':'⬆ Publish'}</button><button class="art-btn art-btn-del" onclick="cdel('articles/${a.id}','${e(a.title).replace(/'/g,"\\'")}')">🗑️ Delete</button></div>`;
+    const extraImgCount=(a.images&&a.images.length)||0;
+    const extraParaImgs=(a.paragraphs||[]).filter(p=>p.imageUrl).length;
+    card.innerHTML=`<div class="art-card-img">${a.imageUrl?'<img alt="">':'<div class="no-img">📰</div>'}<span class="status-dot ${a.published?'pub':'dft'}"></span></div>
+    <div class="art-card-body">
+      <div>
+        <div class="art-card-top">${cpill(a.category)}<span class="spill ${a.published?'pub':'dft'}" style="font-size:10px"><span class="sdt"></span>${a.published?'Published':'Draft'}</span>${extraImgCount?'<span style="font-size:10px;font-weight:600;color:var(--pur);background:var(--purl);padding:2px 8px;border-radius:10px">🖼️ '+extraImgCount+' imgs</span>':''}${extraParaImgs?'<span style="font-size:10px;font-weight:600;color:var(--amb);background:var(--ambl);padding:2px 8px;border-radius:10px">📝 '+extraParaImgs+' inline</span>':''}</div>
+        <div class="art-card-ttl" style="margin-top:6px">${e(a.title)}</div>${a.summary?'<div class="art-card-sum" style="margin-top:4px">'+e(a.summary)+'</div>':''}
+      </div>
+      <div class="art-card-meta" style="margin-top:8px"><span class="art-card-date">🕐 ${fd(a.createdAt)}</span>${a.author?'<span class="art-card-date">✍️ '+e(a.author)+'</span>':''}</div>
+    </div>
+    <div class="art-card-actions">
+      <button class="art-btn art-btn-edit" onclick="editArt('${a.id}')">✏️ Edit</button>
+      <button class="art-btn art-btn-tog ${a.published?'pub':''}" onclick="togglePub('${a.id}',${!a.published})">${a.published?'⬇ Unpublish':'⬆ Publish'}</button>
+      <button class="art-btn art-btn-del" onclick="cdel('articles/${a.id}','${e(a.title).replace(/'/g,"\\'")}')">🗑️ Delete</button>
+    </div>`;
     if(a.imageUrl){const imgEl=card.querySelector('.art-card-img img');if(imgEl)imgEl.src=a.imageUrl;}
     tb.appendChild(card);
   });
 };
 window.togglePub=async function(id,state){try{await set(ref(db,'articles/'+id+'/published'),state);toast(state?'Published ✅':'Moved to Draft','s');}catch(ex){toast('Error: '+ex.message,'e');}};
 
+// ══════════════════════════════
+// PARAGRAPH BUILDER
+// ══════════════════════════════
+let _paraCount=0;
+
+window.addParagraph=function(paraData){
+  _paraCount++;
+  const idx=_paraCount;
+  const list=document.getElementById('paraList');
+  const wrap=document.createElement('div');wrap.className='para-item';wrap.dataset.paraIdx=idx;
+
+  const text=paraData?.text||'';
+  const imgUrl=paraData?.imageUrl||'';
+  const imgCap=paraData?.imageCaption||'';
+  const imgPos=paraData?.imagePosition||'below';
+
+  wrap.innerHTML=`
+    <div class="para-item-header">
+      <span class="para-num">§ ${list.children.length+1}</span>
+      <div class="para-actions">
+        <button type="button" class="para-move" onclick="movePara(this,-1)" title="Move up">↑</button>
+        <button type="button" class="para-move" onclick="movePara(this,1)" title="Move down">↓</button>
+        <button type="button" class="para-del" onclick="removePara(this)">✕ Remove</button>
+      </div>
+    </div>
+    <div class="para-item-body">
+      <textarea class="para-ta dv" rows="3" placeholder="ހަބަރުގެ ތަފްސީލު...">${e(text)}</textarea>
+      <button type="button" class="para-img-toggle ${imgUrl?'has-img':''}" onclick="toggleParaImg(this)">
+        ${imgUrl?'🖼️ Image attached — click to edit':'📷 Add image to this paragraph'}
+      </button>
+      <div class="para-img-section ${imgUrl?'open':''}">
+        <div style="margin-bottom:8px">
+          <label style="font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:5px">Image Position</label>
+          <div style="display:flex;gap:6px">
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="radio" name="imgpos_${idx}" value="above" ${imgPos==='above'?'checked':''} style="cursor:pointer"> Above text</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="radio" name="imgpos_${idx}" value="below" ${imgPos!=='above'?'checked':''} style="cursor:pointer"> Below text</label>
+          </div>
+        </div>
+        <div class="tab-row" style="margin-bottom:10px">
+          <button type="button" class="tab-btn on" onclick="switchParaTab(this,'url')">🔗 URL</button>
+          <button type="button" class="tab-btn" onclick="switchParaTab(this,'upload')">📁 Upload</button>
+        </div>
+        <div class="para-url-pane">
+          <input type="url" class="para-img-url" placeholder="https://… image URL" value="${e(imgUrl)}"
+            style="width:100%;padding:8px 11px;border:1.5px solid var(--bdr);border-radius:var(--rs);font-size:13px;outline:none;direction:ltr;margin-bottom:6px"
+            onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--bdr)'"
+            oninput="previewParaImg(this)">
+        </div>
+        <div class="para-upload-pane" style="display:none">
+          <div class="upload-zone" style="padding:12px">
+            <input type="file" accept="image/*" onchange="handleParaImgUpload(event,this)">
+            <div class="uz-icon" style="font-size:20px;margin-bottom:3px">🖼️</div>
+            <div class="uz-title" style="font-size:12px">Click to upload paragraph image</div>
+            <div class="uz-sub">JPG PNG WebP · Max 4MB</div>
+          </div>
+          <div class="up-progress" style="margin-top:6px"><div class="up-bar" style="width:0%;height:100%;background:var(--blue);transition:width .3s"></div></div>
+          <div class="up-status" style="font-size:11px;color:var(--g500);margin-top:4px"></div>
+        </div>
+        <img class="para-img-prev ${imgUrl?'has':''}" src="${e(imgUrl)}" alt="">
+        <textarea class="para-img-caption dv" rows="2" placeholder="ފÑÑÑÑÑÑÑ (optional)...">${e(imgCap)}</textarea>
+        <button type="button" class="bsm bg bsm-sm" style="margin-top:6px" onclick="clearParaImg(this)">✕ Remove image</button>
+      </div>
+    </div>`;
+
+  wrap.querySelector('.para-ta').addEventListener('input',syncBody);
+  list.appendChild(wrap);
+  renumberParas();
+  wrap.querySelector('.para-ta').focus();
+  syncBody();
+};
+
+function renumberParas(){
+  document.querySelectorAll('.para-item').forEach(function(item,i){
+    var num=item.querySelector('.para-num');if(num)num.textContent='§ '+(i+1);
+  });
+}
+window.removePara=function(btn){btn.closest('.para-item').remove();renumberParas();syncBody();};
+window.movePara=function(btn,dir){
+  var item=btn.closest('.para-item');var list=item.parentElement;var items=Array.from(list.children);var idx=items.indexOf(item);var newIdx=idx+dir;
+  if(newIdx<0||newIdx>=items.length)return;
+  if(dir===-1)list.insertBefore(item,items[newIdx]);else list.insertBefore(items[newIdx],item);
+  renumberParas();syncBody();
+};
+window.toggleParaImg=function(btn){
+  var section=btn.nextElementSibling;section.classList.toggle('open');
+};
+window.switchParaTab=function(btn,tab){
+  var section=btn.closest('.para-img-section');var urlPane=section.querySelector('.para-url-pane');var uploadPane=section.querySelector('.para-upload-pane');var btns=btn.parentElement.querySelectorAll('.tab-btn');
+  btns.forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  urlPane.style.display=tab==='url'?'':'none';uploadPane.style.display=tab==='upload'?'':'none';
+};
+window.previewParaImg=function(input){
+  var section=input.closest('.para-img-section');var prev=section.querySelector('.para-img-prev');var toggle=section.closest('.para-item-body').querySelector('.para-img-toggle');
+  if(input.value.trim()){prev.src=input.value.trim();prev.classList.add('has');toggle.classList.add('has-img');toggle.textContent='🖼️ Image attached — click to edit';}
+  else{prev.src='';prev.classList.remove('has');toggle.classList.remove('has-img');toggle.textContent='📷 Add image to this paragraph';}
+};
+window.handleParaImgUpload=async function(event,input){
+  var file=event.target.files[0];if(!file)return;if(file.size>4*1024*1024){toast('Image too large (max 4MB)','e');return;}
+  var section=input.closest('.para-img-section');var prog=section.querySelector('.up-progress');var bar=section.querySelector('.up-bar');var stat=section.querySelector('.up-status');var urlInput=section.querySelector('.para-img-url');var prev=section.querySelector('.para-img-prev');var toggle=section.closest('.para-item-body').querySelector('.para-img-toggle');
+  if(prog){prog.classList.add('show');bar.style.width='40%';stat.classList.add('show');stat.textContent='Reading…';}
+  try{
+    const b64=await fileToB64(file);
+    if(urlInput)urlInput.value=b64;if(prev){prev.src=b64;prev.classList.add('has');}if(toggle){toggle.classList.add('has-img');toggle.textContent='🖼️ Image attached — click to edit';}
+    if(bar)bar.style.width='100%';if(stat)stat.textContent='✅ '+file.name;
+    setTimeout(()=>{if(prog)prog.classList.remove('show');if(stat)stat.classList.remove('show');},2500);
+  }catch(ex){toast('Failed to read image','e');}
+};
+window.clearParaImg=function(btn){
+  var section=btn.closest('.para-img-section');var urlInput=section.querySelector('.para-img-url');var prev=section.querySelector('.para-img-prev');var toggle=section.closest('.para-item-body').querySelector('.para-img-toggle');
+  if(urlInput)urlInput.value='';if(prev){prev.src='';prev.classList.remove('has');}section.classList.remove('open');toggle.classList.remove('has-img');toggle.textContent='📷 Add image to this paragraph';
+};
+function getParagraphsData(){
+  var items=document.querySelectorAll('.para-item');var result=[];
+  items.forEach(function(item){
+    var ta=item.querySelector('.para-ta');var text=(ta?ta.value:'').trim();if(!text)return;
+    var section=item.querySelector('.para-img-section');var imgUrl='';var imgCap='';var imgPos='below';
+    if(section){var urlInput=section.querySelector('.para-img-url');imgUrl=urlInput?urlInput.value.trim():'';var capInput=section.querySelector('.para-img-caption');imgCap=capInput?capInput.value.trim():'';var posRadios=section.querySelectorAll('input[type=radio]');posRadios.forEach(function(r){if(r.checked)imgPos=r.value;});}
+    result.push({text,imageUrl:imgUrl,imageCaption:imgCap,imagePosition:imgPos});
+  });
+  return result;
+}
+function syncBody(){
+  var paras=getParagraphsData();document.getElementById('fbod').value=paras.map(p=>p.text).join('\n\n');document.getElementById('fparaData').value=JSON.stringify(paras);
+}
+function loadParas(art){
+  clearParas();
+  // If art has paragraphs array, use it; fallback to plain body text
+  if(art.paragraphs&&art.paragraphs.length){art.paragraphs.forEach(function(p){addParagraph(p);});}
+  else if(art.body){var parts=(art.body||'').split('\n\n').filter(p=>p.trim());if(!parts.length){addParagraph();}else{parts.forEach(p=>addParagraph({text:p.trim()}));}}
+  else{addParagraph();}
+}
+function clearParas(){document.getElementById('paraList').innerHTML='';_paraCount=0;document.getElementById('fbod').value='';document.getElementById('fparaData').value='[]';}
+
+// ══════════════════════════════
+// ARTICLE IMAGES GALLERY
+// ══════════════════════════════
+function renderArtImgs(){
+  var grid=document.getElementById('artImgGrid');var count=document.getElementById('artImgCount');if(!grid)return;
+  count.textContent=_artImages.length+' image'+(Math.abs(_artImages.length)!==1?'s':'');
+  grid.innerHTML='';
+  _artImages.forEach(function(img,i){
+    var item=document.createElement('div');item.className='art-img-item';
+    item.innerHTML='<img src="'+e(img.url)+'" alt=""><div class="aii-num">'+(i+1)+'</div><div class="aii-ov"><button class="aii-del" onclick="removeArtImg('+i+')">✕</button></div>';
+    grid.appendChild(item);
+  });
+}
+window.removeArtImg=function(idx){_artImages.splice(idx,1);document.getElementById('fartImages').value=JSON.stringify(_artImages);renderArtImgs();};
+window.addArtImgFromUrl=function(){
+  var url=(document.getElementById('artImgUrl').value||'').trim();if(!url){toast('Enter an image URL','e');return;}
+  _artImages.push({url,caption:''});document.getElementById('artImgUrl').value='';document.getElementById('fartImages').value=JSON.stringify(_artImages);renderArtImgs();toast('Image added ✅','s');
+};
+window.handleArtImgsUpload=async function(event){
+  var files=Array.from(event.target.files);if(!files.length)return;var prog=document.getElementById('artImgProg');var bar=document.getElementById('artImgProgBar');var stat=document.getElementById('artImgStatus');
+  if(prog)prog.classList.add('show');var done=0;
+  for(var file of files){if(file.size>8*1024*1024){toast(file.name+' too large (max 8MB), skipped','e');done++;continue;}
+    try{var b64=await fileToB64(file);_artImages.push({url:b64,caption:''});done++;if(bar)bar.style.width=Math.round((done/files.length)*100)+'%';if(stat){stat.classList.add('show');stat.textContent='Uploading '+done+' / '+files.length+'…';}}
+    catch(ex){done++;}
+  }
+  document.getElementById('fartImages').value=JSON.stringify(_artImages);renderArtImgs();
+  if(stat){stat.textContent='✅ '+done+' image'+(done!==1?'s':'')+' added!';}setTimeout(()=>{if(prog)prog.classList.remove('show');if(stat)stat.classList.remove('show');},2500);
+};
+
+// ══════════════════════════════
+// SAVE / EDIT ARTICLE
+// ══════════════════════════════
 window.saveArt=async function(){
   const id=document.getElementById('eid').value;const title=document.getElementById('ft').value.trim();const cat=document.getElementById('fc').value;const sum=document.getElementById('fsum').value.trim();
   if(!title||!cat||!sum){toast('Fill Title, Category and Summary','e');return;}
   const btn=document.getElementById('savebtn');btn.innerHTML='<span class="spin"></span>';btn.disabled=true;
-  const data={title,category:cat,summary:sum,body:document.getElementById('fbod').value.trim(),imageUrl:document.getElementById('fimg').value.trim(),videoUrl:document.getElementById('fvid').value.trim(),author:document.getElementById('fau').value.trim(),sourceUrl:document.getElementById('fref').value.trim(),published:document.getElementById('fpub').checked,featured:document.getElementById('ffeat').checked,updatedAt:Date.now()};
+  // Collect paragraphs data
+  const paras=getParagraphsData();
+  const body=paras.map(p=>p.text).join('\n\n');
+  const imagesJson=document.getElementById('fartImages').value;
+  let images=[];try{images=JSON.parse(imagesJson||'[]');}catch(ex){}
+  const data={
+    title,category:cat,summary:sum,
+    body,
+    paragraphs:paras,// rich paragraphs with images
+    images,// article gallery images
+    imageUrl:document.getElementById('fimg').value.trim(),
+    videoUrl:document.getElementById('fvid').value.trim(),
+    author:document.getElementById('fau').value.trim(),
+    sourceUrl:document.getElementById('fref').value.trim(),
+    published:document.getElementById('fpub').checked,
+    featured:document.getElementById('ffeat').checked,
+    updatedAt:Date.now()
+  };
   try{if(id){const orig=arts.find(a=>a.id===id);await set(ref(db,'articles/'+id),{...data,createdAt:orig?.createdAt||Date.now()});toast('Updated ✅','s');}else{data.createdAt=Date.now();await push(ref(db,'articles'),data);toast('Saved ✅','s');}resetForm();showPg('arts',document.getElementById('n-arts'));}
   catch(ex){toast('Error: '+ex.message,'e');}finally{btn.innerHTML='💾 Save Article';btn.disabled=false;}
 };
-window.editArt=function(id){const a=arts.find(z=>z.id===id);if(!a)return;document.getElementById('eid').value=id;document.getElementById('ft').value=a.title||'';document.getElementById('fc').value=a.category||'';document.getElementById('fsum').value=a.summary||'';document.getElementById('fimg').value=a.imageUrl||'';document.getElementById('fvid').value=a.videoUrl||'';document.getElementById('fau').value=a.author||'';document.getElementById('fref').value=a.sourceUrl||'';document.getElementById('fpub').checked=!!a.published;document.getElementById('ffeat').checked=!!a.featured;loadParas(a.body||'');if(a.imageUrl){const b=document.getElementById('imgPrev');const i=document.getElementById('imgPrevImg');i.src=a.imageUrl;b.classList.add('has');}document.getElementById('etitle').textContent='Edit Article';showPg('add',null);};
-window.resetForm=function(){document.getElementById('eid').value='';['ft','fc','fsum','fbod','fimg','fvid','fau','fref'].forEach(id=>document.getElementById(id).value='');document.getElementById('fpub').checked=true;document.getElementById('ffeat').checked=false;document.getElementById('etitle').textContent='Add New Article';clearMedia('fimg','imgPrev','imgPrevImg');clearMedia('fvid','vidPrev','vidPrevVid');clearParas();};
+window.editArt=function(id){
+  const a=arts.find(z=>z.id===id);if(!a)return;
+  document.getElementById('eid').value=id;document.getElementById('ft').value=a.title||'';document.getElementById('fc').value=a.category||'';document.getElementById('fsum').value=a.summary||'';
+  document.getElementById('fimg').value=a.imageUrl||'';document.getElementById('fvid').value=a.videoUrl||'';document.getElementById('fau').value=a.author||'';document.getElementById('fref').value=a.sourceUrl||'';
+  document.getElementById('fpub').checked=!!a.published;document.getElementById('ffeat').checked=!!a.featured;
+  // Load paragraphs
+  loadParas(a);
+  // Load article gallery images
+  _artImages=a.images&&Array.isArray(a.images)?[...a.images]:[];document.getElementById('fartImages').value=JSON.stringify(_artImages);renderArtImgs();
+  if(a.imageUrl){const b=document.getElementById('imgPrev');const i=document.getElementById('imgPrevImg');i.src=a.imageUrl;b.classList.add('has');}
+  document.getElementById('etitle').textContent='Edit Article';showPg('add',null);
+};
+window.resetForm=function(){
+  document.getElementById('eid').value='';['ft','fc','fsum','fbod','fparaData','fimg','fvid','fau','fref'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fpub').checked=true;document.getElementById('ffeat').checked=false;document.getElementById('etitle').textContent='Add New Article';
+  clearMedia('fimg','imgPrev','imgPrevImg');clearMedia('fvid','vidPrev','vidPrevVid');
+  clearParas();addParagraph();
+  _artImages=[];document.getElementById('fartImages').value='[]';renderArtImgs();
+};
 
-function loadParas(body){clearParas();if(!body){addParagraph();return;}const parts=body.split('\n\n').filter(p=>p.trim());if(!parts.length){addParagraph();return;}parts.forEach(p=>addParagraph(p.trim()));}
-function clearParas(){document.getElementById('paraList').innerHTML='';document.getElementById('fbod').value='';}
-function syncBody(){const texts=Array.from(document.querySelectorAll('.para-ta')).map(t=>t.value.trim()).filter(Boolean);document.getElementById('fbod').value=texts.join('\n\n');}
-window.addParagraph=function(text){const list=document.getElementById('paraList');const div=document.createElement('div');div.className='para-item';div.innerHTML=`<textarea class="para-ta" rows="3" placeholder="ހަބަރުގެ ތަފްސީލު...">${e(text||'')}</textarea><button type="button" class="para-del" onclick="removePara(this)">✕</button>`;div.querySelector('textarea').addEventListener('input',syncBody);list.appendChild(div);div.querySelector('textarea').focus();syncBody();};
-window.removePara=function(btn){btn.closest('.para-item').remove();syncBody();};
-
+// ══════════════════════════════
+// FILE UTILITIES
+// ══════════════════════════════
 function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=ev=>res(ev.target.result);r.onerror=()=>rej(new Error('Read failed'));r.readAsDataURL(file);});}
 window.handleImgUpload=async function(event,prevBoxId,inputId,progId,statusId){const file=event.target.files[0];if(!file)return;if(file.size>4*1024*1024){toast('Image too large (max 4MB)','e');return;}showProg(progId,statusId,'Reading…',30);try{const b64=await fileToB64(file);showProg(progId,statusId,'Processing…',70);document.getElementById(inputId).value=b64;const box=document.getElementById(prevBoxId);const img=box.querySelector('img');if(img){img.src=b64;box.classList.add('has');}showProg(progId,statusId,'✅ '+file.name,100);setTimeout(()=>hideProg(progId,statusId),2500);}catch(ex){toast('Failed to read image','e');hideProg(progId,statusId);}};
 window.handleVidUpload=async function(event,prevBoxId,inputId,progId,statusId){const file=event.target.files[0];if(!file)return;if(file.size>50*1024*1024){toast('Video too large (max 50MB)','e');return;}showProg(progId,statusId,'Reading…',20);try{const b64=await fileToB64(file);showProg(progId,statusId,'Processing…',60);document.getElementById(inputId).value=b64;const box=document.getElementById(prevBoxId);const vid=box.querySelector('video');if(vid){vid.src=b64;box.classList.add('has');}showProg(progId,statusId,'✅ '+file.name,100);setTimeout(()=>hideProg(progId,statusId),2500);}catch(ex){toast('Failed to read video','e');hideProg(progId,statusId);}};
@@ -848,12 +1134,18 @@ window.prevImg=function(inputId,prevBoxId){const url=document.getElementById(inp
 window.clearMedia=function(inputId,prevBoxId,mediaElemId){document.getElementById(inputId).value='';const box=document.getElementById(prevBoxId);const el=document.getElementById(mediaElemId);box.classList.remove('has');if(el)el.src='';};
 window.switchTab=function(group,tab){document.querySelectorAll(`[id^="${group}-"]`).forEach(el=>el.classList.toggle('on',el.id===`${group}-${tab}`));const tabsEl=document.getElementById(`${group}Tabs`);if(tabsEl)tabsEl.querySelectorAll('.tab-btn').forEach((btn,i)=>btn.classList.toggle('on',i===(tab==='url'?0:1)));};
 
+// ══════════════════════════════
+// VIDEOS
+// ══════════════════════════════
 window.openVF=function(){document.getElementById('vfcard').style.display='block';['vft','vfu','vfd','vfth','vfid'].forEach(id=>document.getElementById(id).value='');document.getElementById('vfactive').checked=true;document.getElementById('vfopacity').value=100;document.getElementById('vfopacityLbl').textContent='100%';clearMedia('vfu','vvPrev','vvPrevVid');clearMedia('vfth','vthPrev','vthPrevImg');};
 window.closeVF=function(){document.getElementById('vfcard').style.display='none';};
 window.saveVid=async function(){const t=document.getElementById('vft').value.trim(),u=document.getElementById('vfu').value.trim();if(!t||!u){toast('Title and video source required','e');return;}const id=document.getElementById('vfid').value;const opacity=parseInt(document.getElementById('vfopacity').value)||100;const active=document.getElementById('vfactive').checked;const d={title:t,url:u,thumbnail:document.getElementById('vfth').value.trim(),description:document.getElementById('vfd').value.trim(),opacity,active,createdAt:id?(vids.find(v=>v.id===id)?.createdAt||Date.now()):Date.now()};try{if(id)await set(ref(db,'videos/'+id),d);else await push(ref(db,'videos'),d);toast('Video saved ✅','s');closeVF();}catch(ex){toast('Error: '+ex.message,'e');}};
-function rVids(){const el=document.getElementById('vidlist');if(!vids.length){el.innerHTML='<div style="text-align:center;padding:36px;color:var(--g300)">🎬 No videos yet.</div>';return;}el.innerHTML='';vids.forEach(v=>{const active=v.active!==false;const row=document.createElement('div');row.className='ir';if(!active)row.style.opacity='.5';const imgWrap=document.createElement('div');imgWrap.style.cssText='position:relative;flex-shrink:0';if(v.thumbnail){const img=document.createElement('img');img.className='rimg';img.style.opacity=(v.opacity||100)/100;imgWrap.appendChild(img);img.src=v.thumbnail;}else{imgWrap.innerHTML='<div class="rimgp">🎬</div>';}const info=document.createElement('div');info.className='ri';info.innerHTML='<div class="rttl">'+e(v.title)+'</div><div class="rsub" style="direction:ltr;font-size:11px">'+(v.url&&v.url.startsWith('data:')?'📁 Uploaded file':(v.url||'').substring(0,45)+'…')+'</div><div style="display:flex;gap:6px;margin-top:5px"><span style="font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;background:'+(active?'var(--grnl)':'var(--g100)')+';color:'+(active?'var(--grn)':'var(--g500)')+'">'+(active?'✅ Active':'⏸ Hidden')+'</span></div>';const acts=document.createElement('div');acts.className='ra2';acts.innerHTML='<button class="bico" onclick="editVid(\''+v.id+'\')">✏️</button><button class="bico dl" onclick="cdel(\'videos/'+v.id+'\',\''+e(v.title)+'\')" >🗑️</button>';row.appendChild(imgWrap);row.appendChild(info);row.appendChild(acts);el.appendChild(row);});}
+function rVids(){const el=document.getElementById('vidlist');if(!vids.length){el.innerHTML='<div style="text-align:center;padding:36px;color:var(--g300)">🎬 No videos yet.</div>';return;}el.innerHTML='';vids.forEach(v=>{const active=v.active!==false;const row=document.createElement('div');row.className='ir';if(!active)row.style.opacity='.5';const imgWrap=document.createElement('div');imgWrap.style.cssText='position:relative;flex-shrink:0';if(v.thumbnail){const img=document.createElement('img');img.className='rimg';img.style.opacity=(v.opacity||100)/100;imgWrap.appendChild(img);img.src=v.thumbnail;}else{imgWrap.innerHTML='<div class="rimgp">🎬</div>';}const info=document.createElement('div');info.className='ri';info.innerHTML='<div class="rttl">'+e(v.title)+'</div><div class="rsub" style="direction:ltr;font-size:11px">'+(v.url&&v.url.startsWith('data:')?'📁 Uploaded file':(v.url||'').substring(0,45)+'…')+'</div><div style="display:flex;gap:6px;margin-top:5px"><span style="font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;background:'+(active?'var(--grnl)':'var(--g100)')+';color:'+(active?'var(--grn)':'var(--g500)')+'">'+(active?'✅ Active':'⏸ Hidden')+'</span></div>';const acts=document.createElement('div');acts.className='ra2';acts.innerHTML='<button class="bico" onclick="editVid(\''+v.id+'\')">✏️</button><button class="bico dl" onclick="cdel(\'videos/'+v.id+'\',\''+e(v.title)+'\')">🗑️</button>';row.appendChild(imgWrap);row.appendChild(info);row.appendChild(acts);el.appendChild(row);});}
 window.editVid=function(id){const v=vids.find(z=>z.id===id);if(!v)return;document.getElementById('vfcard').style.display='block';document.getElementById('vfid').value=id;document.getElementById('vft').value=v.title||'';document.getElementById('vfd').value=v.description||'';document.getElementById('vfu').value=v.url||'';document.getElementById('vfth').value=v.thumbnail||'';document.getElementById('vfactive').checked=v.active!==false;const op=v.opacity||100;document.getElementById('vfopacity').value=op;document.getElementById('vfopacityLbl').textContent=op+'%';if(v.thumbnail){const b=document.getElementById('vthPrev');const i=document.getElementById('vthPrevImg');if(i)i.src=v.thumbnail;if(b)b.classList.add('has');}document.getElementById('vfcard').scrollIntoView({behavior:'smooth'});};
 
+// ══════════════════════════════
+// GALLERY
+// ══════════════════════════════
 window.showGalTab=function(tab){document.getElementById('gal-tab-albums').style.display=tab==='albums'?'':'none';document.getElementById('gal-tab-photos').style.display=tab==='photos'?'':'none';document.getElementById('gtab-albums').style.cssText=tab==='albums'?'background:var(--blue);color:#fff;border-color:var(--blue)':'';document.getElementById('gtab-photos').style.cssText=tab==='photos'?'background:var(--blue);color:#fff;border-color:var(--blue)':'';};
 function rAlbums(){const el=document.getElementById('albumlist');if(!el)return;const list=Object.values(albums);if(!list.length){el.innerHTML='<div style="color:var(--g300);font-size:13px;padding:16px 0">No albums yet. Create one above ↑</div>';return;}el.innerHTML=list.map(a=>{const count=gals.filter(g=>g.album===a.id||g.category===a.name).length;const catInfo=a.categoryKey&&ccats[a.categoryKey]?ccats[a.categoryKey]:null;return`<div style="background:var(--g50);border:1px solid var(--bdr);border-radius:10px;padding:14px;cursor:pointer;transition:.18s;position:relative" onclick="openAlbumFilter('${a.id}')"><div style="font-size:22px;margin-bottom:6px">📁</div><div style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g900);margin-bottom:4px;direction:rtl">${e(a.name)}</div>${a.description?`<div style="font-family:var(--dv);font-size:12px;color:var(--g500);margin-bottom:4px;direction:rtl">${e(a.description)}</div>`:''} ${catInfo?`<div style="font-size:10px;font-weight:600;color:var(--blue);background:var(--blu);padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:4px">${e(catInfo.name)}</div>`:''}<div style="font-size:11px;color:var(--g400)">${count} photos</div><button onclick="event.stopPropagation();cdel('settings/albums/${a.id}','${e(a.name)}')" style="position:absolute;top:8px;left:8px;background:var(--red);color:#fff;border:none;border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer">🗑️</button></div>`;}).join('');}
 function populateAlbumSelects(){const list=Object.values(albums);const opts='<option value="">— Select Album —</option>'+list.map(a=>`<option value="${a.id}">${e(a.name)}</option>`).join('');['gfalbum','bulkAlbum'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=opts;});const fd=document.getElementById('filterAlbum');if(fd)fd.innerHTML='<option value="">All Albums</option>'+list.map(a=>`<option value="${a.id}">${e(a.name)}</option>`).join('');}
@@ -867,155 +1159,84 @@ window.clearGalForm=function(){document.getElementById('gfu').value='';document.
 window.handleBulkUpload=async function(event){const albumId=document.getElementById('bulkAlbum').value;if(!albumId){toast('Select an album first','e');return;}const albumName=albums[albumId]?albums[albumId].name:'';const files=Array.from(event.target.files);if(!files.length)return;const prog=document.getElementById('bulkProgress');let done=0;prog.innerHTML=`<div style="font-size:13px;color:var(--g500)">Uploading 0 / ${files.length}…</div><div style="background:var(--g100);border-radius:6px;height:6px;margin-top:6px"><div id="bulkBar" style="height:100%;background:var(--blue);transition:width .3s;width:0%;border-radius:6px"></div></div>`;for(const file of files){if(file.size>15*1024*1024){toast(`${file.name} too large, skipped`,'e');done++;continue;}try{const b64=await fileToB64(file);await push(ref(db,'gallery'),{imageUrl:b64,caption:'',album:albumId,category:albumName,createdAt:Date.now()});done++;const pct=Math.round((done/files.length)*100);prog.querySelector('div').textContent=`Uploading ${done} / ${files.length}…`;const bar=document.getElementById('bulkBar');if(bar)bar.style.width=pct+'%';}catch(ex){done++;}}prog.innerHTML=`<div style="font-size:13px;color:var(--grn);margin-top:8px">✅ ${done} photos uploaded!</div>`;setTimeout(()=>prog.innerHTML='',3000);window._reloadGals&&window._reloadGals();};
 function rGal(){const g=document.getElementById('galadmin');if(!g)return;const filterVal=document.getElementById('filterAlbum')?.value||'';const list=filterVal?gals.filter(img=>img.album===filterVal):gals;if(!list.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--g300)">🖼️ No photos yet.</div>';return;}const grouped={};list.forEach(img=>{const key=img.album||'__none__';if(!grouped[key])grouped[key]=[];grouped[key].push(img);});g.innerHTML='';Object.keys(grouped).forEach(albumId=>{const photos=grouped[albumId];const albumName=albums[albumId]?albums[albumId].name:(photos[0]&&photos[0].category?photos[0].category:'No Album');const hdr=document.createElement('div');hdr.style.cssText='grid-column:1/-1;display:flex;align-items:center;gap:8px;margin:10px 0 4px;padding:8px 0;border-bottom:1px solid var(--bdr)';hdr.innerHTML='<span style="font-size:18px">📁</span><span style="font-family:var(--dv);font-size:15px;font-weight:700;color:var(--g900)">'+e(albumName)+'</span><span style="font-size:11px;color:var(--g400);background:var(--g100);padding:2px 8px;border-radius:10px">'+photos.length+' photos</span>';g.appendChild(hdr);photos.forEach(img=>{const card=document.createElement('div');card.className='gai';card.innerHTML='<img alt=""><div class="gai-ov"><button class="bico dl" onclick="cdel(\'gallery/'+img.id+'\',\'photo\')" style="background:rgba(255,255,255,.9)">🗑️</button></div><div class="gai-cap">'+e(img.caption||albumName||'')+'</div>';const imgEl=card.querySelector('img');if(imgEl)imgEl.src=img.imageUrl||'';g.appendChild(card);});});}
 
-// ════════════════════════════════════════
-// ── CATEGORIES — subcategory preview tags ──
-// ════════════════════════════════════════
+// ══════════════════════════════
+// CATEGORIES
+// ══════════════════════════════
 window.saveCat=async function(){
-  const name=document.getElementById('cfn').value.trim();
-  const slug=document.getElementById('cfs').value.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
-  const desc=document.getElementById('cfd').value.trim();
-  const icon=document.getElementById('cfi').value.trim()||'📂';
-  if(!name||!slug){toast('Name and slug required','e');return;}
-  if(BASE[slug]){toast('This slug is a built-in category','e');return;}
+  const name=document.getElementById('cfn').value.trim();const slug=document.getElementById('cfs').value.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');const desc=document.getElementById('cfd').value.trim();const icon=document.getElementById('cfi').value.trim()||'📂';
+  if(!name||!slug){toast('Name and slug required','e');return;}if(BASE[slug]){toast('This slug is a built-in category','e');return;}
   try{await push(ref(db,'settings/categories'),{name,slug,description:desc,icon,subcategories:{},createdAt:Date.now()});toast('Category added ✅','s');document.getElementById('cfn').value='';document.getElementById('cfs').value='';document.getElementById('cfd').value='';document.getElementById('cfi').value='';}
   catch(ex){toast('Error: '+ex.message,'e');}
 };
-
 function rCats(){
-  const container=document.getElementById('custcats');
-  const ents=Object.entries(ccats);
+  const container=document.getElementById('custcats');const ents=Object.entries(ccats);
   if(!ents.length){container.innerHTML='<div style="color:var(--g300);font-size:13px;padding:24px;text-align:center">No custom categories yet. Add one above ↑</div>';return;}
   container.innerHTML='';
   ents.forEach(([key,cat])=>{
-    const subcats=cat.subcategories?Object.entries(cat.subcategories):[];
-    const card=document.createElement('div');card.className='cat-card';
-
-    // ── Header ──
+    const subcats=cat.subcategories?Object.entries(cat.subcategories):[];const card=document.createElement('div');card.className='cat-card';
     const hd=document.createElement('div');hd.className='cat-card-hd';
-    hd.innerHTML=`<div class="cat-card-icon">${cat.icon||'📂'}</div>
-      <div class="cat-card-info">
-        <div class="cat-card-name">${e(cat.name)}</div>
-        <div class="cat-card-slug">/${cat.slug}</div>
-        ${cat.description?`<div class="cat-card-desc">${e(cat.description)}</div>`:''}
-      </div>
-      <div class="cat-card-actions">
-        <button class="bsm bg bsm-sm" onclick="cdel('settings/categories/${key}','${e(cat.name).replace(/'/g,"\\'")}')">🗑️ Delete</button>
-      </div>`;
+    hd.innerHTML=`<div class="cat-card-icon">${cat.icon||'📂'}</div><div class="cat-card-info"><div class="cat-card-name">${e(cat.name)}</div><div class="cat-card-slug">/${cat.slug}</div>${cat.description?`<div class="cat-card-desc">${e(cat.description)}</div>`:''}</div><div class="cat-card-actions"><button class="bsm bg bsm-sm" onclick="cdel('settings/categories/${key}','${e(cat.name).replace(/'/g,"\\'")}')">🗑️ Delete</button></div>`;
     card.appendChild(hd);
-
-    // ── Body ──
     const body=document.createElement('div');body.className='cat-card-body';
-
-    // ── Subcategory preview tags ──
     const preview=document.createElement('div');preview.className='subcat-preview';
-
-    if(!subcats.length){
-      const hint=document.createElement('div');hint.className='no-subcats-hint';hint.textContent='No subcategories yet — add Gallery, Iulaan, Others below ↓';
-      preview.appendChild(hint);
-    } else {
-      subcats.forEach(([sk,sc])=>{
-        const type=(sc.type||'articles').toLowerCase();
-        const ico=SUBCAT_ICONS[type]||SUBCAT_ICONS[(sc.slug||'').toLowerCase()]||'📄';
-        const tag=document.createElement('div');
-        tag.className='subcat-preview-tag type-'+type;
-        tag.innerHTML=`<span class="tag-ico">${ico}</span>
-          <span style="font-family:var(--dv);direction:rtl">${e(sc.name||sc.slug||sk)}</span>
-          <span class="tag-type">${type}</span>
-          <button class="tag-del" onclick="removeSubcat('${key}','${sk}')" title="Remove">✕</button>`;
-        preview.appendChild(tag);
-      });
-    }
+    if(!subcats.length){const hint=document.createElement('div');hint.className='no-subcats-hint';hint.textContent='No subcategories yet — add Gallery, Iulaan, Others below ↓';preview.appendChild(hint);}
+    else{subcats.forEach(([sk,sc])=>{const type=(sc.type||'articles').toLowerCase();const ico=SUBCAT_ICONS[type]||SUBCAT_ICONS[(sc.slug||'').toLowerCase()]||'📄';const tag=document.createElement('div');tag.className='subcat-preview-tag type-'+type;tag.innerHTML=`<span class="tag-ico">${ico}</span><span style="font-family:var(--dv);direction:rtl">${e(sc.name||sc.slug||sk)}</span><span class="tag-type">${type}</span><button class="tag-del" onclick="removeSubcat('${key}','${sk}')" title="Remove">✕</button>`;preview.appendChild(tag);});}
     body.appendChild(preview);
-
-    // ── Add subcat form ──
     const addWrap=document.createElement('div');addWrap.className='add-subcat-wrap';
-    addWrap.innerHTML=`<span class="add-subcat-lbl">➕ Add Subcategory</span>
-      <div class="add-subcat-row">
-        <div class="fld-sm">
-          <label>Name (Dhivehi)</label>
-          <input class="dv" type="text" id="scn_${key}" placeholder="ގÑÑÑÑÑÑÑ · ÑÑÑÑÑÑàÑÑÑ...">
-        </div>
-        <div class="fld-sm">
-          <label>Type</label>
-          <select id="sct_${key}">
-            <option value="gallery">📷 Gallery</option>
-            <option value="articles">📰 Articles</option>
-            <option value="iulaan">📢 Iulaan</option>
-            <option value="announcements">📢 Announcements</option>
-            <option value="videos">🎬 Videos</option>
-            <option value="others">📋 Others</option>
-          </select>
-        </div>
-        <button class="bsm bp bsm-sm" onclick="addSubcat('${key}')">+ Add</button>
-      </div>`;
-    body.appendChild(addWrap);
-    card.appendChild(body);
-    container.appendChild(card);
+    addWrap.innerHTML=`<span class="add-subcat-lbl">➕ Add Subcategory</span><div class="add-subcat-row"><div class="fld-sm"><label>Name (Dhivehi)</label><input class="dv" type="text" id="scn_${key}" placeholder="ގÑÑÑÑÑÑÑ..."></div><div class="fld-sm"><label>Type</label><select id="sct_${key}"><option value="gallery">📷 Gallery</option><option value="articles">📰 Articles</option><option value="iulaan">📢 Iulaan</option><option value="announcements">📢 Announcements</option><option value="videos">🎬 Videos</option><option value="others">📋 Others</option></select></div><button class="bsm bp bsm-sm" onclick="addSubcat('${key}')">+ Add</button></div>`;
+    body.appendChild(addWrap);card.appendChild(body);container.appendChild(card);
   });
 }
-
-window.addSubcat=async function(catKey){
-  const nameEl=document.getElementById('scn_'+catKey);const typeEl=document.getElementById('sct_'+catKey);
-  if(!nameEl||!typeEl)return;
-  const name=nameEl.value.trim();const type=typeEl.value;
-  if(!name){toast('Enter subcategory name','e');nameEl.style.borderColor='var(--red)';setTimeout(()=>nameEl.style.borderColor='',1500);return;}
-  const slug=type+'-'+Date.now().toString().slice(-4);
-  try{await set(ref(db,'settings/categories/'+catKey+'/subcategories/'+slug),{name,type,slug,createdAt:Date.now()});toast('Subcategory added ✅','s');nameEl.value='';}
-  catch(ex){toast('Error: '+ex.message,'e');}
-};
+window.addSubcat=async function(catKey){const nameEl=document.getElementById('scn_'+catKey);const typeEl=document.getElementById('sct_'+catKey);if(!nameEl||!typeEl)return;const name=nameEl.value.trim();const type=typeEl.value;if(!name){toast('Enter subcategory name','e');nameEl.style.borderColor='var(--red)';setTimeout(()=>nameEl.style.borderColor='',1500);return;}const slug=type+'-'+Date.now().toString().slice(-4);try{await set(ref(db,'settings/categories/'+catKey+'/subcategories/'+slug),{name,type,slug,createdAt:Date.now()});toast('Subcategory added ✅','s');nameEl.value='';}catch(ex){toast('Error: '+ex.message,'e');}};
 window.removeSubcat=async function(catKey,subKey){try{await remove(ref(db,'settings/categories/'+catKey+'/subcategories/'+subKey));toast('Removed','s');}catch(ex){toast('Error: '+ex.message,'e');}};
-
 function updCatSel(){const sel=document.getElementById('fc');if(!sel)return;const ex=Array.from(sel.options).map(o=>o.value);Object.values(ccats).forEach(c=>{if(!ex.includes(c.slug)){const o=document.createElement('option');o.value=c.slug;o.textContent=c.name;sel.appendChild(o);}});}
 
+// ══════════════════════════════
+// SOCIAL
+// ══════════════════════════════
 window.saveSoc=async function(){const pf=document.getElementById('sfp').value,u=document.getElementById('sfu').value.trim();if(!pf||!u){toast('Platform and URL required','e');return;}const id=document.getElementById('sfid').value;const d={platform:pf,name:document.getElementById('sfn').value.trim()||SLBL[pf]||pf,handle:document.getElementById('sfh').value.trim(),url:u,createdAt:Date.now()};try{if(id)await set(ref(db,'settings/social/'+id),d);else await push(ref(db,'settings/social'),d);toast('Saved ✅','s');['sfp','sfn','sfh','sfu','sfid'].forEach(i=>document.getElementById(i).value='');}catch(ex){toast('Error: '+ex.message,'e');}};
 function rSoc(){const el=document.getElementById('soclist');if(!socs.length){el.innerHTML='<div style="text-align:center;padding:36px;color:var(--g300)">📱 No social links yet.</div>';return;}el.innerHTML=socs.map(s=>`<div class="ir"><div class="rimgp">${SICONS_EM[(s.platform||'').toLowerCase()]||'🔗'}</div><div class="ri"><div class="rttl" style="font-family:'Sora',sans-serif;direction:ltr">${e(s.name||s.platform)}</div><div class="rsub"><a href="${e(s.url)}" target="_blank" style="color:var(--blue);direction:ltr">${e((s.url||'').substring(0,40))}…</a></div></div><div class="ra2"><button class="bico dl" onclick="cdel('settings/social/${s.id}','${e(s.platform)}')">🗑️</button></div></div>`).join('');}
 
+// ══════════════════════════════
+// INTRO VIDEO / LOGO / SETTINGS
+// ══════════════════════════════
 function loadIV(){get(ref(db,'settings/introVideo')).then(s=>{if(!s.exists()){document.getElementById('ivbox').textContent='No intro video set';return;}const v=s.val();const u=typeof v==='string'?v:(v.url||'');document.getElementById('ivbox').innerHTML=u.startsWith('data:')?'<span style="color:var(--grn)">✅</span> Uploaded file':'<span style="color:var(--grn)">✅</span> <a href="'+e(u)+'" target="_blank" style="color:var(--blue);direction:ltr">'+e(u.substring(0,50))+'…</a>';if(!u.startsWith('data:'))document.getElementById('ivu').value=u;document.getElementById('ivd').value=v.duration||5;if(u.startsWith('data:')){const box=document.getElementById('ivPrev');const vid=box.querySelector('video');vid.src=u;box.classList.add('has');}}).catch(()=>{});}
 window.saveIV=async function(){const u=document.getElementById('ivu').value.trim();if(!u){toast('Enter or upload a video','e');return;}const dur=parseInt(document.getElementById('ivd').value)||5;try{await set(ref(db,'settings/introVideo'),{url:u,duration:dur,updatedAt:Date.now()});toast('Saved ✅','s');loadIV();}catch(ex){toast('Error: '+ex.message,'e');}};
 window.removeIV=async function(){try{await remove(ref(db,'settings/introVideo'));toast('Removed','s');document.getElementById('ivu').value='';clearMedia('ivu','ivPrev','ivPrevVid');document.getElementById('ivbox').textContent='No intro video set';}catch(ex){toast('Error: '+ex.message,'e');}};
-
 function loadLogo(){get(ref(db,'settings/logo')).then(s=>{if(!s.exists())return;const logo=s.val();const src=typeof logo==='string'?logo:(logo.data||logo.url||'');if(src)applyLogo(src);});}
 function applyLogo(src){const tbImg=document.getElementById('tbLogo');const tbTxt=document.getElementById('tbLogoText');if(tbImg){tbImg.src=src;tbImg.style.display='block';}if(tbTxt)tbTxt.style.display='none';const authImg=document.getElementById('authLogo');const authTxt=document.getElementById('authLogoText');if(authImg){authImg.src=src;authImg.style.display='block';}if(authTxt)authTxt.style.display='none';const prev=document.getElementById('logoPreview');const prevImg=document.getElementById('logoPrevImg');if(prevImg)prevImg.src=src;if(prev)prev.classList.add('has');}
 window.prevLogoURL=function(){const u=document.getElementById('logu').value.trim();if(u)applyLogo(u);};
 window.handleLogoUpload=async function(event){const file=event.target.files[0];if(!file)return;if(file.size>2*1024*1024){toast('Logo too large (max 2MB)','e');return;}showProg('logoProg','logoStatus','Reading…',50);try{const b64=await fileToB64(file);document.getElementById('logu').value=b64;applyLogo(b64);showProg('logoProg','logoStatus','Done',100);setTimeout(()=>hideProg('logoProg','logoStatus'),2500);}catch(ex){toast('Failed to read logo','e');hideProg('logoProg','logoStatus');}};
 window.saveLogo=async function(){const src=document.getElementById('logu').value.trim();if(!src){toast('Upload or enter logo URL first','e');return;}try{await set(ref(db,'settings/logo'),{data:src,updatedAt:Date.now()});applyLogo(src);toast('Logo saved ✅','s');}catch(ex){toast('Error: '+ex.message,'e');}};
 window.removeLogo=async function(){try{await remove(ref(db,'settings/logo'));const tbImg=document.getElementById('tbLogo');const tbTxt=document.getElementById('tbLogoText');if(tbImg)tbImg.style.display='none';if(tbTxt)tbTxt.style.display='block';const authImg=document.getElementById('authLogo');const authTxt=document.getElementById('authLogoText');if(authImg)authImg.style.display='none';if(authTxt)authTxt.style.display='block';const prev=document.getElementById('logoPreview');const prevImg=document.getElementById('logoPrevImg');if(prev)prev.classList.remove('has');if(prevImg)prevImg.src='';document.getElementById('logu').value='';toast('Logo removed','s');}catch(ex){toast('Error: '+ex.message,'e');}};
-
 function loadSiteUrl(){get(ref(db,'settings/siteUrl')).then(s=>{if(!s.exists())return;const url=s.val();if(url)document.getElementById('siteUrlInput').value=url;}).catch(()=>{});}
 window.saveSiteUrl=async function(){const url=document.getElementById('siteUrlInput').value.trim().replace(/\/+$/,'');if(!url||!url.startsWith('http')){toast('Enter a valid URL','e');return;}try{await set(ref(db,'settings/siteUrl'),url);const st=document.getElementById('siteUrlStatus');st.style.display='inline';setTimeout(()=>st.style.display='none',2500);toast('Site URL saved ✅','s');}catch(ex){toast('Error: '+ex.message,'e');}};
-
 function loadSiteName(){get(ref(db,'settings/siteName')).then(s=>{if(!s.exists())return;const v=s.val();if(v.name)document.getElementById('snName').value=v.name;if(v.color){document.getElementById('snColor').value=v.color;document.getElementById('snColorHex').value=v.color;}if(v.size){document.getElementById('snSize').value=v.size;document.getElementById('snSizeLbl').textContent=v.size+'px';}prevSiteName();});}
 window.prevSiteName=function(){const name=document.getElementById('snName')?.value||'ފÑÑÑÑÑÑÑ';const color=document.getElementById('snColor')?.value||'#111827';const size=parseInt(document.getElementById('snSize')?.value||22);if(document.getElementById('snColorHex'))document.getElementById('snColorHex').value=color;if(document.getElementById('snSizeLbl'))document.getElementById('snSizeLbl').textContent=size+'px';const prev=document.getElementById('snPreview');if(prev){prev.textContent=name;prev.style.color=color;prev.style.fontSize=size+'px';}};
 window.syncColorHex=function(){const hex=document.getElementById('snColorHex').value.trim();if(/^#[0-9a-fA-F]{6}$/.test(hex)){document.getElementById('snColor').value=hex;prevSiteName();}};
 window.saveSiteName=async function(){const name=document.getElementById('snName').value.trim();const color=document.getElementById('snColor').value;const size=parseInt(document.getElementById('snSize').value);if(!name){toast('Enter a site name','e');return;}try{await set(ref(db,'settings/siteName'),{name,color,size,updatedAt:Date.now()});toast('Site name saved ✅','s');}catch(ex){toast('Error: '+ex.message,'e');}};
 window.resetSiteName=async function(){try{await remove(ref(db,'settings/siteName'));['snName','snColorHex'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=id==='snName'?'ފÑÑÑÑÑÑÑ':'#111827';});document.getElementById('snColor').value='#111827';document.getElementById('snSize').value=22;document.getElementById('snSizeLbl').textContent='22px';prevSiteName();toast('Reset','s');}catch(ex){toast('Error: '+ex.message,'e');}};
-
-function loadNameFont(){get(ref(db,'settings/nameFont')).then(s=>{if(!s.exists())return;const f=s.val();applyNameFont(f.data);document.getElementById('snFontBanner').style.display='flex';document.getElementById('snFontName').textContent=f.name;document.getElementById('snFontSize').textContent=fbytes(f.size||0);// Show sample only with uploaded font
-const samp=document.getElementById('snFontSamp');const sampTxt=document.getElementById('snFontSampTxt');if(samp)samp.style.display='block';if(sampTxt){const nm=document.getElementById('snName');sampTxt.textContent=(nm&&nm.value)||'ފÑÑÑÑÑÑÑ';sampTxt.style.fontFamily="'SiteNameFont',var(--dv)";}});}
+function loadNameFont(){get(ref(db,'settings/nameFont')).then(s=>{if(!s.exists())return;const f=s.val();applyNameFont(f.data);document.getElementById('snFontBanner').style.display='flex';document.getElementById('snFontName').textContent=f.name;document.getElementById('snFontSize').textContent=fbytes(f.size||0);const samp=document.getElementById('snFontSamp');const sampTxt=document.getElementById('snFontSampTxt');if(samp)samp.style.display='block';if(sampTxt){const nm=document.getElementById('snName');sampTxt.textContent=(nm&&nm.value)||'ފÑÑÑÑÑÑÑ';sampTxt.style.fontFamily="'SiteNameFont',var(--dv)";}});}
 function applyNameFont(b64){let el=document.getElementById('_snf');if(!el){el=document.createElement('style');el.id='_snf';document.head.appendChild(el);}el.textContent=`@font-face{font-family:'SiteNameFont';src:url('${b64}');font-display:swap;}`;}
 window.onDO=ev=>{ev.preventDefault();document.getElementById('fdrop')?.classList.add('drag');document.getElementById('snFontDrop')?.classList.add('drag');};
 window.onDL=()=>{document.getElementById('fdrop')?.classList.remove('drag');document.getElementById('snFontDrop')?.classList.remove('drag');};
 window.onDD=ev=>{ev.preventDefault();document.getElementById('fdrop')?.classList.remove('drag');hFont(ev.dataTransfer.files[0]);};
 window.onDD2=ev=>{ev.preventDefault();document.getElementById('snFontDrop')?.classList.remove('drag');hSNFont(ev.dataTransfer.files[0]);};
 window.onSNFontSelect=ev=>hSNFont(ev.target.files[0]);
-function hSNFont(f){if(!f)return;const ok=['.ttf','.otf','.woff','.woff2'];if(!ok.some(ext=>f.name.toLowerCase().endsWith(ext))){toast('Use .ttf .otf .woff .woff2','e');return;}snFontFile=f;document.getElementById('snFontRName').textContent=f.name;document.getElementById('snFontRMeta').textContent=fbytes(f.size);document.getElementById('snFontRow').style.display='flex';// Preview with the new font before uploading
-const r=new FileReader();r.onload=ev2=>{let el=document.getElementById('_snfp');if(!el){el=document.createElement('style');el.id='_snfp';document.head.appendChild(el);}el.textContent=`@font-face{font-family:'SNFPrev';src:url('${ev2.target.result}');font-display:swap;}`;const samp=document.getElementById('snFontSamp');const sampTxt=document.getElementById('snFontSampTxt');if(samp)samp.style.display='block';if(sampTxt){const nm=document.getElementById('snName');sampTxt.textContent=(nm&&nm.value)||'ފÑÑÑÑÑÑÑ';sampTxt.style.fontFamily="'SNFPrev',var(--dv)";}};r.readAsDataURL(f);}
+function hSNFont(f){if(!f)return;const ok=['.ttf','.otf','.woff','.woff2'];if(!ok.some(ext=>f.name.toLowerCase().endsWith(ext))){toast('Use .ttf .otf .woff .woff2','e');return;}snFontFile=f;document.getElementById('snFontRName').textContent=f.name;document.getElementById('snFontRMeta').textContent=fbytes(f.size);document.getElementById('snFontRow').style.display='flex';const r=new FileReader();r.onload=ev2=>{let el=document.getElementById('_snfp');if(!el){el=document.createElement('style');el.id='_snfp';document.head.appendChild(el);}el.textContent=`@font-face{font-family:'SNFPrev';src:url('${ev2.target.result}');font-display:swap;}`;const samp=document.getElementById('snFontSamp');const sampTxt=document.getElementById('snFontSampTxt');if(samp)samp.style.display='block';if(sampTxt){const nm=document.getElementById('snName');sampTxt.textContent=(nm&&nm.value)||'ފÑÑÑÑÑÑÑ';sampTxt.style.fontFamily="'SNFPrev',var(--dv)";}};r.readAsDataURL(f);}
 window.cancelSNFont=function(){snFontFile=null;document.getElementById('snFontRow').style.display='none';document.getElementById('snFontFile').value='';};
 window.uploadSNFont=async function(){if(!snFontFile){toast('No file selected','e');return;}const btn=document.getElementById('snFontUpBtn');btn.innerHTML='<span class="spin"></span>';btn.disabled=true;const r=new FileReader();r.onload=async ev2=>{try{const d=ev2.target.result;await set(ref(db,'settings/nameFont'),{name:snFontFile.name,data:d,size:snFontFile.size,uploadedAt:Date.now()});applyNameFont(d);document.getElementById('snFontBanner').style.display='flex';document.getElementById('snFontName').textContent=snFontFile.name;document.getElementById('snFontSize').textContent=fbytes(snFontFile.size);toast('Name font applied ✅','s');cancelSNFont();}catch(ex){toast('Failed: '+ex.message,'e');}finally{btn.innerHTML='Upload & Apply';btn.disabled=false;}};r.readAsDataURL(snFontFile);};
-
-// ── DHIVEHI FONT — sample shows only after upload ──
 function loadFont(){get(ref(db,'settings/font')).then(s=>{if(!s.exists())return;const f=s.val();applyFont(f.data);document.getElementById('factbanner').style.display='flex';document.getElementById('factname').textContent=f.name;document.getElementById('factsize').textContent=fbytes(f.size||0);showSamp('MVMagRound');});}
 function applyFont(b64){let el=document.getElementById('_mvf');if(!el){el=document.createElement('style');el.id='_mvf';document.head.appendChild(el);}el.textContent=`@font-face{font-family:'MVMagRound';src:url('${b64}');font-display:swap;}`;document.documentElement.style.setProperty('--dv',"'MVMagRound','Faruma',serif");}
-// showSamp uses the real Dhivehi text from elements already set in HTML
-function showSamp(fn){
-  document.getElementById('fsamp').style.display='block';
-  ['fs1','fs2','fs3'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.fontFamily=fn+",Faruma,serif";});
-}
+function showSamp(fn){document.getElementById('fsamp').style.display='block';['fs1','fs2','fs3'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.fontFamily=fn+",Faruma,serif";});}
 window.onFS=ev=>hFont(ev.target.files[0]);
 function hFont(f){if(!f)return;const ok=['.ttf','.otf','.woff','.woff2'];if(!ok.some(ext=>f.name.toLowerCase().endsWith(ext))){toast('Use .ttf .otf .woff .woff2','e');return;}fontFile=f;document.getElementById('fpn').textContent=f.name;document.getElementById('fpm').textContent=fbytes(f.size);document.getElementById('fprow').style.display='flex';const r=new FileReader();r.onload=ev2=>{let el=document.getElementById('_mvp');if(!el){el=document.createElement('style');el.id='_mvp';document.head.appendChild(el);}el.textContent=`@font-face{font-family:'MVPrev';src:url('${ev2.target.result}');font-display:swap;}`;showSamp('MVPrev');};r.readAsDataURL(f);}
 window.cancelFont=function(){fontFile=null;document.getElementById('fprow').style.display='none';document.getElementById('fsamp').style.display='none';document.getElementById('ff').value='';};
 window.uploadFont=async function(){if(!fontFile){toast('No file','e');return;}const btn=document.getElementById('ufbtn');btn.innerHTML='<span class="spin"></span>';btn.disabled=true;const r=new FileReader();r.onload=async ev2=>{try{const d=ev2.target.result;await set(ref(db,'settings/font'),{name:fontFile.name,data:d,size:fontFile.size,uploadedAt:Date.now()});applyFont(d);document.getElementById('factbanner').style.display='flex';document.getElementById('factname').textContent=fontFile.name;document.getElementById('factsize').textContent=fbytes(fontFile.size);showSamp('MVMagRound');toast('Font uploaded ✅','s');cancelFont();}catch(ex){toast('Failed: '+ex.message,'e');}finally{btn.innerHTML='Upload & Apply';btn.disabled=false;}};r.readAsDataURL(fontFile);};
 
+// ══════════════════════════════
+// STAFF
+// ══════════════════════════════
 window.addStaff=async function(){const username=(document.getElementById('stUser').value||'').trim().toLowerCase().replace(/\s+/g,'');const name=(document.getElementById('stName').value||'').trim();const role=document.getElementById('stRole').value;const pass=(document.getElementById('stPass').value||'').trim();if(!username||!name||!pass){toast('Fill all fields','e');return;}if(username==='admin'){toast('Cannot use "admin"','e');return;}if(pass.length<4){toast('Password too short','e');return;}try{const snap=await get(ref(db,'settings/staff'));if(snap.exists()){let dup=false;snap.forEach(c=>{if(c.val().username===username)dup=true;});if(dup){toast('Username already exists','e');return;}}await push(ref(db,'settings/staff'),{username,name,role,password:pass,active:true,createdAt:Date.now()});toast('Staff added ✅','s');['stUser','stName','stPass'].forEach(id=>document.getElementById(id).value='');document.getElementById('stRole').value='editor';}catch(ex){toast('Error: '+ex.message,'e');}};
 window.removeStaff=async function(key,name){if(!confirm('Remove '+name+'?'))return;try{await remove(ref(db,'settings/staff/'+key));toast('Removed','s');}catch(ex){toast('Error: '+ex.message,'e');}};
 window.resetStaffPass=async function(key){const np=prompt('New password:');if(!np||np.length<4){if(np!==null)toast('Min 4 chars','e');return;}try{await set(ref(db,'settings/staff/'+key+'/password'),np);toast('Password reset ✅','s');}catch(ex){toast('Error: '+ex.message,'e');}};
@@ -1023,15 +1244,28 @@ window.toggleStaffActive=async function(key,state){try{await set(ref(db,'setting
 function rStaff(){_unsubs.push(onValue(ref(db,'settings/staff'),s=>{const el=document.getElementById('staffList');if(!el)return;if(!s.exists()){el.innerHTML='<div style="padding:24px;text-align:center;color:var(--g300)">No staff added yet.</div>';return;}const members=[];s.forEach(c=>members.push({key:c.key,...c.val()}));el.innerHTML=members.map(m=>`<div class="ir" style="align-items:flex-start"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,${m.role==='editor'?'var(--blue),var(--pur)':'var(--grn),#0E9F6E'});display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0">${(m.name||'?')[0].toUpperCase()}</div><div class="ri"><div class="rttl">${e(m.name)} <span style="font-size:10px;font-weight:600;color:${m.role==='editor'?'var(--blue)':'var(--grn)'}">· ${m.role==='editor'?'Editor':'Reporter'}</span></div><div class="rsub" style="direction:ltr">@${e(m.username)} ${m.active===false?'<span style="color:var(--red);font-size:10px">· Deactivated</span>':''}</div></div><div class="ra2"><button class="bsm bg" style="font-size:11px;padding:5px 9px" onclick="resetStaffPass('${m.key}')">🔑 Reset</button><button class="bsm bg" style="font-size:11px;padding:5px 9px" onclick="toggleStaffActive('${m.key}',${m.active===false})">${m.active===false?'✅':'⏸'}</button><button class="bsm bd" style="font-size:11px;padding:5px 9px" onclick="removeStaff('${m.key}','${e(m.name)}')">🗑️</button></div></div>`).join('');}));}
 window.changePassword=async function(){const newPass=(document.getElementById('acNewPass').value||'').trim();const conPass=(document.getElementById('acConPass').value||'').trim();if(!newPass||newPass.length<4){toast('Min 4 chars','e');return;}if(newPass!==conPass){toast('Passwords do not match','e');return;}if(currentUser?.role==='admin'){toast('Admin password is hardcoded — update it in code','e');return;}const curPass=(document.getElementById('acCurPass').value||'').trim();try{const snap=await get(ref(db,'settings/staff/'+currentUser.key));if(!snap.exists()||snap.val().password!==curPass){toast('Current password incorrect','e');return;}await set(ref(db,'settings/staff/'+currentUser.key+'/password'),newPass);toast('Password changed ✅','s');['acCurPass','acNewPass','acConPass'].forEach(id=>document.getElementById(id).value='');}catch(ex){toast('Error: '+ex.message,'e');}};
 
+// ══════════════════════════════
+// NAV / UI
+// ══════════════════════════════
 window.showPg=function(name,btn){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.getElementById('pg-'+name)?.classList.add('on');if(btn){document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));btn.classList.add('on');}if(name!=='arts')activeF=null;if(name==='arts'){_artFilter='';document.querySelectorAll('.arts-stat').forEach(s=>s.classList.remove('on'));document.getElementById('fAll')?.classList.add('on');}rTable();closeSidebar();};
 window.toggleSidebar=function(){const sb=document.getElementById('adminSidebar');const ov=document.getElementById('sbOverlay');if(sb.classList.contains('open')){sb.classList.remove('open');ov.classList.remove('on');}else{sb.classList.add('open');ov.classList.add('on');}};
 window.closeSidebar=function(){document.getElementById('adminSidebar')?.classList.remove('open');document.getElementById('sbOverlay')?.classList.remove('on');};
-window.goAdd=function(){resetForm();addParagraph();if(currentUser?.name)document.getElementById('fau').value=currentUser.name;showPg('add',document.getElementById('n-add'));closeSidebar();};
+window.goAdd=function(){
+  resetForm();
+  if(currentUser?.name)document.getElementById('fau').value=currentUser.name;
+  showPg('add',document.getElementById('n-add'));
+  closeSidebar();
+  // Add first paragraph automatically
+  if(!document.querySelectorAll('.para-item').length)addParagraph();
+};
 window.fNav=function(cat,btn){activeF=cat;document.getElementById('at').textContent=CAT[cat]||cat;document.getElementById('as').textContent='Filter: '+(CAT[cat]||cat);document.getElementById('tth').textContent=CAT[cat]||cat;showPg('arts',btn);closeSidebar();};
 window.gSearch=function(){const q=document.getElementById('gs').value.toLowerCase();if(!q)return;document.getElementById('tsrch').value=q;showPg('arts',document.getElementById('n-arts'));rTable();};
 window.cdel=function(path,name){delPath=path;document.getElementById('dmsg').textContent='Delete "'+name+'"? This cannot be undone.';document.getElementById('dmod').classList.add('on');};
 document.getElementById('dbtn').onclick=async function(){if(!delPath)return;try{await remove(ref(db,delPath));toast('Deleted','s');}catch(ex){toast('Error: '+ex.message,'e');}finally{document.getElementById('dmod').classList.remove('on');delPath=null;}};
 
+// ══════════════════════════════
+// HELPERS
+// ══════════════════════════════
 function cpill(cat){const lbl=CAT[cat]||cat||'--',cl=CPFX[cat]||'cn';return'<span class="cpill '+cl+'">'+lbl+'</span>';}
 function fd(ts){if(!ts)return'--';const d=new Date(ts);const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return d.getDate()+' '+mo[d.getMonth()]+' '+d.getFullYear();}
 function e(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
